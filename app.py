@@ -23,7 +23,7 @@ def test_query():
 def hello_world():
     artists_json = test_query()
     artists = [{'id': key, 'name': value} for key, value in artists_json.items()]
-    return render_template('base.html', title='Home', artists=artists)
+    return render_template('base.html', artists=artists)
 
 
 if __name__ == '__main__':
