@@ -21,7 +21,7 @@ def test_query():
 
 @app.route('/')
 def hello_world():
-    artists = [{1: 'Eminem'}, {2: 'Beyonce'}]
+    artists = [{'id': 1, 'name': 'Eminem'}, {'id': 2, 'name': 'Beyonce'}]
     return render_template('base.html', title='Home', artists=artists)
 
 
