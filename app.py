@@ -4,16 +4,16 @@ app = Flask(__name__)
 
 
 def test_query():
-    cnx = pymysql.connect(user='DbMysql03', password='prodigy', host='mysqlsrv1.cs.tau.ac.il', database='DbMysql03')
-    cursor = cnx.cursor
+    db = pymysql.connect(user='DbMysql03', password='prodigy', host='mysqlsrv1.cs.tau.ac.il', database='DbMysql03')
+    cur = db.cursor(pymysql.cursors.DictCursor)
     query = ("select * from artists")
-    cursor.execute(query)
+    cur.execute(query)
 
     res = {}
-    for (id, name) in cursor:
+    for (id, name) in cur:
         res[id] = name
 
-    cnx.close()
+    db.close()
     return res
 
 
