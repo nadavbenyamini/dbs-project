@@ -5,9 +5,9 @@
     <title>{{ title }}</title>
 </head>
 <body>
-<h1>Welcome to the best music Database:</h1>
+<h2>Top artists: </h2>
 {% for artist in artists %}
-    <div><p>{{ user.id}}: <b>{{ user.name }}</b></p></div>
+    <div><p>{{ artist.id}}) <b>{{ artist.name }}</b></p></div>
 {% endfor %}
 </body>
 </html>
