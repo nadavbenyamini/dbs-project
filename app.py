@@ -1,4 +1,6 @@
 from flask import Flask
+from flask import render_template
+
 import pymysql
 app = Flask(__name__)
 
@@ -10,9 +12,8 @@ def test_query():
     cur.execute(query)
 
     res = {}
-    for row in cur:
-	print('{}: {}'.format(row['id'], row['name']))
-        res[row['id']] = row['name']
+    for (id, name) in cur:
+        res[id] = name
 
     db.close()
     return res
@@ -20,8 +21,8 @@ def test_query():
 
 @app.route('/')
 def hello_world():
-    return test_query()
-    # return 'Hello world'
+    artists = [{1: 'Eminem'}, {2: 'Beyonce'}]
+    return render_template('base.html', title='Home', artists=artists)
 
 
 if __name__ == '__main__':
