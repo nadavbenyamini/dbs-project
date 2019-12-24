@@ -2,7 +2,7 @@ from flask import Flask
 import pymysql
 app = Flask(__name__)
 
-
+"""
 def test_query():
     cnx = pymysql.connect(user='DbMysql03', password='prodigy', host='mysqlsrv1.cs.tau.ac.il', database='DbMysql03')
     cursor = cnx.cursor
@@ -15,12 +15,12 @@ def test_query():
 
     cnx.close()
     return res
-
+"""
 
 @app.route('/')
 def hello_world():
-    return test_query()
-    #  return 'Hello world'
+    # return test_query()
+    return 'Hello world'
 
 
 if __name__ == '__main__':
