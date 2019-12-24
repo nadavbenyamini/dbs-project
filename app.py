@@ -10,8 +10,9 @@ def test_query():
     cur.execute(query)
 
     res = {}
-    for (id, name) in cur:
-        res[id] = name
+    for row in cur:
+	print('{}: {}'.format(row['id'], row['name']))
+        res[row['id']] = row['name']
 
     db.close()
     return res
