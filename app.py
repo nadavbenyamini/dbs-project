@@ -21,7 +21,8 @@ def test_query():
 
 @app.route('/')
 def hello_world():
-    artists = [{'id': 1, 'name': 'Eminem'}, {'id': 2, 'name': 'Beyonce'}]
+    artists_json = test_query()
+    artists = [{'id': key, 'name': value} for key, value in artists_json.items()]
     return render_template('base.html', title='Home', artists=artists)
 
 
