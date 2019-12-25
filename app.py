@@ -1,26 +1,11 @@
 from flask import Flask
 from flask import render_template
 from flask import request
-import pymysql
 
+import sql_executor
 from musix_match_api import fetch_musix
 
 app = Flask(__name__)
-
-
-def test_query():
-    db = pymysql.connect(user='DbMysql03', password='prodigy', host='mysqlsrv1.cs.tau.ac.il', database='DbMysql03')
-    cur = db.cursor(pymysql.cursors.DictCursor)
-    query = ("select * from artists")
-    cur.execute(query)
-
-    res = {}
-    for row in cur:
-        print(row)
-        res[row['id']] = row['name']
-
-    db.close()
-    return res
 
 
 @app.route('/')
@@ -28,12 +13,28 @@ def hello_world():
     return 'Hello World\n'
 
 
-@app.route('/artists')
+@app.route('/get_artists')
 def get_artists():
-    artists_json = test_query()
-    print(str(artists_json))
-    artists = [{'id': key, 'name': value} for key, value in artists_json.items()]
-    return str(artists)
+    results = sql_executor.select("select * from artists")
+    artists = [{'id': r[0], 'name': r[1]} for r in results['rows']]
+    return render_template(template_name_or_list="base.html", artists=artists)
+
+
+@app.route('/add_artist')
+def post_artist():
+    headers = ['id', 'name']
+    params = request.args
+    for h in headers:
+        if h not in params:
+            raise Exception('Invalid parameters. Must provide: {}'.format(str(headers)))
+    query = "insert into artists select %(id)s, '%(name)s';"
+    args = {'id': params['id'], 'name': params['name']}
+    try:
+        sql_executor.insert(query, args)
+    except Exception as e:
+        print('An error occurred: {}'.format(e))
+    finally:
+        return get_artists()
 
 
 @app.route('/musix')

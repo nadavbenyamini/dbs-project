@@ -1,0 +1,7 @@
+{
+  "sql_hostname": "mysqlsrv1.cs.tau.ac.il",
+  "sql_username": "DbMysql03",
+  "sql_password": "prodigy",
+  "sql_main_database": "DbMysql03",
+  "sql_port": 3306
+}
