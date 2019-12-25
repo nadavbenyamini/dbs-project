@@ -1,7 +1,9 @@
 from flask import Flask
 from flask import render_template
-from data_fetcher import fetch_data
+from flask import request
 import pymysql
+
+from musix_match_api import fetch_musix
 
 app = Flask(__name__)
 
@@ -34,9 +36,11 @@ def get_artists():
     return str(artists)
 
 
-@app.route('/fetch')
+@app.route('/musix')
 def fetch():
-    return fetch_data()
+    params = request.query_string.decode("utf-8")
+    print(params)
+    return fetch_musix(params)
 
 
 if __name__ == '__main__':
