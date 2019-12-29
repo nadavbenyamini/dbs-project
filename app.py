@@ -37,6 +37,9 @@ def post_artist():
         return get_artists()
 
 
+# For example:
+# http://127.0.0.1:5000/musix?chart.tracks.get?chart_name=top&page=1&page_size=5&country=us
+# http://127.0.0.1:5000/musix?chart.artists.get?chart_name=top&page=1&page_size=5&country=us
 @app.route('/musix')
 def fetch():
     params = request.query_string.decode("utf-8")
