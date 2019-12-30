@@ -3,7 +3,8 @@ from flask import render_template
 from flask import request
 
 import sql_executor
-from musix_match_api import fetch_musix
+from musix_match_api import fetch_musix_internal
+from predicthq_api import fetch_predicthq_internal
 
 app = Flask(__name__)
 
@@ -41,10 +42,19 @@ def post_artist():
 # http://127.0.0.1:5000/musix?chart.tracks.get?chart_name=top&page=1&page_size=5&country=us
 # http://127.0.0.1:5000/musix?chart.artists.get?chart_name=top&page=1&page_size=5&country=us
 @app.route('/musix')
-def fetch():
+def fetch_musix():
     params = request.query_string.decode("utf-8")
     print(params)
-    return fetch_musix(params)
+    return fetch_musix_internal(params)
+
+
+# For example:
+# http://127.0.0.1:5000/predicthq?events?q=beyonce&country=us&categories=concerts&sort=country,-start
+@app.route('/predicthq')
+def fetch_predicthq():
+    params = request.query_string.decode("utf-8")
+    print(params)
+    return fetch_predicthq_internal(params)
 
 
 if __name__ == '__main__':
