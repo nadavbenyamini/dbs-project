@@ -55,7 +55,7 @@ def select(query, args={}):
         cursor.close()
 
 
-def insert(query, args):
+def insert(query, args={}):
     cursor = execute(query % args)  # TODO - change this line to prevent SQL Injection
     try:
         response = cursor.fetchone()
