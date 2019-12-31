@@ -40,8 +40,8 @@ def execute(query, args={}):
         return cur
 
 
-def select(query):
-    cursor = execute(query)
+def select(query, args={}):
+    cursor = execute(query=query, args=args)
     try:
         res = {'headers': [], 'rows': []}
         for row in cursor:

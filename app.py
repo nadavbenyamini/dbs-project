@@ -16,7 +16,14 @@ def hello_world():
 
 @app.route('/get_artists')
 def get_artists():
-    results = sql_executor.select("select * from artists")
+    params = request.args
+    query = "select * from artists"
+    args = {}
+    if params and 'name' in params:
+        query = '{} {}'.format(query, "where name = %s")
+        args = (params['name'], )
+
+    results = sql_executor.select(query=query, args=args)
     artists = [{'id': r[0], 'name': r[1]} for r in results['rows']]
     return render_template(template_name_or_list="base.html", artists=artists)
 
