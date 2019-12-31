@@ -1,4 +1,5 @@
 import pymysql
+import mysql.connector
 from sshtunnel import SSHTunnelForwarder
 import json
 
@@ -6,7 +7,6 @@ import json
 def execute(query, args={}):
     with open("./config/mysql_config.json") as mysql_conf_file:
         mysql_conf = json.load(mysql_conf_file)
-        print(mysql_conf)
         sql_hostname = mysql_conf['sql_hostname']
         sql_username = mysql_conf['sql_username']
         sql_password = mysql_conf['sql_password']
@@ -15,7 +15,6 @@ def execute(query, args={}):
 
     with open("./config/ssh_config.json") as ssh_conf_file:
         ssh_conf = json.load(ssh_conf_file)
-        print(ssh_conf)
         ssh_host = ssh_conf['ssh_host']
         ssh_user = ssh_conf['ssh_user']
         ssh_password = ssh_conf['ssh_password']
@@ -32,6 +31,9 @@ def execute(query, args={}):
                              db=sql_main_database,
                              port=tunnel.local_bind_port)
         cur = db.cursor(pymysql.cursors.DictCursor)
+
+        print(query % args)
+
         cur.execute(query, args=args)
         db.commit()
         db.close()
