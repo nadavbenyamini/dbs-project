@@ -61,15 +61,20 @@ def post_artist():
         return get_artists()
 
 
+@app.route('/build_db')
+def build_db():
+    f = open("./queries/build_db.sql", "r")
+    query = f.read()
+    return sql_executor.insert(query)
+
+
 # The only function in app.py that regards data fetching from remote APIs
 # For example:
 # http://127.0.0.1:5000/fetch/musix/chart.tracks.get?chart_name=top&page=1&page_size=5&country=us
 # http://127.0.0.1:5000/fetch/predicthq/events?q=beyonce&country=us&categories=concerts&sort=country,-start
-@app.route('/fetch/<source>/<path>')
-def fetch_data(source, path):
-    fetcher = fetcher_factory.build_fetcher(source)
-    params = request.query_string.decode("utf-8")
-    return fetcher.fetch(path, params)
+@app.route('/fetch/<source>')
+def fetch_data(source):
+    return fetcher_factory.start_fetching(source)
 
 
 if __name__ == '__main__':

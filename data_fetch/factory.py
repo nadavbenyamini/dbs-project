@@ -1,12 +1,18 @@
-from data_fetch.predicthq_api import PredicthqFetcher
-from data_fetch.musix_match_api import MusixFetcher
+from data_fetch.musix_match.tracks_chart import TracksChartPath
+from data_fetch.musix_match.artist import ArtistPath
+
+
+# The only interface with app.py
+def start_fetching(source):
+    fetchers = build_fetchers(source)
+    summary = '\n'.join([f.fetch_all() for f in fetchers])
+    return summary
 
 
 # Factory function
-def build_fetcher(source):
+def build_fetchers(source):
     if source == 'musix':
-        return MusixFetcher()
-    elif source == 'predicthq':
-        return PredicthqFetcher
-    return None
+        return [TracksChartPath(), ArtistPath()]
+    else:
+        raise Exception('Invalid remote data source')
 
