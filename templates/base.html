@@ -5,9 +5,22 @@
     <title>{{ title }}</title>
 </head>
 <body>
-<h2>Top artists: </h2>
-{% for artist in artists %}
-    <div><p>{{ artist.id}}) <b>{{ artist.name }}</b></p></div>
-{% endfor %}
+
+
+<h2>Search artists by name: </h2>
+<form action="/get_artists" method="GET">
+    <input type="text" name="name" placeholder="Enter artist name"/>
+    <input type="submit" value="Go"/>
+</form>
+
+{% if artists|length == 0 %}
+    <h2>No artists found</h2>
+{% else %}
+    <h2>Top artists: </h2>
+    {% for artist in artists %}
+        <div><p>{{ artist.id}}) <b>{{ artist.name }}</b></p></div>
+    {% endfor %}
+{% endif %}
+
 </body>
 </html>
