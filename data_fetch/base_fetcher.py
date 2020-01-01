@@ -1,5 +1,6 @@
 import requests
 import queue
+from data_fetch.db_utils import get_insert_queries
 
 
 # Base abstract class for fetching data and inserting to db
@@ -20,7 +21,7 @@ class BaseFetcher:
         self.requests = []
         self.responses = []
         self.errors = []
-        self.db_items = []
+        self.items = []
         self.db_queue = queue.Queue()
 
     def fetch_all(self):
@@ -66,6 +67,12 @@ class BaseFetcher:
 
         return summary
 
+    def get_url(self):
+        """
+        :return: the final url for HTTP request
+        """
+        return '{}/{}'.format(self.base_url, self.path)
+
     def fetch(self, params={}):
         """
         :param params: dictionary of HTTP query params
@@ -73,6 +80,27 @@ class BaseFetcher:
         """
         url = self.get_url()
         return requests.get(url=url, headers=self.headers, params=params)
+
+    def build_queries(self):
+        """
+        Converts item list to DB record structure and populates query queue with the final queries
+        """
+        all_records = {}
+        for item in self.items:
+            item_records = self.item_to_records(item)
+            for table in item_records:
+                if table not in all_records:
+                    all_records[table] = []
+                all_records[table] += item_records[table]
+
+        for table in all_records:
+            queries = get_insert_queries(table, all_records[table])
+            for q in queries:
+                self.db_queue.put(q)
+
+    # ------------------------------------------------------------------------------- #
+    # ------------------ Functions to be overridden by subclasses ------------------- #
+    # ------------------------------------------------------------------------------- #
 
     def prepare_requests(self):
         """
@@ -87,21 +115,10 @@ class BaseFetcher:
         """
         pass
 
-    def get_url(self):
+    def item_to_records(self, item):
         """
-        :return: the final url for HTTP request
-        """
-        return '{}/{}'.format(self.base_url, self.path)
-
-    def build_queries(self):
-        for item in self.items():
-            for (query, args) in self.item_to_queries(item):
-                self.db_queue.put((query, args))
-
-    def item_to_queries(self, item):
-        """
-        Converts a single item into the relevant queries
+        Converts a single item into the DB records, per table
         :param item: JSON item from proccesed response
-        :return: list of tuples, each tuple is (query, args)
+        :return: dictionary - {table1: {key1: record, key2: record}, table2: {key1: record, key2: record}}
         """
         pass

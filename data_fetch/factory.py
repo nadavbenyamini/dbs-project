@@ -19,7 +19,7 @@ def build_fetchers(source, path):
     fetchers = {
         'musix': {
             'chart.tracks.get': TracksChartPath(),
-            'artist.get.': ArtistPath(),
+            'artist.get': ArtistPath()
         }
     }
     try:

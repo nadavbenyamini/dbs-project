@@ -29,7 +29,15 @@ class TracksChartPath(MusixFetcher):
             tracks.append(item)
         return tracks
 
-    def item_to_queries(self, item):
-        query = 'insert into table artists select 1'
-        args = {}
-        return [(query, args)]
+    def item_to_records(self, item):
+        table1 = 'tracks'
+        record1 = tuple([item[f] for f in ['track_id', 'track_name', 'track_rating', 'updated_time']])
+
+        table2 = 'artists'
+        record2 = tuple([item[f] for f in ['artist_id', 'artist_name']])
+
+        table3 = 'albums'
+        record3 = tuple([item[f] for f in ['album_id', 'album_id']])
+        return {table1: [record1],
+                table2: [record2],
+                table3: [record3]}
