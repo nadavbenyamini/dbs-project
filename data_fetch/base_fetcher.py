@@ -3,6 +3,18 @@ import requests
 
 # Base abstract class for fetching data and inserting to db
 class BaseFetcher:
+    """
+    Base class for remote data fetching
+    Should be inherited by a class per source - which handles that source's headers, api key's, tokens, etc.
+    Each of those source classes should be inherited by classes for specific api paths that are responsible
+    for preparing the HTTP request and handling it's response
+
+    The general process is -
+    1) prepare params for each request
+    2) fetch responses
+    3) process responses into the relevant structure for our DB
+    4) return a summary of which request succeeded and which failed
+    """
     def __init__(self):
         self.requests = []
         self.responses = []
@@ -14,6 +26,10 @@ class BaseFetcher:
         return self.after_fetching()
 
     def start_fetching(self):
+        """
+        Iterates over self.requests, each item is the params dictionary for a single HTTP request
+        Then fetches, processes and stores the responses, and errors if were
+        """
         i = 0
         for req in self.requests:
             print('Path: {} started request {}: {}'.format(self.path, i, req))
@@ -29,24 +45,45 @@ class BaseFetcher:
                 i += 1
 
     def after_fetching(self):
+        """
+        :return: JSON response with a summary of the fetching results
+        """
         request_count = len(self.requests)
         success_count = len([r for r in self.responses if r is not None])
-        summary = "Finished processing {} requests, {} succeeded: [".format(request_count, success_count)
+        summary = {'summary': 'Finished processing {} requests, {} succeeded'.format(request_count, success_count),
+                   'requests': []}
 
         for i in range(len(self.requests)):
             req = self.requests[i]
             res = self.responses[i]
+            result_count = len(res) if type(res) == list else len(res.keys())
             err = self.errors[i]
-            summary += "{{request: {}, response: {}, error: {}}}, ".format(req, res, err)
+            summary['requests'].append({'request': req, 'result_count': result_count, 'error': err})
 
-        return (summary + ']XXX').replace(', ]XXX', ']')
+        return summary
 
     def fetch(self, params={}):
+        """
+        :param params: dictionary of HTTP query params
+        :return: response from the actual HTTP GET request
+        """
         url = self.get_url()
         return requests.get(url=url, headers=self.headers, params=params)
 
     def get_url(self):
+        """
+        :return: the final url for HTTP request
+        """
         return '{}/{}'.format(self.base_url, self.path)
 
     def process_response(self, response):
+        """
+        Process the results JSON into the relevant structure before inserting to our DB
+        """
+        pass
+
+    def prepare_requests(self):
+        """
+        Prepare the params of the requests. Specific for each data source and path
+        """
         pass

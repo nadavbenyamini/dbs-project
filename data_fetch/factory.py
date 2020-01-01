@@ -3,16 +3,27 @@ from data_fetch.musix_match.artist import ArtistPath
 
 
 # The only interface with app.py
-def start_fetching(source):
-    fetchers = build_fetchers(source)
-    summary = '\n'.join([f.fetch_all() for f in fetchers])
-    return summary
+def fetch_remote_data(source, path):
+    """
+    Builds the relevant data fetcher class and calls that class to start fetching data
+    :param source: remote data source, i.e. musix, wikipedia etc.
+    :param path: specific API path, i.e. artist.get
+    :return: JSON summary of the fetching process
+    """
+    fetcher = build_fetchers(source, path)
+    return fetcher.fetch_all()
 
 
 # Factory function
-def build_fetchers(source):
-    if source == 'musix':
-        return [TracksChartPath(), ArtistPath()]
-    else:
-        raise Exception('Invalid remote data source')
+def build_fetchers(source, path):
+    fetchers = {
+        'musix': {
+            'chart.tracks.get': TracksChartPath(),
+            'artist.get.': ArtistPath(),
+        }
+    }
+    try:
+        return fetchers[source][path]
+    except KeyError:
+        raise Exception('Invalid remote data source or path')
 
