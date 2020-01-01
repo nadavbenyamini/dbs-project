@@ -3,6 +3,7 @@ from data_fetch.db_utils import get_insert_queries
 from models.data_types import *
 import sql_executor
 
+
 # Base abstract class for fetching data and inserting to db
 class BaseFetcher:
     """
@@ -29,7 +30,7 @@ class BaseFetcher:
     def fetch_all(self):
         self.requests = self.prepare_requests()
         self.start_fetching()
-        self.build_queries()
+        self.build_insert_queries()
         self.execute_queries()
         return self.get_summary()
 
@@ -92,7 +93,7 @@ class BaseFetcher:
         url = self.get_url()
         return requests.get(url=url, headers=self.headers, params=params)
 
-    def build_queries(self):
+    def build_insert_queries(self):
         """
         Converts item list to DB record structure and populates query list with the final queries
         """
@@ -157,7 +158,7 @@ class BaseFetcher:
         return records
 
     # TODO - Make connect to db once instead of connection per query
-    def execute_queries(self):
+    def execute_insert_queries(self):
         for query in self.queries:
             try:
                 self.db_responses.append(sql_executor.insert(query))

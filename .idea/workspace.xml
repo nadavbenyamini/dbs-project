@@ -4,7 +4,6 @@
     <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_fetch/base_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/base_fetcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_fetch/db_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="22" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="22" />
+            <state relative-caret-position="38">
+              <caret line="2" column="22" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -48,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="143">
-              <caret line="107" column="49" selection-start-line="107" selection-start-column="49" selection-end-line="107" selection-end-column="49" />
+              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -156,6 +155,7 @@
       <find>build_queries</find>
       <find>albums_id</find>
       <find>print</find>
+      <find>table_to_c</find>
       <find>get_insert_queries</find>
     </findStrings>
   </component>
@@ -201,8 +201,8 @@
         <option value="$PROJECT_DIR$/models/album.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/data_fetch/factory.py" />
-        <option value="$PROJECT_DIR$/data_fetch/db_utils.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" />
+        <option value="$PROJECT_DIR$/data_fetch/db_utils.py" />
         <option value="$PROJECT_DIR$/data_fetch/base_fetcher.py" />
       </list>
     </option>
@@ -316,7 +316,7 @@
       <workItem from="1577882223672" duration="1144000" />
       <workItem from="1577883955403" duration="1467000" />
       <workItem from="1577888381602" duration="6796000" />
-      <workItem from="1577896908600" duration="54000" />
+      <workItem from="1577896908600" duration="638000" />
     </task>
     <task id="LOCAL-00001" summary="hello world">
       <created>1577202927610</created>
@@ -493,11 +493,25 @@
       <option name="project" value="LOCAL" />
       <updated>1577895381986</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Small bug fix">
+      <created>1577896975307</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1577896975308</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Added query execution script in fetcher">
+      <created>1577897525984</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1577897525984</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61003000" />
+    <option name="totallyTimeSpent" value="61587000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1983" y="28" width="1857" height="1018" extended-state="6" />
@@ -552,7 +566,9 @@
     <MESSAGE value="Deleted redundant folder" />
     <MESSAGE value="Added a simple fetch function to test API endpoints" />
     <MESSAGE value="Passing column names to query builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Passing column names to query builder" />
+    <MESSAGE value="Small bug fix" />
+    <MESSAGE value="Added query execution script in fetcher" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added query execution script in fetcher" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db.py" />
@@ -642,20 +658,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/queries/build_db.sql" />
-    <entry file="file://$PROJECT_DIR$/data_fetch/db_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="22" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_fetch/factory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1558">
@@ -707,6 +709,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data_fetch/factory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_fetch/db_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -720,7 +736,7 @@
     <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
-          <caret line="107" column="49" selection-start-line="107" selection-start-column="49" selection-end-line="107" selection-end-column="49" />
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
