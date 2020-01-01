@@ -1,7 +1,7 @@
 import requests
 from data_fetch.db_utils import get_insert_queries
 from models.data_types import *
-
+import sql_executor
 
 # Base abstract class for fetching data and inserting to db
 class BaseFetcher:
@@ -21,14 +21,16 @@ class BaseFetcher:
         self.requests = []
         self.responses = []
         self.api_errors = []
-        self.db_errors = []
         self.items = []
         self.queries = []
+        self.db_responses = []
+        self.db_errors = []
 
     def fetch_all(self):
         self.requests = self.prepare_requests()
         self.start_fetching()
         self.build_queries()
+        self.execute_queries()
         return self.get_summary()
 
     def start_fetching(self):
@@ -61,7 +63,7 @@ class BaseFetcher:
                 'summary': 'Finished processing {} requests, {} succeeded'.format(request_count, success_count),
                 'requests': []},
             'data_insertion': {
-                'summary': [],
+                'summary': 'Finished preparing and executing {} queries, {} succeeded'.format(len(self.queries), len(self.db_responses)),
                 'queries': self.queries,
                 'errors': self.db_errors
             }
@@ -153,6 +155,14 @@ class BaseFetcher:
 
             records[model.table].append(tuple(record))
         return records
+
+    # TODO - Make connect to db once instead of connection per query
+    def execute_queries(self):
+        for query in self.queries:
+            try:
+                self.db_responses.append(sql_executor.insert(query))
+            except Exception as e:
+                self.db_errors.append(e)
 
     # ------------------------------------------------------------------------------- #
     # ------------------ Functions to be overridden by subclasses ------------------- #
