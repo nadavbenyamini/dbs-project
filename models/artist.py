@@ -1,7 +1,8 @@
-from models.data_types import Types
+from models.base_model import *
+from models.data_types import *
 
 
-class Artist:
+class Artist(BaseModel):
     def __init__(self):
         self.table = 'artists'
         self.fields = [

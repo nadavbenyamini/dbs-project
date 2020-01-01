@@ -1,7 +1,8 @@
-from models.data_types import Types
+from models.base_model import *
+from models.data_types import *
 
 
-class Track:
+class Track(BaseModel):
     def __init__(self):
         self.table = 'tracks'
         self.fields = [

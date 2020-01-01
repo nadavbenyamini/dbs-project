@@ -1,6 +1,6 @@
 import requests
 from data_fetch.db_utils import get_insert_queries
-from models.data_types import *
+from models.all_models import *
 import sql_executor
 
 
