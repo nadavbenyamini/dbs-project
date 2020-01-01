@@ -157,7 +157,7 @@ class BaseFetcher:
             records[model.table].append(tuple(record))
         return records
 
-    # TODO - Make connect to db once instead of connection per query
+    # TODO - Make connection to db once instead of connection per query
     def execute_insert_queries(self):
         for query in self.queries:
             try:
