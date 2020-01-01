@@ -13,7 +13,5 @@ class MusixFetcher(BaseFetcher):
         return '{}/{}?apikey={}'.format(self.base_url, self.path, API_KEY)
 
     def response_to_items(self, response):
-        pass
-
-    def item_to_records(self, item):
+        return [response['message']['body']['artist']]
         pass
