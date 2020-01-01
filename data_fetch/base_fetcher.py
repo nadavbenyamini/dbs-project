@@ -1,4 +1,5 @@
 import requests
+import queue
 
 
 # Base abstract class for fetching data and inserting to db
@@ -19,11 +20,14 @@ class BaseFetcher:
         self.requests = []
         self.responses = []
         self.errors = []
+        self.db_items = []
+        self.db_queue = queue.Queue()
 
     def fetch_all(self):
-        self.prepare_requests()
+        self.requests = self.prepare_requests()
         self.start_fetching()
-        return self.after_fetching()
+        self.build_queries()
+        return self.get_summary()
 
     def start_fetching(self):
         """
@@ -35,8 +39,8 @@ class BaseFetcher:
             print('Path: {} started request {}: {}'.format(self.path, i, req))
             try:
                 response = self.fetch(req)
-                processed_response = self.process_response(response.json())
-                self.responses.append(processed_response)
+                self.responses.append(response.json())
+                self.items += self.response_to_items(response.json())
                 self.errors.append(None)
             except Exception as e:  # requests.exceptions.HTTPError as e:
                 self.errors.append(e)
@@ -44,7 +48,7 @@ class BaseFetcher:
             finally:
                 i += 1
 
-    def after_fetching(self):
+    def get_summary(self):
         """
         :return: JSON response with a summary of the fetching results
         """
@@ -70,20 +74,34 @@ class BaseFetcher:
         url = self.get_url()
         return requests.get(url=url, headers=self.headers, params=params)
 
+    def prepare_requests(self):
+        """
+        Prepare the params of the requests. Specific for each data source and path
+        """
+        pass
+
+    def response_to_items(self, response):
+        """
+        Process the results JSON into the relevant structure before inserting to our DB
+        :return: list of JSON items
+        """
+        pass
+
     def get_url(self):
         """
         :return: the final url for HTTP request
         """
         return '{}/{}'.format(self.base_url, self.path)
 
-    def process_response(self, response):
-        """
-        Process the results JSON into the relevant structure before inserting to our DB
-        """
-        pass
+    def build_queries(self):
+        for item in self.items():
+            for (query, args) in self.item_to_queries(item):
+                self.db_queue.put((query, args))
 
-    def prepare_requests(self):
+    def item_to_queries(self, item):
         """
-        Prepare the params of the requests. Specific for each data source and path
+        Converts a single item into the relevant queries
+        :param item: JSON item from proccesed response
+        :return: list of tuples, each tuple is (query, args)
         """
         pass

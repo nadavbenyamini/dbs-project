@@ -8,11 +8,12 @@ class TracksChartPath(MusixFetcher):
 
     def prepare_requests(self):
         countries = ['us', 'de']
-        self.requests = []
+        requests = []
         for country in countries:
-            self.requests.append({'country': country})
+            requests.append({'country': country})
+        return requests
 
-    def process_response(self, response):
+    def response_to_items(self, response):
         track_list = response['message']['body']['track_list']
         tracks = []
         for t in track_list:
@@ -25,7 +26,10 @@ class TracksChartPath(MusixFetcher):
                     item['music_genre_id'] = genre_list[0]['music_genre']['music_genre_id']
                 else:
                     item['music_genre_id'] = None
-
             tracks.append(item)
         return tracks
 
+    def item_to_queries(self, item):
+        query = 'insert into table artists select 1'
+        args = {}
+        return [(query, args)]
