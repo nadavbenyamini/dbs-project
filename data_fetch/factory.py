@@ -2,7 +2,18 @@ from data_fetch.musix_match.tracks_chart import TracksChartPath
 from data_fetch.musix_match.artist import ArtistPath
 
 
-# The only interface with app.py
+def test_api_call(source, path, params):
+    """
+    :param source: data source, i.e. musix
+    :param path: specific API path
+    :param params: HTTP query params
+    :return: HTTP Response
+    """
+    fetcher = build_fetchers(source, path)
+    return fetcher.fetch(params)
+
+
+# The only interface with app.py other than test function
 def fetch_remote_data(source, path):
     """
     Builds the relevant data fetcher class and calls that class to start fetching data
