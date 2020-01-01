@@ -77,5 +77,11 @@ def fetch_data(source, path):
     return fetcher_factory.fetch_remote_data(source, path)
 
 
+@app.route('/test/<source>/<path>')
+def test_data(source, path):
+    params = request.args
+    return fetcher_factory.test_api_call(source, path, params)
+
+
 if __name__ == '__main__':
     app.run(port=5000, host="0.0.0.0", debug=True)
