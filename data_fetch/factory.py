@@ -10,7 +10,7 @@ def test_api_call(source, path, params):
     :return: HTTP Response
     """
     fetcher = build_fetchers(source, path)
-    return fetcher.fetch(params)
+    return fetcher.fetch(params).json()
 
 
 # The only interface with app.py other than test function
