@@ -6,7 +6,7 @@ class TracksChartPath(MusixFetcher):
     def __init__(self):
         super().__init__()
         self.path = 'chart.tracks.get'
-        self.models = [Artist(), Album(), Track()]  # DO NOT CHANGE THIS ORDER!!!
+        self.models = [Track()]
 
     def prepare_requests(self):
         countries = ['us', 'de']
