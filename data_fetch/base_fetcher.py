@@ -1,5 +1,4 @@
 import requests
-import queue
 from data_fetch.db_utils import get_insert_queries
 from models.data_types import *
 
@@ -22,9 +21,9 @@ class BaseFetcher:
         self.requests = []
         self.responses = []
         self.api_errors = []
-        self.items = []
         self.db_errors = []
-        self.db_queue = queue.Queue()
+        self.items = []
+        self.queries = []
 
     def fetch_all(self):
         self.requests = self.prepare_requests()
@@ -44,9 +43,9 @@ class BaseFetcher:
                 response = self.fetch(req)
                 self.responses.append(response.json())
                 self.items += self.response_to_items(response.json())
-                self.errors.append(None)
+                self.api_errors.append(None)
             except Exception as e:  # requests.exceptions.HTTPError as e:
-                self.errors.append(e)
+                self.api_errors.append(str(e))
                 self.responses.append(None)
             finally:
                 i += 1
@@ -57,15 +56,23 @@ class BaseFetcher:
         """
         request_count = len(self.requests)
         success_count = len([r for r in self.responses if r is not None])
-        summary = {'summary': 'Finished processing {} requests, {} succeeded'.format(request_count, success_count),
-                   'requests': []}
+        summary = {
+            'data_fetch': {
+                'summary': 'Finished processing {} requests, {} succeeded'.format(request_count, success_count),
+                'requests': []},
+            'data_insertion': {
+                'summary': [],
+                'queries': self.queries,
+                'errors': self.db_errors
+            }
+        }
 
         for i in range(len(self.requests)):
             req = self.requests[i]
             res = self.responses[i]
             result_count = len(res) if type(res) == list else len(res.keys())
-            err = self.errors[i]
-            summary['requests'].append({'request': req, 'result_count': result_count, 'error': err})
+            err = self.api_errors[i]
+            summary['data_fetch']['requests'].append({'request': req, 'result_count': result_count, 'error': err})
 
         return summary
 
@@ -85,7 +92,7 @@ class BaseFetcher:
 
     def build_queries(self):
         """
-        Converts item list to DB record structure and populates query queue with the final queries
+        Converts item list to DB record structure and populates query list with the final queries
         """
         all_records = {}
         for item in self.items:
@@ -95,19 +102,17 @@ class BaseFetcher:
                     if table not in all_records:
                         all_records[table] = []
                     all_records[table] += item_records[table]
-                self.db_errors.append(None)
             except Exception as e:
-                self.db_errors.append(e)
-
+                self.db_errors.append(str(e))
         for table in all_records:
             queries = get_insert_queries(table, all_records[table])
             for q in queries:
-                self.db_queue.put(q)
+                self.queries.append(q)
 
     def item_to_records(self, item):
         """
-        Converts a single item into the DB records, per table
-        :param item: JSON item from proccesed response
+        Converts a single item into the tuples according to the relevant DB records, per table
+        :param item: JSON item from processed response
         :return: dictionary - {table1: [record1, record2], table2: [record1, record2]}
 
         This is a DEFAULT IMPLEMENTATION only, can be overridden
@@ -116,20 +121,29 @@ class BaseFetcher:
         for model in self.models:
             records[model.table] = []
             record = []
-            for field in model.fields.items():
+
+            for field in model.fields:
                 value = item.get(field['name'], None)
+                try:
+                    if field['pk']:
+                        assert value is not None
+                    if value is None:
+                        record.append(None)
+                    elif field['type'] == Types.INT:
+                        record.append(int(value))
+                    elif field['type'] == Types.STRING:
+                        record.append(str(value))
+                    elif field['type'] == Types.TIMESTAMP:
+                        value = validate_timestamp(value)
+                        record.append(value)
+                    else:
+                        record.append(value)
 
-                # Type error might rise here, it's ok that will be handled later
-                if field['type'] == Types.INT:
-                    record.append(int(value))
-                if field['type'] == Types.STRING:
-                    record.append(str(value))
-                if field['type'] == Types.TIMESTAMP:
-                    assert valid_timestamp(value)
-                if field['pk']:
-                    assert value is not None
+                except Exception as e:
+                    print('Error adding {} to record: {}, value={}'.format(e, field['name'], value))
+                    raise e
 
-            records[model.table].append(record)
+            records[model.table].append(tuple(record))
         return records
 
     # ------------------------------------------------------------------------------- #

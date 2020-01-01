@@ -6,7 +6,7 @@ class TracksChartPath(MusixFetcher):
     def __init__(self):
         super().__init__()
         self.path = 'chart.tracks.get'
-        self.models = [Artist(), Track(), Album()]
+        self.models = [Artist(), Album(), Track()]  # DO NOT CHANGE THIS ORDER!!!
 
     def prepare_requests(self):
         countries = ['us', 'de']
@@ -19,8 +19,9 @@ class TracksChartPath(MusixFetcher):
         track_list = response['message']['body']['track_list']
         tracks = []
         for t in track_list:
-            item = {k: v for k, v in t.items()}  # Cloning
-            genre_list = t['track'].get('primary_genres', {}).get('music_genre_list', [])
+            track = t['track']
+            item = {k: v for k, v in track.items() if k != 'primary_genres'}  # Cloning
+            genre_list = track.get('primary_genres', {}).get('music_genre_list', [])
             if len(genre_list) > 0:
                 item['music_genre_id'] = genre_list[0]['music_genre']['music_genre_id']
             else:

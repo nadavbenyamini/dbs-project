@@ -8,9 +8,10 @@ class Types:
     TIMESTAMP = 'TIMESTAMP'
 
 
-def valid_timestamp(value):
+def validate_timestamp(value):
     try:
-        datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
-        return True
-    except TypeError:
-        return False
+        clean = value.replace('T', ' ').replace('Z', '')
+        datetime.datetime.strptime(clean, '%Y-%m-%d %H:%M:%S')
+        return clean
+    except ValueError:
+        return None
