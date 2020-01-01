@@ -157,13 +157,20 @@ class BaseFetcher:
             records[model.table].append(tuple(record))
         return records
 
-    # TODO - Make connection to db once instead of connection per query
     def execute_insert_queries(self):
+        try:
+            connection = sql_executor.get_connection()
+        except Exception as e:
+            self.db_errors.append(str(e))
+            return
+
         for query in self.queries:
             try:
-                self.db_responses.append(sql_executor.insert(query))
+                self.db_responses.append(sql_executor.insert(query=query, connection=connection))
             except Exception as e:
                 self.db_errors.append(e)
+
+        connection.close()
 
     # ------------------------------------------------------------------------------- #
     # ------------------ Functions to be overridden by subclasses ------------------- #

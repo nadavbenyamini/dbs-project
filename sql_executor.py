@@ -4,7 +4,8 @@ from sshtunnel import SSHTunnelForwarder
 import json
 
 
-def execute(query, args={}):
+def get_connection():
+
     with open("./config/mysql_config.json") as mysql_conf_file:
         mysql_conf = json.load(mysql_conf_file)
         sql_hostname = mysql_conf['sql_hostname']
@@ -25,21 +26,27 @@ def execute(query, args={}):
             ssh_username=ssh_user,
             ssh_password=ssh_password,
             remote_bind_address=(sql_hostname, sql_port)) as tunnel:
-        db = pymysql.connect(host='127.0.0.1',
-                             user=sql_username,
-                             passwd=sql_password,
-                             db=sql_main_database,
-                             port=tunnel.local_bind_port)
-        cur = db.cursor(pymysql.cursors.DictCursor)
 
-        print(query % args)
-
-        cur.execute(query, args=args)
-        db.commit()
-        db.close()
         ssh_conf_file.close()
         mysql_conf_file.close()
-        return cur
+        return pymysql.connect(host='127.0.0.1',
+                               user=sql_username,
+                               passwd=sql_password,
+                               db=sql_main_database,
+                               port=tunnel.local_bind_port)
+
+
+def execute(query, args={}, db=None):
+    if db is None:
+        db = get_connection()
+
+    cur = db.cursor(pymysql.cursors.DictCursor)
+
+    print(query % args)
+
+    cur.execute(query, args=args)
+    db.commit()
+    return cur
 
 
 def select(query, args={}):
@@ -55,8 +62,8 @@ def select(query, args={}):
         cursor.close()
 
 
-def insert(query, args={}):
-    cursor = execute(query % args)  # TODO - change this line to prevent SQL Injection
+def insert(query, args={}, connection=None):
+    cursor = execute(query=query % args, connection=connection)  # TODO - change this line to prevent SQL Injection
     try:
         response = cursor.fetchone()
         print(response)
