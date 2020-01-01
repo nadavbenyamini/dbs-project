@@ -4,7 +4,6 @@ from models.all_models import *
 import sql_executor
 
 
-# Base abstract class for fetching data and inserting to db
 class BaseFetcher:
     """
     Base class for remote data fetching
@@ -12,11 +11,11 @@ class BaseFetcher:
     Each of those source classes should be inherited by classes for specific api paths that are responsible
     for preparing the HTTP request and handling it's response
 
-    The general process is -
-    1) prepare params for each request
-    2) fetch responses
-    3) process responses into the relevant structure for our DB
-    4) return a summary of which request succeeded and which failed
+    The general flo is -
+    1) Prepare params for each request
+    2) Fetch responses and process them into items in the relevant structure for our DB
+    3) Turn these items into SQL insert queries, and execute
+    4) return a summary to indicate errors in api requests / queries
     """
     def __init__(self):
         self.requests = []
