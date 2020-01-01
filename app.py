@@ -72,9 +72,9 @@ def build_db():
 # For example:
 # http://127.0.0.1:5000/fetch/musix/chart.tracks.get?chart_name=top&page=1&page_size=5&country=us
 # http://127.0.0.1:5000/fetch/predicthq/events?q=beyonce&country=us&categories=concerts&sort=country,-start
-@app.route('/fetch/<source>')
-def fetch_data(source):
-    return fetcher_factory.start_fetching(source)
+@app.route('/fetch/<source>/<path>')
+def fetch_data(source, path):
+    return fetcher_factory.fetch_remote_data(source, path)
 
 
 if __name__ == '__main__':
