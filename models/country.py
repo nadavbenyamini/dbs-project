@@ -7,5 +7,5 @@ class Country(BaseModel):
         self.table = 'countries'
         self.fields = [
             {'name': 'country_id', 'type': Types.STRING, 'pk': True},
-            {'name': 'country_name', 'type': Types.String, 'pk': False}
+            {'name': 'country_name', 'type': Types.STRING, 'pk': False}
         ]
