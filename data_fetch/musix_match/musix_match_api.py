@@ -15,5 +15,5 @@ class MusixFetcher(BaseFetcher):
     def response_to_items(self, response):
         pass
 
-    def item_to_queries(self, item):
+    def item_to_records(self, item):
         pass
