@@ -105,7 +105,7 @@ class BaseFetcher:
             except Exception as e:
                 self.db_errors.append(str(e))
         for table in all_records:
-            columns = self.table_to_columns()
+            columns = self.table_to_columns(table)
             if len(columns) > 0:
                 queries = get_insert_queries(table, columns, all_records[table])
                 for q in queries:
