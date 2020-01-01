@@ -1,4 +1,0 @@
-{
-  "Charts": ["country_id", "track_id"],
-  "Tracks": ["track_id", "track_name", "artist_id", "album_id", "music_genre_id"]
-}
