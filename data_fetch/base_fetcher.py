@@ -1,6 +1,7 @@
 import requests
 import queue
 from data_fetch.db_utils import get_insert_queries
+from models.data_types import *
 
 
 # Base abstract class for fetching data and inserting to db
@@ -20,8 +21,9 @@ class BaseFetcher:
     def __init__(self):
         self.requests = []
         self.responses = []
-        self.errors = []
+        self.api_errors = []
         self.items = []
+        self.db_errors = []
         self.db_queue = queue.Queue()
 
     def fetch_all(self):
@@ -87,16 +89,48 @@ class BaseFetcher:
         """
         all_records = {}
         for item in self.items:
-            item_records = self.item_to_records(item)
-            for table in item_records:
-                if table not in all_records:
-                    all_records[table] = []
-                all_records[table] += item_records[table]
+            try:
+                item_records = self.item_to_records(item)
+                for table in item_records:
+                    if table not in all_records:
+                        all_records[table] = []
+                    all_records[table] += item_records[table]
+                self.db_errors.append(None)
+            except Exception as e:
+                self.db_errors.append(e)
 
         for table in all_records:
             queries = get_insert_queries(table, all_records[table])
             for q in queries:
                 self.db_queue.put(q)
+
+    def item_to_records(self, item):
+        """
+        Converts a single item into the DB records, per table
+        :param item: JSON item from proccesed response
+        :return: dictionary - {table1: [record1, record2], table2: [record1, record2]}
+
+        This is a DEFAULT IMPLEMENTATION only, can be overridden
+        """
+        records = {}
+        for model in self.models:
+            records[model.table] = []
+            record = []
+            for field in model.fields.items():
+                value = item.get(field['name'], None)
+
+                # Type error might rise here, it's ok that will be handled later
+                if field['type'] == Types.INT:
+                    record.append(int(value))
+                if field['type'] == Types.STRING:
+                    record.append(str(value))
+                if field['type'] == Types.TIMESTAMP:
+                    assert valid_timestamp(value)
+                if field['pk']:
+                    assert value is not None
+
+            records[model.table].append(record)
+        return records
 
     # ------------------------------------------------------------------------------- #
     # ------------------ Functions to be overridden by subclasses ------------------- #
@@ -115,10 +149,3 @@ class BaseFetcher:
         """
         pass
 
-    def item_to_records(self, item):
-        """
-        Converts a single item into the DB records, per table
-        :param item: JSON item from proccesed response
-        :return: dictionary - {table1: {key1: record, key2: record}, table2: {key1: record, key2: record}}
-        """
-        pass

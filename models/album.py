@@ -1,0 +1,12 @@
+from models.data_types import Types
+
+
+class Album:
+    def __init__(self):
+        self.table = 'albums'
+        self.fields = [
+            {'name': 'albums_id', 'type': Types.INT, 'pk': True},
+            {'name': 'albums_name', 'type': Types.STRING, 'pk': False},
+            {'name': 'albums_rating', 'type': Types.INT, 'pk': False},
+            {'name': 'updated_time', 'type': Types.TIMESTAMP, 'pk': False}
+        ]
