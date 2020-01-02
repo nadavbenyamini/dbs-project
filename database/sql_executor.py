@@ -3,7 +3,53 @@ from sshtunnel import SSHTunnelForwarder
 import json
 
 
-def execute(queries, args={}):
+def select(query, args):
+    cursors = __execute([{'query': query, 'args': args}])
+    cursor = cursors[0]
+    try:
+        res = {'headers': [], 'rows': []}
+        for row in cursor:
+            if len(res['headers']) == 0:
+                res['headers'] = list(row.keys())
+            res['rows'].append([row[k] for k in res['headers']])
+        return res
+    finally:
+        cursor.close()
+
+
+def insert(query, args):
+    cursors = __execute([{'query': query, 'args': args}])
+    cursor = cursors[0]
+    try:
+        response = cursor.fetchall()
+        print(response)
+        return response
+    except Exception as e:
+        raise e
+    finally:
+        cursor.close()
+
+
+def insert_bulk(queries):
+    final_queries = [{'query': q, 'args': {}} for q in queries]
+    cursors = __execute(final_queries)
+    responses = []
+    for cur in cursors:
+        try:
+            responses.append(cur.fetchone())
+        except Exception as e:
+            responses.append(str(e))
+        finally:
+            cur.close()
+    return responses
+
+
+def __execute(queries):
+    """
+    Private function, should be accessed by one of the functions above
+    :param queries: list of dictionaries: [{'query': 'select...', 'args': {}}...]
+    :return: list of cursors after cursor.execute
+    """
 
     with open("./config/mysql_config.json") as mysql_conf_file:
         mysql_conf = json.load(mysql_conf_file)
@@ -41,44 +87,3 @@ def execute(queries, args={}):
             db.commit()
             cursors.append(cur)
     return cursors
-
-
-def select(query, args):
-    cursors = execute([{'query': query, 'args': args}])
-    cursor = cursors[0]
-    try:
-        res = {'headers': [], 'rows': []}
-        for row in cursor:
-            if len(res['headers']) == 0:
-                res['headers'] = list(row.keys())
-            res['rows'].append([row[k] for k in res['headers']])
-        return res
-    finally:
-        cursor.close()
-
-
-def insert(query, args):
-    cursors = execute([{'query': query, 'args': args}])
-    cursor = cursors[0]
-    try:
-        response = cursor.fetchall()
-        print(response)
-        return response
-    except Exception as e:
-        raise e
-    finally:
-        cursor.close()
-
-
-def insert_bulk(queries):
-    final_queries = [{'query': q, 'args': {}} for q in queries]
-    cursors = execute(final_queries)
-    responses = []
-    for cur in cursors:
-        try:
-            responses.append(cur.fetchone())
-        except Exception as e:
-            responses.append(str(e))
-        finally:
-            cur.close()
-    return responses
