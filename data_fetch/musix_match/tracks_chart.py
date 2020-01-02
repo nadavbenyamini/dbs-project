@@ -9,7 +9,7 @@ class TracksChartPath(MusixFetcher):
         self.models = [Track()]
 
     def prepare_requests(self):
-        countries = Country().get_all_values_by_field('country_id')
+        countries = Country().get_all_values_by_field('country_code')
         requests = []
         for country in countries:
             requests.append({'country': country})
