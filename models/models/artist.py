@@ -9,6 +9,5 @@ class Artist(BaseModel):
             {'name': 'artist_id', 'type': Types.INT, 'pk': True},
             {'name': 'artist_name', 'type': Types.STRING, 'pk': False},
             {'name': 'artist_country_id', 'type': Types.STRING, 'pk': False},
-            {'name': 'artist_rating', 'type': Types.INT, 'pk': False},
-            {'name': 'updated_time', 'type': Types.TIMESTAMP, 'pk': False}
+            {'name': 'artist_rating', 'type': Types.INT, 'pk': False}
         ]

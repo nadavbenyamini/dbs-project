@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="Added mourtis fetcher to factory">
+    <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_fetch/musix_match/album.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/musix_match/album.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/album.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/models/album.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/artist.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/models/artist.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,13 +51,58 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/models/track.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="14" column="40" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+            <state relative-caret-position="151">
+              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/models/artist.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/models/album.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" column="40" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/album.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#63#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,8 +199,6 @@
         <option value="$USER_HOME$/.local/lib/python3.6/site-packages/blueprint/__init__.py" />
         <option value="$PROJECT_DIR$/routes/data_fetch.py" />
         <option value="$PROJECT_DIR$/sql_executor.py" />
-        <option value="$PROJECT_DIR$/models/models/album.py" />
-        <option value="$PROJECT_DIR$/models/models/artist.py" />
         <option value="$PROJECT_DIR$/config/mysql_config.json" />
         <option value="$PROJECT_DIR$/routes/main.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
@@ -171,12 +216,14 @@
         <option value="$PROJECT_DIR$/data_fetch/mourits/musix_match_api.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/artist.py" />
         <option value="$PROJECT_DIR$/data_fetch/factory.py" />
-        <option value="$PROJECT_DIR$/data_fetch/musix_match/album.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/musix_match_api.py" />
         <option value="$PROJECT_DIR$/models/models/lyrics.py" />
         <option value="$PROJECT_DIR$/models/all_models.py" />
         <option value="$PROJECT_DIR$/models/base_model.py" />
         <option value="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" />
+        <option value="$PROJECT_DIR$/models/models/artist.py" />
+        <option value="$PROJECT_DIR$/models/models/album.py" />
+        <option value="$PROJECT_DIR$/data_fetch/musix_match/album.py" />
       </list>
     </option>
   </component>
@@ -198,6 +245,17 @@
             <path>
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="final_project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="data_fetch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="data_fetch" type="462c0819:PsiDirectoryNode" />
+              <item name="musix_match" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
@@ -311,21 +369,7 @@
       <workItem from="1577948300992" duration="3215000" />
       <workItem from="1577955361485" duration="4123000" />
       <workItem from="1577967948688" duration="41000" />
-      <workItem from="1577968778870" duration="11301000" />
-    </task>
-    <task id="LOCAL-00020" summary="Changed db insertion to model-based">
-      <created>1577890592065</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1577890592065</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Fixed many small errors">
-      <created>1577893075588</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1577893075588</updated>
+      <workItem from="1577968778870" duration="12689000" />
     </task>
     <task id="LOCAL-00022" summary="Deleted redundant folder">
       <created>1577893129150</created>
@@ -656,17 +700,30 @@
       <option name="project" value="LOCAL" />
       <updated>1577982993804</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Finished mourits lyrics fetcher">
+      <created>1577983485875</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1577983485875</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Renaming column">
+      <created>1577983709282</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1577983709282</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85447000" />
+    <option name="totallyTimeSpent" value="86835000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1641791" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1641791" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -679,7 +736,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.501382" side_tool="true" visible="true" weight="0.4173318" />
+      <window_info active="true" anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.501382" side_tool="true" visible="true" weight="0.4173318" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="13" />
@@ -695,8 +752,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added test for simple select * from queries" />
-    <MESSAGE value="Added test route for simple select * from queries" />
     <MESSAGE value="Encapsulating execution in sql_executor" />
     <MESSAGE value="Query fix in db_utils" />
     <MESSAGE value="Changed args to tuple" />
@@ -720,7 +775,9 @@
     <MESSAGE value="Created lyrics model" />
     <MESSAGE value="Created a function that returns unique tuples by multiple columns" />
     <MESSAGE value="Rephrasing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rephrasing" />
+    <MESSAGE value="Finished mourits lyrics fetcher" />
+    <MESSAGE value="Renaming column" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renaming column" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db.py" />
@@ -773,13 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/album.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/mysql_config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -798,16 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="60" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/track.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -941,26 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/artist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/album.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/musix_match_api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -991,10 +1011,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+        <state relative-caret-position="151">
+          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models/artist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models/track.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models/album.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/album.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>

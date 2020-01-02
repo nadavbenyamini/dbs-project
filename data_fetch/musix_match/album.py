@@ -16,5 +16,7 @@ class AlbumPath(MusixFetcher):
         return requests
 
     def response_to_items(self, request, response):
-        return [response['message']['body']['album']]
+        item = response['message']['body']['album']
+        item['album_release_date'] = item['updated_time']
+        return [item]
 
