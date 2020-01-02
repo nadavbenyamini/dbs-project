@@ -44,7 +44,7 @@ class BaseFetcher:
             try:
                 response = self.fetch(req)
                 self.responses.append(response.json())
-                self.items += self.response_to_items(response.json())
+                self.items += self.response_to_items(req, response.json())
                 self.api_errors.append(None)
             except Exception as e:  # requests.exceptions.HTTPError as e:
                 self.api_errors.append(str(e))
@@ -169,7 +169,7 @@ class BaseFetcher:
         """
         pass
 
-    def response_to_items(self, response):
+    def response_to_items(self, request, response):
         """
         Process the results JSON into the relevant structure before inserting to our DB
         :return: list of JSON items
