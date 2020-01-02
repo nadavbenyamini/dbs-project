@@ -1,5 +1,7 @@
 from data_fetch.musix_match.tracks_chart import TracksChartPath
 from data_fetch.musix_match.artist import ArtistPath
+from data_fetch.musix_match.genre import GenrePath
+from data_fetch.musix_match.album import AlbumPath
 
 
 def test_api_call(source, path, params):
@@ -25,12 +27,14 @@ def fetch_remote_data(source, path):
     return fetcher.fetch_all()
 
 
-# Factory function
+# Factory function. # TODO: Automate this, find the right object with the path string only
 def build_fetchers(source, path):
     fetchers = {
         'musix': {
             'chart.tracks.get': TracksChartPath(),
-            'artist.get': ArtistPath()
+            'artist.get': ArtistPath(),
+            'album.get': AlbumPath(),
+            'music.genres.get': GenrePath()
         }
     }
     try:
