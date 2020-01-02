@@ -11,7 +11,7 @@ class TracksChartPath(MusixFetcher):
     def prepare_requests(self):
         pages = [1, 2, 3]
         page_size = 100
-        countries = Country().get_all_values_by_field('country_code')
+        countries = Country().get_all_values_by_field('country_id')
         requests = []
         for country in countries:
             for p in pages:
@@ -28,8 +28,8 @@ class TracksChartPath(MusixFetcher):
             item['track_release_date'] = track['updated_time']
             genre_list = track.get('primary_genres', {}).get('music_genre_list', [])
             if len(genre_list) > 0:
-                item['music_genre_id'] = genre_list[0]['music_genre']['music_genre_id']
+                item['genre_id'] = genre_list[0]['music_genre']['music_genre_id']
             else:
-                item['music_genre_id'] = None
+                item['genre_id'] = None
             tracks.append(item)
         return tracks
