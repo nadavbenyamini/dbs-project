@@ -14,7 +14,7 @@ class TracksChartPath(MusixFetcher):
         countries = Country().get_all_values_by_field('country_id')
         requests = []
         for country in countries:
-            for p in range(1, len(page_count) + 1):
+            for p in range(1, page_count + 1):
                 requests.append({'chart_name': 'top', 'country': country, 'page': p, 'page_size': page_size})
         return requests
 
@@ -38,7 +38,7 @@ class TracksChartPath(MusixFetcher):
             # Extracting Chart properties
             i += 1
             rank = (request['page'] - 1) * request['page_size'] + i
-            track.update({'country_id': country_id, 'rank': rank})
+            item.update({'country_id': country_id, 'track_rank': rank})
 
-            items.append(track)
+            items.append(item)
         return items
