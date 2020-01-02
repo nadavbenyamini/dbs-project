@@ -12,7 +12,7 @@ class GenrePath(MusixFetcher):
         # Not much to do here, there are no params for this api path
         return [{}]
 
-    def response_to_items(self, response):
+    def response_to_items(self, request, response):
         items = []
         for g in response['message']['body']['music_genre_list']:
             genre = g['music_genre']

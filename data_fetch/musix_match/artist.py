@@ -15,6 +15,8 @@ class ArtistPath(MusixFetcher):
             requests.append({'artist_id': artist_id})
         return requests
 
-    def response_to_items(self, response):
-        return [response['message']['body']['artist']]
+    def response_to_items(self, request, response):
+        item = response['message']['body']['artist']
+        item['artist_country_id'] = item['artist_county']
+        return [item]
 
