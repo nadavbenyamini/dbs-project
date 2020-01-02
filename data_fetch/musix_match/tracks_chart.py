@@ -35,7 +35,7 @@ class TracksChartPath(MusixFetcher):
             else:
                 item['genre_id'] = None
 
-            # Extracting Chart properties:
+            # Extracting Chart properties
             i += 1
             rank = (request['page'] - 1) * request['page_size'] + i
             track.update({'country_id': country_id, 'rank': rank})
