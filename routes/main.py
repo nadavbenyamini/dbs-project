@@ -5,6 +5,11 @@ import sql_executor
 main_routes = Blueprint('main', __name__)
 
 
+@main_routes.route('/test')
+def test_template():
+    return render_template(template_name_or_list='index.html', title="TEST")
+
+
 @main_routes.route('/all_artists')
 def all_artists():
     query = "select * from artists"
@@ -24,8 +29,3 @@ def get_artists():
     results = sql_executor.select(query=query, args=args)
     artists = [{'id': r[0], 'name': r[1]} for r in results['rows']]
     return render_template(template_name_or_list="base.html", artists=artists)
-
-
-@main_routes.route('/test')
-def test_template():
-    return render_template(template_name_or_list='index.html', title="TEST")
