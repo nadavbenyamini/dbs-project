@@ -4,6 +4,11 @@ from database import sql_executor
 class BaseModel:
 
     def get_all_values_by_field(self, field):
-        query = 'select distinct (field)s from {}'.format(self.table)
-        args = {'field': field}
-        return sql_executor.select(query, args).get('rows', [])
+        query = 'select distinct {} from {}'.format(field, self.table)
+        results = sql_executor.select(query)
+        rows = results['rows']
+        field_index = results['headers'].index(field)
+        results = set()
+        for row in rows:
+            results.add(row[field_index])
+        return list(results)
