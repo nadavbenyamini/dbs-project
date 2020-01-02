@@ -11,7 +11,7 @@ class BaseFetcher:
     Each of those source classes should be inherited by classes for specific api paths that are responsible
     for preparing the HTTP request and handling it's response
 
-    The general flo is -
+    The general flow is -
     1) Prepare params for each request
     2) Fetch responses and process them into items in the relevant structure for our DB
     3) Turn these items into SQL insert queries, and execute
