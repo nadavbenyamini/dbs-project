@@ -161,7 +161,16 @@ class BaseFetcher:
         return records
 
     def execute_insert_queries(self):
-        self.db_responses += sql_executor.insert_bulk(self.queries)
+        i = 0
+        for query in self.queries:
+            i += 1
+            try:
+                response = sql_executor.insert(query)
+                print('Query {} succeeded'.format(i))
+                self.db_responses.append(response)
+            except Exception as e:
+                print('Query {} failed'.format(i))
+                self.db_errors.append(str(e))
 
     # ------------------------------------------------------------------------------- #
     # ------------------ Functions to be overridden by subclasses ------------------- #
