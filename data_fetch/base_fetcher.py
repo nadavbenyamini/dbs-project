@@ -30,7 +30,7 @@ class BaseFetcher:
         self.requests = self.prepare_requests()
         self.start_fetching()
         self.build_insert_queries()
-        self.execute_queries()
+        self.execute_insert_queries()
         return self.get_summary()
 
     def start_fetching(self):
