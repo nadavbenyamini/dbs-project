@@ -2,7 +2,7 @@ import requests
 from database.db_utils import get_insert_queries
 from models.all_models import *
 from database import sql_executor
-
+import traceback
 
 class BaseFetcher:
     """
@@ -169,8 +169,8 @@ class BaseFetcher:
                 print('Query {} succeeded'.format(i))
                 self.db_responses.append(response)
             except Exception as e:
-                print('Query {} failed'.format(i))
-                self.db_errors.append(str(e))
+                print('Query {} failed: {}'.format(i, e))
+                self.db_errors.append(traceback.format_exc())
 
     # ------------------------------------------------------------------------------- #
     # ------------------ Functions to be overridden by subclasses ------------------- #
