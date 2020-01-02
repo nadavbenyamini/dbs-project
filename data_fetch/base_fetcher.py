@@ -1,7 +1,7 @@
 import requests
-from data_fetch.db_utils import get_insert_queries
+from database.db_utils import get_insert_queries
 from models.all_models import *
-import sql_executor
+from database import sql_executor
 
 
 class BaseFetcher:

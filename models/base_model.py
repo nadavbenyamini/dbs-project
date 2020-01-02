@@ -1,4 +1,4 @@
-import sql_executor
+from database import sql_executor
 
 
 class BaseModel:
