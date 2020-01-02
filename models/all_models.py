@@ -6,4 +6,5 @@ from models.models.chart import *
 from models.models.country import *
 from models.models.album import *
 from models.models.artist import *
+from models.models.lyrics import *
 from models.data_types import *
