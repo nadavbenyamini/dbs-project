@@ -4,8 +4,7 @@ from datetime import datetime
 def get_insert_queries(table, columns, records):
     columns_string = prepare_columns_string(columns)
     values = prepare_values_string(records)
-    query = "insert into {} {} values {};".format(table, columns_string, values)
-    print(query)
+    query = "insert IGNORE into {} {} values {};".format(table, columns_string, values)
     return [query]
 
 
