@@ -1,5 +1,4 @@
 import pymysql
-import mysql.connector
 from sshtunnel import SSHTunnelForwarder
 import json
 
@@ -36,21 +35,18 @@ def get_connection():
                                port=tunnel.local_bind_port)
 
 
-def execute(query, args={}, db=None):
-    if db is None:
-        db = get_connection()
-
-    cur = db.cursor(pymysql.cursors.DictCursor)
-
+def execute(query, args={}, connection=None):
+    cur = connection.cursor(pymysql.cursors.DictCursor)
     print(query % args)
-
     cur.execute(query, args=args)
-    db.commit()
+    connection.commit()
     return cur
 
 
-def select(query, args={}):
-    cursor = execute(query=query, args=args)
+def select(query, args={}, connection=None):
+    if connection is None:
+        connection = get_connection()
+    cursor = execute(query=query, args=args, connection=connection)
     try:
         res = {'headers': [], 'rows': []}
         for row in cursor:
@@ -60,9 +56,12 @@ def select(query, args={}):
         return res
     finally:
         cursor.close()
+        connection.close()
 
 
 def insert(query, args={}, connection=None):
+    if connection is None:
+        connection = get_connection()
     cursor = execute(query=query % args, connection=connection)  # TODO - change this line to prevent SQL Injection
     try:
         response = cursor.fetchone()
@@ -72,3 +71,4 @@ def insert(query, args={}, connection=None):
         raise e
     finally:
         cursor.close()
+        connection.close()
