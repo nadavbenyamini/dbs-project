@@ -11,5 +11,5 @@ class Track(BaseModel):
             {'name': 'track_rating', 'type': Types.STRING, 'pk': False},
             {'name': 'artist_id', 'type': Types.INT, 'pk': False},
             {'name': 'album_id', 'type': Types.INT, 'pk': False},
-            {'name': 'updated_time', 'type': Types.TIMESTAMP, 'pk': False}
+            {'name': 'track_release_date', 'type': Types.TIMESTAMP, 'pk': False}
         ]
