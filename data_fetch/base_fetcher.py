@@ -138,7 +138,7 @@ class BaseFetcher:
                     if field['pk']:
                         assert value is not None
                     if value is None:
-                        record.append(None)
+                        record.append('NULL')
                     elif field['type'] == Types.INT:
                         record.append(int(value))
                     elif field['type'] == Types.STRING:
