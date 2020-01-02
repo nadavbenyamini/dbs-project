@@ -2,15 +2,15 @@ from flask import request, render_template
 from flask import Blueprint
 from database import sql_executor
 
-main_routes = Blueprint('main', __name__)
+app_routes = Blueprint('app_routes', __name__)
 
 
-@main_routes.route('/test')
+@app_routes.route('/test')
 def test_template():
     return render_template(template_name_or_list='index.html', title="TEST")
 
 
-@main_routes.route('/show/<tab_name>')
+@app_routes.route('/show/<tab_name>')
 def show_table(tab_name):
     params = request.args
     query = "select * from {}".format(tab_name)  # TODO - Fix to prevent SQL Injection
