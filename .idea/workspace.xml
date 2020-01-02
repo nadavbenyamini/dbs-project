@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="One">
+    <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/routes/data_fetch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_fetch/base_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/base_fetcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,13 +16,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+            <state relative-caret-position="67">
+              <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/data_fetch.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="41" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -38,7 +77,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>test_query</find>
       <find>user_flow_tag_results</find>
       <find>pymy</find>
       <find>self.iteration</find>
@@ -68,6 +106,7 @@
       <find>Types</find>
       <find>insert</find>
       <find>get_insert</find>
+      <find>blueprint</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -105,7 +144,6 @@
         <option value="$PROJECT_DIR$/data_fetch/musix_match/musix_match_api.py" />
         <option value="$PROJECT_DIR$/models/data_types.py" />
         <option value="$PROJECT_DIR$/models/album.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/data_fetch/factory.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/artist.py" />
         <option value="$PROJECT_DIR$/models/artist.py" />
@@ -117,6 +155,10 @@
         <option value="$PROJECT_DIR$/sql_executor.py" />
         <option value="$PROJECT_DIR$/data_fetch/db_utils.py" />
         <option value="$PROJECT_DIR$/data_fetch/base_fetcher.py" />
+        <option value="$USER_HOME$/.local/lib/python3.6/site-packages/blueprint/__init__.py" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/routes/data_fetch.py" />
+        <option value="$PROJECT_DIR$/routes/main.py" />
       </list>
     </option>
   </component>
@@ -132,6 +174,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -142,19 +185,12 @@
             <path>
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="final_project" type="462c0819:PsiDirectoryNode" />
-              <item name="data_fetch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="final_project" type="462c0819:PsiDirectoryNode" />
-              <item name="data_fetch" type="462c0819:PsiDirectoryNode" />
-              <item name="musix_match" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -168,21 +204,21 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Other/Tembelone/django" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/routes" />
+      <recent name="$PROJECT_DIR$/models" />
+      <recent name="$PROJECT_DIR$/data_fetch/models" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/data_fetch" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/data_fetch" />
       <recent name="$PROJECT_DIR$/data_fetch/musix_match" />
       <recent name="$PROJECT_DIR$/config" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/models" />
-      <recent name="$PROJECT_DIR$/data_fetch/models" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/data_fetch" />
-      <recent name="$PROJECT_DIR$/data_fetch/musix_match" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -241,7 +277,8 @@
       <workItem from="1577883955403" duration="1467000" />
       <workItem from="1577888381602" duration="6796000" />
       <workItem from="1577896908600" duration="3067000" />
-      <workItem from="1577908736033" duration="2730000" />
+      <workItem from="1577908736033" duration="2751000" />
+      <workItem from="1577948300992" duration="2286000" />
     </task>
     <task id="LOCAL-00001" summary="hello world">
       <created>1577202927610</created>
@@ -474,17 +511,24 @@
       <option name="project" value="LOCAL" />
       <updated>1577900728991</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Cleaner comments">
+      <created>1577912898566</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1577912898566</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66746000" />
+    <option name="totallyTimeSpent" value="69053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15754561" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15920398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -497,7 +541,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.50082916" side_tool="true" visible="true" weight="0.4127708" />
+      <window_info active="true" anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.50082916" side_tool="true" visible="true" weight="0.41391107" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="13" />
@@ -513,7 +557,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test query" />
     <MESSAGE value="Basic template" />
     <MESSAGE value="Basic template + query" />
     <MESSAGE value="read.me stuff" />
@@ -538,7 +581,8 @@
     <MESSAGE value="Added base model class" />
     <MESSAGE value="Added country model as input of tracks_chart fetcher" />
     <MESSAGE value="Connecting once to db and then bulk executing instead of connection per query" />
-    <option name="LAST_COMMIT_MESSAGE" value="Connecting once to db and then bulk executing instead of connection per query" />
+    <MESSAGE value="Cleaner comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaner comments" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db.py" />
@@ -552,13 +596,6 @@
             <caret line="3" column="48" lean-forward="true" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/mysql_config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -659,16 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -716,12 +743,56 @@
     <entry file="file://$PROJECT_DIR$/data_fetch/db_utils.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/mysql_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+        <state relative-caret-position="67">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/blueprint/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/data_fetch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
