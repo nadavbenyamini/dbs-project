@@ -22,6 +22,7 @@ class BaseFetcher:
         self.responses = []
         self.api_errors = []
         self.items = []
+        self.tables_updated = []
         self.queries = []
         self.db_responses = []
         self.db_errors = []
@@ -64,7 +65,7 @@ class BaseFetcher:
                 'requests': []},
             'data_insertion': {
                 'summary': 'Finished preparing and executing {} queries, {} succeeded'.format(len(self.queries), len(self.db_responses)),
-                'queries': self.queries,
+                'tables_updated': self.tables_updated,
                 'errors': self.db_errors
             }
         }
@@ -106,6 +107,9 @@ class BaseFetcher:
                     all_records[table] += item_records[table]
             except Exception as e:
                 self.db_errors.append(str(e))
+
+        self.tables_updated = list(set(all_records.keys()))
+
         for table in all_records:
             columns = self.table_to_columns(table)
             if len(columns) > 0:
