@@ -6,19 +6,23 @@
 </head>
 <body>
 
-
-<h2>Search artists by name: </h2>
-<form action="/get_artists" method="GET">
-    <input type="text" name="name" placeholder="Enter artist name"/>
+<!--
+<h2>Search rows by name: </h2>
+<form action="/show/" method="GET">
+    <input type="text" name="name" placeholder="Enter object name"/>
     <input type="submit" value="Go"/>
 </form>
+-->
 
-{% if artists|length == 0 %}
-    <h2>No artists found</h2>
+{% if rows|length == 0 %}
+    <h2>No rows found</h2>
 {% else %}
-    <h2>Top artists: </h2>
-    {% for artist in artists %}
-        <div><p>{{ artist.id}}) <b>{{ artist.name }}</b></p></div>
+    {% for row in rows %}
+        <div>
+            {% for key in row %}
+            {{ key }}: <b>{{ row[key] }}</b>
+            {% endfor %}
+        </div>
     {% endfor %}
 {% endif %}
 
