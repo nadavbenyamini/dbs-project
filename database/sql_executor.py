@@ -22,7 +22,6 @@ def insert(query, args=tuple()):
     cursor = cursors[0]
     try:
         response = cursor.fetchall()
-        print(response)
         return response
     except Exception as e:
         raise e
