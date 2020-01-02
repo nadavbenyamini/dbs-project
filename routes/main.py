@@ -1,6 +1,6 @@
 from flask import request, render_template
 from flask import Blueprint
-import sql_executor
+from database import sql_executor
 
 main_routes = Blueprint('main', __name__)
 
