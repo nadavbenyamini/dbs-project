@@ -1,7 +1,8 @@
-# Importing all models here in order to spare future imports
-from models.artist import Artist
-from models.track import Track
-from models.album import Album
-from models.country import Country
-from models.base_model import BaseModel
+# Importing all models here in order to spare future imports in other places
+
+from models.models.track import *
+from models.models.country import *
+from models.models.chart import *
+from models.models.album import *
+from models.models.artist import *
 from models.data_types import *
