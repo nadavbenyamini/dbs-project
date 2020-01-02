@@ -15,6 +15,6 @@ class AlbumPath(MusixFetcher):
             requests.append({'album_id': album_id})
         return requests
 
-    def response_to_items(self, response):
+    def response_to_items(self, request, response):
         return [response['message']['body']['album']]
 
