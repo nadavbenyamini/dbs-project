@@ -4,7 +4,7 @@ from models.data_types import *
 
 class Artist(BaseModel):
     def __init__(self):
-        self.table = 'artists'
+        self.table = 'Artists'
         self.fields = [
             {'name': 'artist_id', 'type': Types.INT, 'pk': True},
             {'name': 'artist_name', 'type': Types.STRING, 'pk': False},
