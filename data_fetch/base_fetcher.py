@@ -72,7 +72,7 @@ class BaseFetcher:
         for i in range(len(self.requests)):
             req = self.requests[i]
             res = self.responses[i]
-            result_count = len(res) if type(res) == list else len(res.keys())
+            result_count = len(res) if res is not None else 0
             err = self.api_errors[i]
             summary['data_fetch']['requests'].append({'request': req, 'result_count': result_count, 'error': err})
 
