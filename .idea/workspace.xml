@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="Added mourtis fetcher to factory">
-      <change afterPath="$PROJECT_DIR$/models/models/lyrics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/all_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/all_models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,29 +49,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            <state relative-caret-position="341">
+              <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/models/lyrics.py">
+        <entry file="file://$PROJECT_DIR$/models/base_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="4" column="12" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/models/all_models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+            <state relative-caret-position="417">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
             </state>
           </provider>
         </entry>
@@ -91,7 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>validate_timestamp</find>
       <find>.fields.</find>
       <find>queue</find>
       <find>item_to_records</find>
@@ -121,10 +112,12 @@
       <find>execute</find>
       <find>execute_insert_queries</find>
       <find>artist</find>
+      <find>get_all_values_by_field</find>
     </findStrings>
     <replaceStrings>
       <replace>execute_insert_queries</replace>
       <replace>album</replace>
+      <replace>get_distinct_values_by_field</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -164,7 +157,6 @@
         <option value="$PROJECT_DIR$/config/mysql_config.json" />
         <option value="$PROJECT_DIR$/routes/main.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/models/base_model.py" />
         <option value="$PROJECT_DIR$/models/models/track.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/routes/app_routes.py" />
@@ -179,11 +171,12 @@
         <option value="$PROJECT_DIR$/data_fetch/mourits/musix_match_api.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/artist.py" />
         <option value="$PROJECT_DIR$/data_fetch/factory.py" />
-        <option value="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/album.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/musix_match_api.py" />
         <option value="$PROJECT_DIR$/models/models/lyrics.py" />
         <option value="$PROJECT_DIR$/models/all_models.py" />
+        <option value="$PROJECT_DIR$/models/base_model.py" />
+        <option value="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" />
       </list>
     </option>
   </component>
@@ -318,28 +311,7 @@
       <workItem from="1577948300992" duration="3215000" />
       <workItem from="1577955361485" duration="4123000" />
       <workItem from="1577967948688" duration="41000" />
-      <workItem from="1577968778870" duration="10503000" />
-    </task>
-    <task id="LOCAL-00017" summary="Added a lot of documentation">
-      <created>1577865477192</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1577865477193</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Initiated DB query builder">
-      <created>1577870964404</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1577870964404</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Added very basic insert to db functionality">
-      <created>1577879863034</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1577879863034</updated>
+      <workItem from="1577968778870" duration="11301000" />
     </task>
     <task id="LOCAL-00020" summary="Changed db insertion to model-based">
       <created>1577890592065</created>
@@ -663,11 +635,32 @@
       <option name="project" value="LOCAL" />
       <updated>1577982538506</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Created lyrics model">
+      <created>1577982693258</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1577982693258</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Created a function that returns unique tuples by multiple columns">
+      <created>1577982985748</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1577982985748</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Rephrasing">
+      <created>1577982993804</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1577982993804</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84649000" />
+    <option name="totallyTimeSpent" value="85447000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
@@ -702,9 +695,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Organizing project folders" />
-    <MESSAGE value="Fixed sql connection" />
-    <MESSAGE value="Fetching country codes in tracks chart" />
     <MESSAGE value="Added test for simple select * from queries" />
     <MESSAGE value="Added test route for simple select * from queries" />
     <MESSAGE value="Encapsulating execution in sql_executor" />
@@ -727,7 +717,10 @@
     <MESSAGE value="Small fixes in artist path fetchers" />
     <MESSAGE value="Initiated Mourits lyrics API" />
     <MESSAGE value="Added mourtis fetcher to factory" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added mourtis fetcher to factory" />
+    <MESSAGE value="Created lyrics model" />
+    <MESSAGE value="Created a function that returns unique tuples by multiple columns" />
+    <MESSAGE value="Rephrasing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rephrasing" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db.py" />
@@ -835,13 +828,6 @@
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/base_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -982,10 +968,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py">
+    <entry file="file://$PROJECT_DIR$/models/all_models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state relative-caret-position="152">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -996,10 +982,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/all_models.py">
+    <entry file="file://$PROJECT_DIR$/models/base_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        <state relative-caret-position="417">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
