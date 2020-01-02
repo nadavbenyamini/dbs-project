@@ -172,6 +172,7 @@ class BaseFetcher:
     def response_to_items(self, request, response):
         """
         Process the results JSON into the relevant structure before inserting to our DB
+        Each of these JSON items can be inserted to one table or more
         :return: list of JSON items
         """
         pass
