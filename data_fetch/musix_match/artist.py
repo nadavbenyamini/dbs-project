@@ -17,6 +17,6 @@ class ArtistPath(MusixFetcher):
 
     def response_to_items(self, request, response):
         item = response['message']['body']['artist']
-        item['artist_country_id'] = item['artist_county']
+        item['artist_country_id'] = item['artist_country']
         return [item]
 
