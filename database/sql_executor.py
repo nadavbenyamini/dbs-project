@@ -3,7 +3,7 @@ from sshtunnel import SSHTunnelForwarder
 import json
 
 
-def select(query, args):
+def select(query, args=tuple()):
     cursors = __execute([{'query': query, 'args': args}])
     cursor = cursors[0]
     try:
@@ -17,7 +17,7 @@ def select(query, args):
         cursor.close()
 
 
-def insert(query, args):
+def insert(query, args=tuple()):
     cursors = __execute([{'query': query, 'args': args}])
     cursor = cursors[0]
     try:
@@ -31,7 +31,7 @@ def insert(query, args):
 
 
 def insert_bulk(queries):
-    final_queries = [{'query': q, 'args': {}} for q in queries]
+    final_queries = [{'query': q, 'args': tuple()} for q in queries]
     cursors = __execute(final_queries)
     responses = []
     for cur in cursors:

@@ -4,9 +4,11 @@
     <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_fetch/base_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/base_fetcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/sql_executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/sql_executor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/all_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/all_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/base_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/models/chart.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,41 +21,50 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="34" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/models/country.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="61" lean-forward="true" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+            <state relative-caret-position="275">
+              <caret line="111" column="41" lean-forward="true" selection-start-line="111" selection-start-column="41" selection-end-line="111" selection-end-column="41" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/main.py">
+        <entry file="file://$PROJECT_DIR$/database/db_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+            <state relative-caret-position="76">
+              <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
               <folding>
-                <element signature="e#0#42#0" expanded="true" />
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/base.html">
+        <entry file="file://$PROJECT_DIR$/models/all_models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+            <state relative-caret-position="57">
+              <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/base_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -61,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/sql_executor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1577">
-              <caret line="83" column="20" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+            <state relative-caret-position="190">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -83,7 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.iter</find>
       <find>self.path_</find>
       <find>self.process</find>
       <find>process_response</find>
@@ -113,7 +123,11 @@
       <find>query</find>
       <find>insert_bulk</find>
       <find>get_</find>
+      <find>execute_queries</find>
     </findStrings>
+    <replaceStrings>
+      <replace>execute_insert_queries</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -153,24 +167,25 @@
         <option value="$PROJECT_DIR$/models/artist.py" />
         <option value="$PROJECT_DIR$/models/track.py" />
         <option value="$PROJECT_DIR$/models/country.py" />
-        <option value="$PROJECT_DIR$/models/base_model.py" />
         <option value="$PROJECT_DIR$/data_fetch/db_utils.py" />
         <option value="$USER_HOME$/.local/lib/python3.6/site-packages/blueprint/__init__.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/routes/data_fetch.py" />
         <option value="$PROJECT_DIR$/sql_executor.py" />
-        <option value="$PROJECT_DIR$/models/models/chart.py" />
         <option value="$PROJECT_DIR$/models/models/album.py" />
         <option value="$PROJECT_DIR$/models/models/artist.py" />
         <option value="$PROJECT_DIR$/models/models/country.py" />
-        <option value="$PROJECT_DIR$/models/all_models.py" />
         <option value="$PROJECT_DIR$/models/models/track.py" />
         <option value="$PROJECT_DIR$/config/mysql_config.json" />
-        <option value="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" />
-        <option value="$PROJECT_DIR$/database/sql_executor.py" />
-        <option value="$PROJECT_DIR$/data_fetch/base_fetcher.py" />
         <option value="$PROJECT_DIR$/routes/main.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/models/base_model.py" />
+        <option value="$PROJECT_DIR$/database/sql_executor.py" />
+        <option value="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" />
+        <option value="$PROJECT_DIR$/data_fetch/base_fetcher.py" />
+        <option value="$PROJECT_DIR$/database/db_utils.py" />
+        <option value="$PROJECT_DIR$/models/models/chart.py" />
+        <option value="$PROJECT_DIR$/models/all_models.py" />
       </list>
     </option>
   </component>
@@ -198,6 +213,11 @@
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="final_project" type="462c0819:PsiDirectoryNode" />
               <item name="data_fetch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
@@ -297,7 +317,7 @@
       <workItem from="1577896908600" duration="3067000" />
       <workItem from="1577908736033" duration="2751000" />
       <workItem from="1577948300992" duration="3215000" />
-      <workItem from="1577955361485" duration="2179000" />
+      <workItem from="1577955361485" duration="3098000" />
     </task>
     <task id="LOCAL-00001" summary="hello world">
       <created>1577202927610</created>
@@ -593,11 +613,25 @@
       <option name="project" value="LOCAL" />
       <updated>1577956156074</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Added test route for simple select * from queries">
+      <created>1577957680535</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1577957680535</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Encapsulating execution in sql_executor">
+      <created>1577957841496</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1577957841496</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72161000" />
+    <option name="totallyTimeSpent" value="73080000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
@@ -607,7 +641,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4991708" weight="0.3295325" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.498618" weight="0.3295325" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -616,7 +650,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.50082916" side_tool="true" visible="true" weight="0.4150513" />
+      <window_info anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.501382" side_tool="true" visible="true" weight="0.4150513" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="13" />
@@ -632,9 +666,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added an example for predicthq api" />
-    <MESSAGE value="Added a sample search form" />
-    <MESSAGE value="Refactored to separate data fetching from app" />
     <MESSAGE value="Major refactor - created the basis for all data fetching" />
     <MESSAGE value="Added a lot of documentation" />
     <MESSAGE value="Initiated DB query builder" />
@@ -657,7 +688,10 @@
     <MESSAGE value="Organizing project folders" />
     <MESSAGE value="Fixed sql connection" />
     <MESSAGE value="Fetching country codes in tracks chart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fetching country codes in tracks chart" />
+    <MESSAGE value="Added test for simple select * from queries" />
+    <MESSAGE value="Added test route for simple select * from queries" />
+    <MESSAGE value="Encapsulating execution in sql_executor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Encapsulating execution in sql_executor" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db.py" />
@@ -723,13 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/base_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/factory.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -745,13 +772,6 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/blueprint/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/database/db_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/data_fetch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -779,26 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/all_models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding>
-            <element signature="e#78#111#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/chart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/mysql_config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -816,23 +816,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/track.py">
+    <entry file="file://$PROJECT_DIR$/routes/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+        <state relative-caret-position="115">
+          <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py">
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="67" selection-start-line="11" selection-start-column="67" selection-end-line="11" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="172">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -848,35 +845,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/sql_executor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1577">
-          <caret line="83" column="20" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+        <state relative-caret-position="190">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
+    <entry file="file://$PROJECT_DIR$/models/base_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="34" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="34" />
+        <state relative-caret-position="133">
+          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/main.py">
+    <entry file="file://$PROJECT_DIR$/database/db_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+        <state relative-caret-position="76">
+          <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="111" column="41" lean-forward="true" selection-start-line="111" selection-start-column="41" selection-end-line="111" selection-end-column="41" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
+    <entry file="file://$PROJECT_DIR$/models/models/track.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        <state relative-caret-position="133">
+          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models/chart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/all_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
         </state>
       </provider>
     </entry>
