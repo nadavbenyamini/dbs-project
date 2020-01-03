@@ -106,7 +106,8 @@ class BaseFetcher:
                         all_records[table] = []
                     all_records[table] += item_records[table]
             except Exception as e:
-                self.db_errors.append(str(e))
+                print('Error in item_to_records: {}'.format(e))
+                self.db_errors.append(traceback.format_exc())
 
         self.tables_updated = list(set(all_records.keys()))
 
