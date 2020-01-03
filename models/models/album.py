@@ -6,6 +6,7 @@ class Album:
         self.table = 'Albums'
         self.fields = [
             {'name': 'album_id', 'type': Types.INT, 'pk': True},
+            {'name': 'artist_id', 'type': Types.INT, 'pk': False},
             {'name': 'album_name', 'type': Types.STRING, 'pk': False},
             {'name': 'album_rating', 'type': Types.INT, 'pk': False},
             {'name': 'album_release_date', 'type': Types.TIMESTAMP, 'pk': False}

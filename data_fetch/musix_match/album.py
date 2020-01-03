@@ -17,7 +17,7 @@ class AlbumPath(MusixFetcher):
 
     def response_to_items(self, request, response):
         assert 'message' in response and 'body' in response['message'] and 'album' in response['message']['body']
-        item = response['message']['body']['album']
+        item = {k: v for k, v in response['message']['body']['album'].items()} # Clone
         item['album_release_date'] = item['updated_time']
         return [item]
 

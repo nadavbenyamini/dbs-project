@@ -17,7 +17,7 @@ class ArtistPath(MusixFetcher):
 
     def response_to_items(self, request, response):
         assert 'message' in response and 'body' in response['message'] and 'artist' in response['message']['body']
-        item = response['message']['body']['artist']
+        item = {k: v for k, v in response['message']['body']['artist'].items()}  # Clone
         item['artist_country_id'] = item['artist_country']
         return [item]
 
