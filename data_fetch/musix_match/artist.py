@@ -16,6 +16,7 @@ class ArtistPath(MusixFetcher):
         return requests
 
     def response_to_items(self, request, response):
+        assert 'message' in response and 'body' in response['message'] and 'artist' in response['message']['body']
         item = response['message']['body']['artist']
         item['artist_country_id'] = item['artist_country']
         return [item]
