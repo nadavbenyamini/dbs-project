@@ -34,7 +34,7 @@ def build_fetchers(source, path):
         'musix': {
             'chart.tracks.get': TracksChartPath(),
             'artist.get': ArtistPath(),
-            'albums.get': AlbumPath(),
+            'album.get': AlbumPath(),
             'music.genres.get': GenrePath()
         },
         'mourits': {
