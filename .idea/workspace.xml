@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_fetch/musix_match/genre.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/musix_match/genre.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/genre.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/models/genre.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="109" column="61" lean-forward="true" selection-start-line="109" selection-start-column="61" selection-end-line="109" selection-end-column="61" />
+            <state relative-caret-position="-932">
+              <caret line="126" column="12" selection-start-line="126" selection-start-column="12" selection-end-line="126" selection-end-column="12" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -38,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="227">
+              <caret line="23" column="34" lean-forward="true" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -65,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/genre.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            <state relative-caret-position="342">
+              <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -74,11 +73,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/models/genre.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+            <state relative-caret-position="19">
+              <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -184,12 +186,12 @@
         <option value="$PROJECT_DIR$/models/base_model.py" />
         <option value="$PROJECT_DIR$/models/models/artist.py" />
         <option value="$PROJECT_DIR$/models/models/album.py" />
-        <option value="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/album.py" />
         <option value="$PROJECT_DIR$/data_fetch/factory.py" />
         <option value="$PROJECT_DIR$/data_fetch/base_fetcher.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/genre.py" />
         <option value="$PROJECT_DIR$/models/models/genre.py" />
+        <option value="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" />
       </list>
     </option>
   </component>
@@ -334,21 +336,7 @@
       <workItem from="1577948300992" duration="3215000" />
       <workItem from="1577955361485" duration="4123000" />
       <workItem from="1577967948688" duration="41000" />
-      <workItem from="1577968778870" duration="16547000" />
-    </task>
-    <task id="LOCAL-00027" summary="Added query execution script in fetcher">
-      <created>1577897525984</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1577897525984</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Code cleanup">
-      <created>1577897668577</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1577897668577</updated>
+      <workItem from="1577968778870" duration="16971000" />
     </task>
     <task id="LOCAL-00029" summary="Code cleanup">
       <created>1577897679427</created>
@@ -679,17 +667,31 @@
       <option name="project" value="LOCAL" />
       <updated>1578034476385</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Changed genre name from INT to STRING">
+      <created>1578034574764</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1578034574764</updated>
+    </task>
+    <task id="LOCAL-00077" summary="fixed genres table name">
+      <created>1578034599317</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1578034599317</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90693000" />
+    <option name="totallyTimeSpent" value="91117000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1641791" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1641791" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -702,7 +704,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.501382" side_tool="true" visible="true" weight="0.4173318" />
+      <window_info active="true" anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.501382" side_tool="true" visible="true" weight="0.4173318" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="13" />
@@ -718,8 +720,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First basic API to DB flow works" />
-    <MESSAGE value="Added insertion time and fixing NULL values in insertion queries" />
     <MESSAGE value="Populating Charts table from tracks_chart fetcher" />
     <MESSAGE value="Added documentation" />
     <MESSAGE value="Better phrasing" />
@@ -743,7 +743,9 @@
     <MESSAGE value="Adjusting field names" />
     <MESSAGE value="Returning full tracebacks and not just error strings" />
     <MESSAGE value="Small fixes in paths" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small fixes in paths" />
+    <MESSAGE value="Changed genre name from INT to STRING" />
+    <MESSAGE value="fixed genres table name" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed genres table name" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db.py" />
@@ -985,30 +987,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="109" column="61" lean-forward="true" selection-start-line="109" selection-start-column="61" selection-end-line="109" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/genre.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        <state relative-caret-position="342">
+          <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
@@ -1017,8 +999,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/models/genre.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+        <state relative-caret-position="19">
+          <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-932">
+          <caret line="126" column="12" selection-start-line="126" selection-start-column="12" selection-end-line="126" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="23" column="34" lean-forward="true" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
