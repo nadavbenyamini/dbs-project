@@ -5,7 +5,7 @@ from models.all_models import *
 class GenrePath(MusixFetcher):
     def __init__(self):
         super().__init__()
-        self.path = 'music-genres-get'
+        self.path = 'music.genres.get'
         self.models = [Genre()]
 
     def prepare_requests(self):

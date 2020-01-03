@@ -5,7 +5,7 @@ from models.all_models import *
 class AlbumPath(MusixFetcher):
     def __init__(self):
         super().__init__()
-        self.path = 'album.get'
+        self.path = 'albums.get'
         self.models = [Album()]
 
     def prepare_requests(self):
