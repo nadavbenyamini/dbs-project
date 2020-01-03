@@ -17,8 +17,8 @@ class MouritsFetcher(BaseFetcher):
         for t in tracks:
             for a in artists:
                 if t[0] == a[0]:
-                    requests.append({'a': a[1], 's': t[1], 'track_id': t[2], 'separator': '\n'})
-        return requests
+                    requests.append({'a': a[1], 's': t[1], 'track_id': t[2], 'separator': '<br/>'})
+        return requests[0:100]  # TEMP!!!!
 
     def response_to_items(self, request, response):
         assert response['success']
