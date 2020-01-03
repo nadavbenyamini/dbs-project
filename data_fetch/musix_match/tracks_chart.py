@@ -19,6 +19,8 @@ class TracksChartPath(MusixFetcher):
         return requests
 
     def response_to_items(self, request, response):
+        assert 'message' in response and 'body' in response['message'] and 'track_list' in response['message']['body']
+
         track_list = response['message']['body']['track_list']
         country_id = request['country']
         items = []

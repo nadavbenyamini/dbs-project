@@ -13,6 +13,7 @@ class GenrePath(MusixFetcher):
         return [{}]
 
     def response_to_items(self, request, response):
+        assert 'message' in response and 'body' in response['message'] and 'music_genre_list' in response['message']['body']
         items = []
         for g in response['message']['body']['music_genre_list']:
             genre = g['music_genre']
