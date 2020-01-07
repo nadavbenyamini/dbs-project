@@ -11,9 +11,9 @@ class MouritsFetcher(BaseFetcher):
         self.models = [Lyrics()]
 
     def prepare_requests(self):
-        tracks = self.get_model_distinct_values_by_multiple_fields(model=Track(),
+        tracks = self.get_values_by_multiple_fields(model=Track(),
                                                                    fields=['artist_id', 'track_name', 'track_id'])
-        artists = self.get_model_distinct_values_by_multiple_fields(model=Artist(),
+        artists = self.get_values_by_multiple_fields(model=Artist(),
                                                                     fields=['artist_id', 'artist_name'])
         requests = []
         for t in tracks:

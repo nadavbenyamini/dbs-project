@@ -20,7 +20,7 @@ class BaseFetcher:
     """
     def __init__(self):
         self.requests = []
-        self.responses = []
+        self.api_responses = []
         self.api_errors = []
         self.items = []
         self.tables_updated = []
@@ -30,12 +30,12 @@ class BaseFetcher:
 
     def fetch_all(self):
         self.requests = self.prepare_requests()
-        self.start_fetching()
-        self.build_insert_queries()
+        self.fetch_responses()
+        self.responses_to_insert_queries()
         self.execute_insert_queries()
         return self.get_summary()
 
-    def start_fetching(self):
+    def fetch_responses(self):
         """
         Iterates over self.requests, each item is the params dictionary for a single HTTP request
         Then fetches, processes and stores the responses, and errors if were
@@ -47,38 +47,10 @@ class BaseFetcher:
                 response = self.fetch(req)
                 self.responses.append(response.json())
                 self.items += self.response_to_items(req, response.json())
-                self.api_errors.append(None)
             except Exception as e:  # requests.exceptions.HTTPError as e:
                 self.api_errors.append(str(e))
-                self.responses.append(None)
             finally:
                 i += 1
-
-    def get_summary(self):
-        """
-        :return: JSON response with a summary of the fetching results
-        """
-        request_count = len(self.requests)
-        success_count = len([r for r in self.responses if r is not None])
-        summary = {
-            'data_fetch': {
-                'summary': 'Finished processing {} requests, {} succeeded'.format(request_count, success_count),
-                'requests': []},
-            'data_insertion': {
-                'summary': 'Finished preparing and executing {} queries, {} succeeded'.format(len(self.queries), len(self.db_responses)),
-                'tables_updated': self.tables_updated,
-                'errors': self.db_errors
-            }
-        }
-
-        for i in range(len(self.requests)):
-            req = self.requests[i]
-            res = self.responses[i]
-            result_count = len(res) if res is not None else 0
-            err = self.api_errors[i]
-            summary['data_fetch']['requests'].append({'request': req, 'result_count': result_count, 'error': err})
-
-        return summary
 
     def get_url(self):
         """
@@ -174,10 +146,28 @@ class BaseFetcher:
                 print('Query {} failed: {}'.format(i, e))
                 self.db_errors.append(traceback.format_exc())
 
-    def get_model_distinct_values_by_field(self, model, field):
+    def get_summary(self):
+        """
+        :return: JSON response with a summary of the fetching results
+        """
+        request_count = len(self.requests)
+        success_count = len(self.responses)
+        summary = {
+            'data_fetch': {
+                'summary': 'Finished processing {} requests, {} succeeded'.format(request_count, success_count),
+                'errors': self.errors},
+            'data_insertion': {
+                'summary': 'Finished preparing and executing {} queries, {} succeeded'.format(len(self.queries), len(self.db_responses)),
+                'tables_updated': self.tables_updated,
+                'errors': self.db_errors
+            }
+        }
+        return summary
+
+    def get_values_by_field(self, model, field):
         return model.get_distinct_values_by_field(field=field, use_ssh=True)
 
-    def get_model_distinct_values_by_multiple_fields(self, model, fields):
+    def get_values_by_multiple_fields(self, model, fields):
         return model.get_distinct_values_by_multiple_fields(fields=fields, use_ssh=True)
 
     # ------------------------------------------------------------------------------- #
