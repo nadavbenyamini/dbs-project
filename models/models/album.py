@@ -1,13 +1,13 @@
-from models.data_types import Types
+from models.base_model import *
 
 
-class Album:
+class Artist(BaseModel):
     def __init__(self):
         self.table = 'Albums'
         self.fields = [
-            {'name': 'album_id', 'type': Types.INT, 'pk': True},
-            {'name': 'artist_id', 'type': Types.INT, 'pk': False},
-            {'name': 'album_name', 'type': Types.STRING, 'pk': False},
-            {'name': 'album_rating', 'type': Types.INT, 'pk': False},
-            {'name': 'album_release_date', 'type': Types.TIMESTAMP, 'pk': False}
+            {'name': 'album_id', 'type': INT, 'pk': True},
+            {'name': 'artist_id', 'type': INT, 'pk': False},
+            {'name': 'album_name', 'type': STRING, 'pk': False},
+            {'name': 'album_rating', 'type': INT, 'pk': False},
+            {'name': 'album_release_date', 'type': TIMESTAMP, 'pk': False}
         ]

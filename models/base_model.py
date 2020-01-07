@@ -1,5 +1,9 @@
 from database import sql_executor
 
+INT = 'INT'
+STRING = 'STRING'
+TIMESTAMP = 'TIMESTAMP'
+
 
 class BaseModel:
 
