@@ -1,9 +1,10 @@
 import pymysql
 from sshtunnel import SSHTunnelForwarder
 import json
+import traceback
 
 
-def select(query, args=tuple(), use_ssh=False):
+def select(query, args=None, use_ssh=False):
     cursor = None
     try:
         cursors = __execute(queries=[{'query': query, 'args': args}], use_ssh=use_ssh)
@@ -18,13 +19,13 @@ def select(query, args=tuple(), use_ssh=False):
         else:
             return res
     except Exception as e:
-        raise Exception('Select query failed. Query: "{}" Error: {}'.format(query, e))
+        raise Exception('Select query failed. Query: {} Error Traceback: {}'.format(query, traceback.format_exc()))
     finally:
         if cursor:
             cursor.close()
 
 
-def insert(query, args=tuple(), use_ssh=False):
+def insert(query, args=None, use_ssh=False):
     cursor = None
     try:
         cursors = __execute(queries=[{'query': query, 'args': args}], use_ssh=use_ssh)
@@ -32,7 +33,7 @@ def insert(query, args=tuple(), use_ssh=False):
         response = cursor.fetchall()
         return response
     except Exception as e:
-        raise Exception('Insert query failed. Query: "{}", Error: {}'.format(query, e))
+        raise Exception('Insert query failed. Query: {} Error Traceback: {}'.format(query, traceback.format_exc()))
     finally:
         if cursor:
             cursor.close()
@@ -77,7 +78,7 @@ def __execute(queries, use_ssh=False):
         cursors = []
         for query in queries:
             cur = db.cursor(pymysql.cursors.DictCursor)
-            cur.execute(query=query['query'], args=query['args'])
+            cur.execute(query=query['query'], args=query.get('args', None))
             db.commit()
             cursors.append(cur)
     return cursors
