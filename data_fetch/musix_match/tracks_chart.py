@@ -11,7 +11,7 @@ class TracksChartPath(MusixFetcher):
     def prepare_requests(self):
         page_count = 10
         page_size = 100
-        countries = self.get_values_by_field(model=Country(), field='country_id')
+        countries = self.get_values_by_field(model=Country(), field='country_id', order_by='population', desc=True)
         requests = []
         for country in countries:
             for p in range(1, page_count + 1):
