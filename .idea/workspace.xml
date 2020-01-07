@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/sql_executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/sql_executor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/base_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/data_types.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/data_types.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
+            <state relative-caret-position="195">
+              <caret line="150" column="49" lean-forward="true" selection-start-line="150" selection-start-column="49" selection-end-line="150" selection-end-column="49" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -27,37 +27,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py">
+        <entry file="file://$PROJECT_DIR$/models/models/country.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="31" selection-start-column="31" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/data_types.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/models/chart.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/sql_executor.py">
+        <entry file="file://$PROJECT_DIR$/models/base_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="85" column="62" selection-start-line="85" selection-start-column="62" selection-end-line="85" selection-end-column="62" />
+            <state relative-caret-position="176">
+              <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#0#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_fetch/factory.py">
+        <entry file="file://$PROJECT_DIR$/models/models/track.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#63#0" expanded="true" />
-              </folding>
+              <caret column="18" lean-forward="true" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -65,32 +77,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/models/album.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="220">
+              <caret line="10" column="63" lean-forward="true" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/artist.py">
+        <entry file="file://$PROJECT_DIR$/models/models/artist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
-              <folding>
-                <element signature="e#0#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/genre.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="15" column="13" selection-start-line="15" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#63#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="220">
+              <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -99,10 +96,16 @@
         <entry file="file://$PROJECT_DIR$/models/models/genre.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+              <caret column="31" selection-start-column="31" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/models/lyrics.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -120,10 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>albums_id</find>
-      <find>print</find>
-      <find>table_to_c</find>
-      <find>get_insert_queries</find>
       <find>self.build</find>
       <find>Types</find>
       <find>insert</find>
@@ -150,6 +149,10 @@
       <find>.format</find>
       <find>error in i</find>
       <find>album_rating</find>
+      <find>sql_executor</find>
+      <find>types.</find>
+      <find>Types.</find>
+      <find>validate_timestamp</find>
     </findStrings>
     <replaceStrings>
       <replace>execute_insert_queries</replace>
@@ -180,7 +183,6 @@
         <option value="$PROJECT_DIR$/data_fetch/models/base_model.py" />
         <option value="$PROJECT_DIR$/data_fetch/models/data_types.py" />
         <option value="$PROJECT_DIR$/data_fetch/models/artist.py" />
-        <option value="$PROJECT_DIR$/models/data_types.py" />
         <option value="$PROJECT_DIR$/models/album.py" />
         <option value="$PROJECT_DIR$/models/artist.py" />
         <option value="$PROJECT_DIR$/models/track.py" />
@@ -192,28 +194,29 @@
         <option value="$PROJECT_DIR$/config/mysql_config.json" />
         <option value="$PROJECT_DIR$/routes/main.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/models/models/track.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/routes/app_routes.py" />
-        <option value="$PROJECT_DIR$/models/models/country.py" />
-        <option value="$PROJECT_DIR$/models/models/chart.py" />
         <option value="$PROJECT_DIR$/database/db_utils.py" />
         <option value="$PROJECT_DIR$/data_fetch/mourits/musix_match_api.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/musix_match_api.py" />
-        <option value="$PROJECT_DIR$/models/models/lyrics.py" />
         <option value="$PROJECT_DIR$/models/all_models.py" />
-        <option value="$PROJECT_DIR$/models/base_model.py" />
-        <option value="$PROJECT_DIR$/models/models/artist.py" />
-        <option value="$PROJECT_DIR$/models/models/genre.py" />
         <option value="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/genre.py" />
         <option value="$PROJECT_DIR$/data_fetch/factory.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/album.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/artist.py" />
-        <option value="$PROJECT_DIR$/models/models/album.py" />
-        <option value="$PROJECT_DIR$/data_fetch/base_fetcher.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" />
         <option value="$PROJECT_DIR$/database/sql_executor.py" />
+        <option value="$PROJECT_DIR$/models/models/chart.py" />
+        <option value="$PROJECT_DIR$/models/models/track.py" />
+        <option value="$PROJECT_DIR$/models/models/album.py" />
+        <option value="$PROJECT_DIR$/models/models/artist.py" />
+        <option value="$PROJECT_DIR$/models/models/genre.py" />
+        <option value="$PROJECT_DIR$/data_fetch/base_fetcher.py" />
+        <option value="$PROJECT_DIR$/models/models/country.py" />
+        <option value="$PROJECT_DIR$/models/models/lyrics.py" />
+        <option value="$PROJECT_DIR$/models/data_types.py" />
+        <option value="$PROJECT_DIR$/models/base_model.py" />
       </list>
     </option>
   </component>
@@ -240,18 +243,18 @@
             <path>
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="final_project" type="462c0819:PsiDirectoryNode" />
-              <item name="data_fetch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="final_project" type="462c0819:PsiDirectoryNode" />
-              <item name="data_fetch" type="462c0819:PsiDirectoryNode" />
-              <item name="musix_match" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="final_project" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
@@ -355,28 +358,7 @@
       <workItem from="1577967948688" duration="41000" />
       <workItem from="1577968778870" duration="20563000" />
       <workItem from="1578210627598" duration="87000" />
-      <workItem from="1578402874714" duration="3078000" />
-    </task>
-    <task id="LOCAL-00033" summary="Connecting once to db and then bulk executing instead of connection per query">
-      <created>1577900728991</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1577900728991</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Cleaner comments">
-      <created>1577912898566</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1577912898566</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Splitting app to routes">
-      <created>1577950618310</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1577950618310</updated>
+      <workItem from="1578402874714" duration="3478000" />
     </task>
     <task id="LOCAL-00036" summary="Splitting app to routes">
       <created>1577950633932</created>
@@ -700,17 +682,38 @@
       <option name="project" value="LOCAL" />
       <updated>1578039855432</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="In SQL Executor - made ssh optional">
+      <created>1578408537546</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1578408537546</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Cleaner documentation">
+      <created>1578408604699</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1578408604699</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Much simpler data types ENUM">
+      <created>1578408834118</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1578408834118</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97874000" />
+    <option name="totallyTimeSpent" value="98274000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="28" width="1857" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16749585" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16749585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -723,7 +726,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.501382" side_tool="true" visible="true" weight="0.43785632" />
+      <window_info anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.501382" side_tool="true" visible="true" weight="0.45952109" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="13" />
@@ -739,9 +742,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Properly fetching and storing charts data" />
-    <MESSAGE value="Added IGNORE to insert queries to ignore errors such as duplicate pk" />
-    <MESSAGE value="Added more logs to query execution process" />
     <MESSAGE value="Removed redundant print" />
     <MESSAGE value="Finished basic setup of genre and album fetchers" />
     <MESSAGE value="Small fixes in some of the path fetchers" />
@@ -764,7 +764,10 @@
     <MESSAGE value="Added assertions for API responses" />
     <MESSAGE value="Fixed album.get path" />
     <MESSAGE value="Some adjustments to album and artist between API responses and models" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some adjustments to album and artist between API responses and models" />
+    <MESSAGE value="In SQL Executor - made ssh optional" />
+    <MESSAGE value="Cleaner documentation" />
+    <MESSAGE value="Much simpler data types ENUM" />
+    <option name="LAST_COMMIT_MESSAGE" value="Much simpler data types ENUM" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db.py" />
@@ -831,13 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/data_types.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="60" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -854,26 +850,6 @@
           <caret line="6" column="34" lean-forward="true" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/country.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="55" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/chart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -906,44 +882,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/base_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/track.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="40" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/db_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/artist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/lyrics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="9" column="34" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -977,13 +919,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/album.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/artist.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1004,42 +939,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/models/genre.py">
+    <entry file="file://$PROJECT_DIR$/database/sql_executor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+        <state relative-caret-position="154">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="30" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+        <state relative-caret-position="88">
+          <caret line="4" column="36" lean-forward="true" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/sql_executor.py">
+    <entry file="file://$PROJECT_DIR$/models/models/chart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models/track.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" lean-forward="true" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models/album.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="85" column="62" selection-start-line="85" selection-start-column="62" selection-end-line="85" selection-end-column="62" />
+          <caret line="10" column="63" lean-forward="true" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models/artist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models/genre.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="31" selection-start-column="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_fetch/base_fetcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="150" column="49" lean-forward="true" selection-start-line="150" selection-start-column="49" selection-end-line="150" selection-end-column="49" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models/country.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="31" selection-start-column="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models/lyrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/data_types.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/base_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
