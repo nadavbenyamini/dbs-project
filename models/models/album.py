@@ -1,7 +1,7 @@
 from models.base_model import *
 
 
-class Artist(BaseModel):
+class Album(BaseModel):
     def __init__(self):
         self.table = 'Albums'
         self.fields = [
