@@ -174,6 +174,12 @@ class BaseFetcher:
                 print('Query {} failed: {}'.format(i, e))
                 self.db_errors.append(traceback.format_exc())
 
+    def get_model_distinct_values_by_field(self, model, field):
+        return model.get_distinct_values_by_field(field=field, use_ssh=True)
+
+    def get_model_distinct_values_by_multiple_fields(self, model, fields):
+        return model.get_distinct_values_by_multiple_fields(fields=fields, use_ssh=True)
+
     # ------------------------------------------------------------------------------- #
     # ------------------ Functions to be overridden by subclasses ------------------- #
     # ------------------------------------------------------------------------------- #
