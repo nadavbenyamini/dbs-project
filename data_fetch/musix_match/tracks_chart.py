@@ -9,9 +9,9 @@ class TracksChartPath(MusixFetcher):
         self.models = [Track(), Chart()]
 
     def prepare_requests(self):
-        page_count = 2
+        page_count = 5
         page_size = 100
-        country_count = 5  # pull top X countries
+        country_count = 50  # pull top X countries
         query = "select distinct country_id, population from Countries order by population desc"
         query_results = self.sql_executor.select(query)
         all_countries = [r[0] for r in query_results['rows']]

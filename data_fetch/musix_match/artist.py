@@ -9,7 +9,9 @@ class ArtistPath(MusixFetcher):
         self.models = [Artist()]
 
     def prepare_requests(self):
-        query = "select distinct artist_id from Tracks"
+        query = "select distinct t.artist_id " \
+                "from Tracks t left join Artists a on a.artist_id = t.artist_id" \
+                "where a.artist_id is NULL"
         query_results = self.sql_executor.select(query)
         artist_ids = [r[0] for r in query_results['rows']]
         requests = []
