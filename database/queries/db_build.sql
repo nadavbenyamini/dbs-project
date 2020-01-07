@@ -1,13 +1,15 @@
 
 CREATE TABLE IF NOT EXISTS Countries(
     country_id VARCHAR(10) NOT NULL PRIMARY KEY,
-    country_name VARCHAR(255)
+    country_name VARCHAR(255),
+    population INT
    );
 
 CREATE TABLE IF NOT EXISTS Charts(
-    country_id INT NOT NULL PRIMARY KEY,
-    track_id INT NOT NULL PRIMARY KEY,
-    track_rank INT
+    country_id INT NOT NULL,
+    track_id INT NOT NULL,
+    track_rank INT,
+    PRIMARY KEY (country_id, track_id)
    );
 
 CREATE TABLE IF NOT EXISTS Tracks(

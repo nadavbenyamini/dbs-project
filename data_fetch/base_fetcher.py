@@ -164,11 +164,11 @@ class BaseFetcher:
         }
         return summary
 
-    def get_values_by_field(self, model, field):
-        return model.get_distinct_values_by_field(field=field, use_ssh=True)
+    def get_values_by_field(self, model, field, order_by=None, desc=True):
+        return model.get_distinct_values_by_field(field=field, order_by=order_by, desc=desc, use_ssh=True)
 
-    def get_values_by_multiple_fields(self, model, fields):
-        return model.get_distinct_values_by_multiple_fields(fields=fields, use_ssh=True)
+    def get_values_by_multiple_fields(self, model, fields, order_by=None, desc=True):
+        return model.get_distinct_values_by_multiple_fields(fields=fields, order_by=order_by, desc=desc, use_ssh=True)
 
     # ------------------------------------------------------------------------------- #
     # ------------------ Functions to be overridden by subclasses ------------------- #
