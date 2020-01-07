@@ -10,7 +10,7 @@ class AlbumPath(MusixFetcher):
 
     def prepare_requests(self):
         query = "select distinct t.album_id " \
-                "from Tracks t left join Albums a on a.album_id = t.album_id" \
+                "from Tracks t left join Albums a on a.album_id = t.album_id " \
                 "where a.album_id is NULL"
         query_results = self.sql_executor.select(query)
         album_ids = [r[0] for r in query_results['rows']]
