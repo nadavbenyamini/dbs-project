@@ -11,15 +11,12 @@ class MouritsFetcher(BaseFetcher):
         self.models = [Lyrics()]
 
     def prepare_requests(self):
-        tracks = self.get_values_by_multiple_fields(model=Track(),
-                                                                   fields=['artist_id', 'track_name', 'track_id'])
-        artists = self.get_values_by_multiple_fields(model=Artist(),
-                                                                    fields=['artist_id', 'artist_name'])
+        query = "select distinct track_id, track_name, artist_name " \
+                "from Tracks t join Artists a on t.artist_id = a.artist_id"
+        rows = self.sql_executor.select(query)['rows']
         requests = []
-        for t in tracks:
-            for a in artists:
-                if t[0] == a[0]:
-                    requests.append({'a': a[1], 's': t[1], 'track_id': t[2], 'separator': '<br/>'})
+        for row in rows:
+            requests.append({'track_id': row[0], 's': row[1], 'a': row[2], 'separator': '<br/>'})
         return requests
 
     def response_to_items(self, request, response):

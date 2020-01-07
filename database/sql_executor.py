@@ -4,9 +4,10 @@ import json
 
 
 def select(query, args=tuple(), use_ssh=False):
-    cursors = __execute(queries=[{'query': query, 'args': args}], use_ssh=use_ssh)
-    cursor = cursors[0]
+    cursor = None
     try:
+        cursors = __execute(queries=[{'query': query, 'args': args}], use_ssh=use_ssh)
+        cursor = cursors[0]
         res = {'headers': [], 'rows': []}
         for row in cursor:
             if len(res['headers']) == 0:
@@ -14,22 +15,27 @@ def select(query, args=tuple(), use_ssh=False):
             res['rows'].append([row[k] for k in res['headers']])
         if len(res['headers']) == 0:
             raise Exception('Query returned 0 results: {}'.format(query))
+        else:
+            return res
     except Exception as e:
-        raise Exception('Select query failed. Query: {}, Error: {}'.format(query, e))
+        raise Exception('Select query failed. Query: "{}" Error: {}'.format(query, e))
     finally:
-        cursor.close()
+        if cursor:
+            cursor.close()
 
 
 def insert(query, args=tuple(), use_ssh=False):
-    cursors = __execute(queries=[{'query': query, 'args': args}], use_ssh=use_ssh)
-    cursor = cursors[0]
+    cursor = None
     try:
+        cursors = __execute(queries=[{'query': query, 'args': args}], use_ssh=use_ssh)
+        cursor = cursors[0]
         response = cursor.fetchall()
         return response
     except Exception as e:
-        raise Exception('Insert query failed. Query: {}, Error: {}'.format(query, e))
+        raise Exception('Insert query failed. Query: "{}", Error: {}'.format(query, e))
     finally:
-        cursor.close()
+        if cursor:
+            cursor.close()
 
 
 # TODO: Implement "use_ssh" feature
