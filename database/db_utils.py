@@ -1,4 +1,3 @@
-from datetime import datetime
 
 
 def get_insert_queries(table, columns, records):
@@ -9,11 +8,9 @@ def get_insert_queries(table, columns, records):
 
 
 def prepare_columns_string(columns):
-    columns.append('insertion_time')
     return '(' + ', '.join(['{}'.format(c.replace("'", "")) for c in columns]) + ')'
 
 
 def prepare_values_string(records):
-    now_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    values_str = ','.join(['{}'.format(tuple(rec) + (now_str, )) for rec in records])
+    values_str = ','.join(['{}'.format(tuple(rec)) for rec in records])
     return values_str.replace("'NULL'", "NULL")

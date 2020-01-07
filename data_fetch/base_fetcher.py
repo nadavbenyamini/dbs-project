@@ -31,12 +31,12 @@ class BaseFetcher:
 
     def fetch_all(self):
         self.requests = self.prepare_requests()
-        self.fetch_responses()
-        self.responses_to_insert_queries()
+        self.start_fetching()
+        self.build_insert_queries()
         self.execute_insert_queries()
         return self.get_summary()
 
-    def fetch_responses(self):
+    def start_fetching(self):
         """
         Iterates over self.requests, each item is the params dictionary for a single HTTP request
         Then fetches, processes and stores the responses, and errors if were
@@ -46,7 +46,7 @@ class BaseFetcher:
             print('Path: {} started request {}: {}'.format(self.path, i, req))
             try:
                 response = self.fetch(req)
-                self.responses.append(response.json())
+                self.api_responses.append(response.json())
                 self.items += self.response_to_items(req, response.json())
             except Exception as e:  # requests.exceptions.HTTPError as e:
                 self.api_errors.append(str(e))
@@ -121,7 +121,7 @@ class BaseFetcher:
                     elif field['type'] == INT:
                         record.append(int(value))
                     elif field['type'] == STRING:
-                        record.append(str(value))
+                        record.append(str(value).replace('%', '\\%'))
                     elif field['type'] == TIMESTAMP:
                         value = validate_timestamp(value)
                         record.append(value)
@@ -152,11 +152,11 @@ class BaseFetcher:
         :return: JSON response with a summary of the fetching results
         """
         request_count = len(self.requests)
-        success_count = len(self.responses)
+        success_count = len(self.api_responses)
         summary = {
             'data_fetch': {
                 'summary': 'Finished processing {} requests, {} succeeded'.format(request_count, success_count),
-                'errors': self.errors},
+                'errors': self.api_errors},
             'data_insertion': {
                 'summary': 'Finished preparing and executing {} queries, {} succeeded'.format(len(self.queries), len(self.db_responses)),
                 'tables_updated': self.tables_updated,

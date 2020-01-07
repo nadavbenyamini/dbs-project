@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Countries(
    );
 
 CREATE TABLE IF NOT EXISTS Charts(
-    country_id INT NOT NULL,
+    country_id VARCHAR(10) NOT NULL,
     track_id INT NOT NULL,
     track_rank INT,
     PRIMARY KEY (country_id, track_id)
