@@ -9,7 +9,9 @@ class AlbumPath(MusixFetcher):
         self.models = [Album()]
 
     def prepare_requests(self):
-        album_ids = self.get_values_by_field(model=Track(), field='album_id')
+        query = "select distinct album_id from Tracks"
+        query_results = self.sql_executor.select(query)
+        album_ids = [r[0] for r in query_results['rows']]
         requests = []
         for album_id in album_ids:
             requests.append({'album_id': album_id})
