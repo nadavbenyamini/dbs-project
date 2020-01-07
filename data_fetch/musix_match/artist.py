@@ -9,7 +9,7 @@ class ArtistPath(MusixFetcher):
         self.models = [Artist()]
 
     def prepare_requests(self):
-        artist_ids = Track().get_distinct_values_by_field('artist_id')
+        artist_ids = self.get_model_distinct_values_by_field(Track(), 'artist_id')
         requests = []
         for artist_id in artist_ids:
             requests.append({'artist_id': artist_id})
