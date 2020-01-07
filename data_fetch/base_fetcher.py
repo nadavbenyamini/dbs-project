@@ -4,6 +4,7 @@ from models.all_models import *
 from database import sql_executor
 import traceback
 
+
 class BaseFetcher:
     """
     Base class for remote data fetching
@@ -166,7 +167,7 @@ class BaseFetcher:
         for query in self.queries:
             i += 1
             try:
-                response = sql_executor.insert(query)
+                response = sql_executor.insert(query, use_ssh=True)
                 print('Query {} succeeded'.format(i))
                 self.db_responses.append(response)
             except Exception as e:
