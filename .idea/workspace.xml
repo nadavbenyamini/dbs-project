@@ -7,9 +7,6 @@
     <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_fetch/musix_match/album.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/musix_match/album.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_fetch/musix_match/artist.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/musix_match/artist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+            <state relative-caret-position="109">
+              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -126,20 +123,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="15" column="88" selection-start-line="15" selection-start-column="88" selection-end-line="15" selection-end-column="88" />
+            <state relative-caret-position="198">
+              <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/models/track.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="13" column="74" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="13" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -251,9 +239,9 @@
         <option value="$PROJECT_DIR$/database/db_utils.py" />
         <option value="$PROJECT_DIR$/data_fetch/base_fetcher.py" />
         <option value="$PROJECT_DIR$/database/queries/db_build.sql" />
-        <option value="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/album.py" />
         <option value="$PROJECT_DIR$/data_fetch/musix_match/artist.py" />
+        <option value="$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py" />
         <option value="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" />
       </list>
     </option>
@@ -415,14 +403,7 @@
       <workItem from="1577968778870" duration="20563000" />
       <workItem from="1578210627598" duration="87000" />
       <workItem from="1578402874714" duration="8812000" />
-      <workItem from="1578424904133" duration="7256000" />
-    </task>
-    <task id="LOCAL-00050" summary="First basic API to DB flow works">
-      <created>1577959455727</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1577959455728</updated>
+      <workItem from="1578424904133" duration="7445000" />
     </task>
     <task id="LOCAL-00051" summary="Added insertion time and fixing NULL values in insertion queries">
       <created>1577971111083</created>
@@ -760,11 +741,18 @@
       <option name="project" value="LOCAL" />
       <updated>1578431106966</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="No duplicate requests">
+      <created>1578433258563</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1578433258563</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110864000" />
+    <option name="totallyTimeSpent" value="111053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
@@ -799,7 +787,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Printing full traceback instead of error message only" />
     <MESSAGE value="Adjusting field names" />
     <MESSAGE value="Returning full tracebacks and not just error strings" />
     <MESSAGE value="Small fixes in paths" />
@@ -824,7 +811,8 @@
     <MESSAGE value="Comment" />
     <MESSAGE value="Request params initiated by separate queries" />
     <MESSAGE value="Simplified fetching process and prevented some small errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplified fetching process and prevented some small errors" />
+    <MESSAGE value="No duplicate requests" />
+    <option name="LAST_COMMIT_MESSAGE" value="No duplicate requests" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db.py" />
@@ -900,16 +888,6 @@
           <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_fetch/factory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1084,18 +1062,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/musix_match/tracks_chart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        <state relative-caret-position="109">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data_fetch/factory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="39" column="20" lean-forward="true" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="15" column="88" selection-start-line="15" selection-start-column="88" selection-end-line="15" selection-end-column="88" />
+        <state relative-caret-position="198">
+          <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
