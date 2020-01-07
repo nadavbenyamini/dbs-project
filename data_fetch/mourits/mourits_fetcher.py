@@ -11,7 +11,7 @@ class MouritsFetcher(BaseFetcher):
         self.models = [Lyrics()]
 
     def prepare_requests(self):
-        query = "select distinct l.track_id, track_name, artist_name " \
+        query = "select distinct t.track_id, track_name, artist_name " \
                 "from Tracks t join Artists a on t.artist_id = a.artist_id " \
                 "left join Lyrics l on l.track_id = t.track_id where l.track_id is NULL"
         rows = self.sql_executor.select(query)['rows']
