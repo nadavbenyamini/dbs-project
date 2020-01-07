@@ -145,11 +145,11 @@ class BaseFetcher:
                         assert value is not None
                     if value is None:
                         record.append('NULL')
-                    elif field['type'] == Types.INT:
+                    elif field['type'] == INT:
                         record.append(int(value))
-                    elif field['type'] == Types.STRING:
+                    elif field['type'] == STRING:
                         record.append(str(value))
-                    elif field['type'] == Types.TIMESTAMP:
+                    elif field['type'] == TIMESTAMP:
                         value = validate_timestamp(value)
                         record.append(value)
                     else:
