@@ -9,8 +9,8 @@ data_fetch_routes = Blueprint('data_fetch', __name__)
 def fetch_data(source, path):
     """
     The main function for fetching, processing and inserting data from remote APIs into our DB
-    :param source:
-    :param path:
+    :param source: the remote data source (Musix/Mourits)
+    :param path: the specific remote data path
     :return: summary of fetching process from the relevant data fetcher
     """
     return fetcher_factory.fetch_remote_data(source, path)
@@ -23,8 +23,8 @@ def test_data(source, path):
     For testing HTTP responses from remote APIs (only for sources mapped to our app, such as Musix).
     For example -
     http://127.0.0.1:5000/fetch/musix/chart.tracks.get?chart_name=top&page=1&page_size=5&country=us
-    :param source:
-    :param path:
+    :param source: the remote data source (Musix/Mourits)
+    :param path: the specific remote data path
     :return: HTTP Response
     """
     params = request.args
