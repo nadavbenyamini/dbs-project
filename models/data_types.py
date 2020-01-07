@@ -1,7 +1,7 @@
 import datetime
 
 
-# Fake ENUM
+# ENUM
 class Types:
     INT = 'INT'
     STRING = 'STRING'
