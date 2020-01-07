@@ -14,6 +14,8 @@ def select(query, args=tuple(), use_ssh=False):
             res['rows'].append([row[k] for k in res['headers']])
         if len(res['headers']) == 0:
             raise Exception('Query returned 0 results: {}'.format(query))
+    except Exception as e:
+        raise Exception('Select query failed. Query: {}, Error: {}'.format(query, e))
     finally:
         cursor.close()
 
@@ -25,11 +27,12 @@ def insert(query, args=tuple(), use_ssh=False):
         response = cursor.fetchall()
         return response
     except Exception as e:
-        raise e
+        raise Exception('Insert query failed. Query: {}, Error: {}'.format(query, e))
     finally:
         cursor.close()
 
 
+# TODO: Implement "use_ssh" feature
 def __execute(queries, use_ssh=False):
     """
     Private function, should be accessed by one of the functions above
