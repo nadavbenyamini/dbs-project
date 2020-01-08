@@ -8,12 +8,12 @@ class BaseFetcher:
     Base class for remote data fetching
     Should be inherited by a class per source - which handles that source's headers, api key's, tokens, etc.
     Each of those source classes should be inherited by classes for specific api paths that are responsible
-    for preparing the HTTP request and handling it's response
+    for preparing the HTTP request and parsing it's response
 
     The general flow is -
     1) Prepare params for each request
-    2) Fetch responses and process them into items in the relevant structure for our DB
-    3) Turn these items into SQL insert queries, and execute
+    2) Fetch responses and parse them into insert queries
+    3) Execute the queries
     4) return a summary to indicate errors in api requests / queries
     """
     def __init__(self):
@@ -28,7 +28,6 @@ class BaseFetcher:
     def fetch_all(self):
         self.requests = self.prepare_requests()
         self.start_fetching()
-        # self.build_insert_queries()
         self.execute_insert_queries()
         return self.get_summary()
 
@@ -44,7 +43,6 @@ class BaseFetcher:
                 response = self.fetch(req)
                 self.api_responses.append(response.json())
                 self.queries += self.response_to_insert_queries(req, response.json())
-                # self.items += self.response_to_items(req, response.json())
             except Exception as e:
                 self.api_errors.append(str(e))
             finally:
@@ -65,6 +63,9 @@ class BaseFetcher:
         return requests.get(url=url, headers=self.headers, params=params)
 
     def execute_insert_queries(self):
+        """
+        Executes list of queries sequentially, stores errors and responses in class fields
+        """
         i = 0
         for query in self.queries:
             i += 1
@@ -100,14 +101,6 @@ class BaseFetcher:
     def prepare_requests(self):
         """
         Prepare the params of the requests. Specific for each data source and path
-        """
-        pass
-
-    def response_to_items(self, request, response):
-        """
-        Process the results JSON into the relevant structure before inserting to our DB
-        Each of these JSON items can be inserted to one table or more
-        :return: list of JSON items
         """
         pass
 
