@@ -1,13 +1,8 @@
-from flask import request, render_template
+from flask import render_template
 from flask import Blueprint
 from database import sql_executor
 
 app_routes = Blueprint('app_routes', __name__)
-
-
-@app_routes.route('/test')
-def test_template():
-    return render_template(template_name_or_list='index.html', title="TEST")
 
 
 @app_routes.route('/show/<tab_name>/<limit>')
