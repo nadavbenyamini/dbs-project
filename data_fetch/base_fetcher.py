@@ -1,6 +1,4 @@
 import requests
-# from database.db_utils import get_insert_queries
-# from models.all_models import *
 from database import sql_executor
 import traceback
 
@@ -22,8 +20,6 @@ class BaseFetcher:
         self.requests = []
         self.api_responses = []
         self.api_errors = []
-        # self.items = []
-        # self.tables_updated = []
         self.queries = []
         self.db_responses = []
         self.db_errors = []
@@ -123,75 +119,3 @@ class BaseFetcher:
         :return: list insert queries
         """
         pass
-
-
-# OLD CODE:
-'''
-    def build_insert_queries(self):
-        """
-        Converts item list to DB record structure and populates query list with the final queries
-        """
-        all_records = {}
-        for item in self.items:
-            try:
-                item_records = self.item_to_records(item)
-                for table in item_records:
-                    if table not in all_records:
-                        all_records[table] = []
-                    all_records[table] += item_records[table]
-            except Exception as e:
-                print('Error in item_to_records: {}'.format(e))
-                self.db_errors.append(traceback.format_exc())
-
-        self.tables_updated = list(set(all_records.keys()))
-
-        for table in all_records:
-            columns = self.table_to_columns(table)
-            if len(columns) > 0:
-                queries = get_insert_queries(table, columns, all_records[table])
-                for q in queries:
-                    self.queries.append(q)
-
-    def table_to_columns(self, table):
-        for m in self.models:
-            if m.table == table:
-                return [f['name'] for f in m.fields]
-        return []
-
-    def item_to_records(self, item):
-        """
-        Converts a single item into the tuples according to the relevant DB records, per table
-        :param item: JSON item from processed response
-        :return: dictionary - {table1: [record1, record2], table2: [record1, record2]}
-
-        This is a DEFAULT IMPLEMENTATION only, can be overridden
-        """
-        records = {}
-        for model in self.models:
-            records[model.table] = []
-            record = []
-
-            for field in model.fields:
-                value = item.get(field['name'], None)
-                try:
-                    if field['pk']:
-                        assert value is not None
-                    if value is None:
-                        record.append('NULL')
-                    elif field['type'] == INT:
-                        record.append(int(value))
-                    elif field['type'] == STRING:
-                        record.append(str(value).replace('%', '\\%'))
-                    elif field['type'] == TIMESTAMP:
-                        value = validate_timestamp(value)
-                        record.append(value)
-                    else:
-                        record.append(value)
-
-                except Exception as e:
-                    print('Error adding {} to record: {}, value={}'.format(e, field['name'], value))
-                    raise e
-
-            records[model.table].append(tuple(record))
-        return records
-'''

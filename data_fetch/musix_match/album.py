@@ -1,12 +1,11 @@
 from data_fetch.musix_match.musix_match_api import MusixFetcher
-from models.all_models import *
+from database.db_utils import *
 
 
 class AlbumPath(MusixFetcher):
     def __init__(self):
         super().__init__()
         self.path = 'album.get'
-        self.models = [Album()]
 
     def prepare_requests(self):
         query = "select distinct t.album_id " \
@@ -18,12 +17,6 @@ class AlbumPath(MusixFetcher):
         for album_id in album_ids:
             requests.append({'album_id': album_id})
         return requests
-
-    def response_to_items(self, request, response):
-        assert 'message' in response and 'body' in response['message'] and 'album' in response['message']['body']
-        item = {k: v for k, v in response['message']['body']['album'].items()} # Clone
-        item['album_release_date'] = item['updated_time']
-        return [item]
 
     def response_to_insert_queries(self, request, response):
         assert 'message' in response and 'body' in response['message'] and 'album' in response['message']['body']
