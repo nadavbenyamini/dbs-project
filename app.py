@@ -1,5 +1,5 @@
 from flask import Flask
-from routes.data_fetch import data_fetch_routes
+from routes.data_fetch_routes import data_fetch_routes
 from routes.app_routes import app_routes
 
 app = Flask(__name__)
