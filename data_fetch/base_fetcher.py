@@ -1,6 +1,6 @@
 import requests
-from database.db_utils import get_insert_queries
-from models.all_models import *
+# from database.db_utils import get_insert_queries
+# from models.all_models import *
 from database import sql_executor
 import traceback
 
@@ -22,8 +22,8 @@ class BaseFetcher:
         self.requests = []
         self.api_responses = []
         self.api_errors = []
-        self.items = []
-        self.tables_updated = []
+        # self.items = []
+        # self.tables_updated = []
         self.queries = []
         self.db_responses = []
         self.db_errors = []
@@ -32,7 +32,7 @@ class BaseFetcher:
     def fetch_all(self):
         self.requests = self.prepare_requests()
         self.start_fetching()
-        self.build_insert_queries()
+        # self.build_insert_queries()
         self.execute_insert_queries()
         return self.get_summary()
 
@@ -47,8 +47,9 @@ class BaseFetcher:
             try:
                 response = self.fetch(req)
                 self.api_responses.append(response.json())
-                self.items += self.response_to_items(req, response.json())
-            except Exception as e:  # requests.exceptions.HTTPError as e:
+                self.queries += self.response_to_insert_queries(req, response.json())
+                # self.items += self.response_to_items(req, response.json())
+            except Exception as e:
                 self.api_errors.append(str(e))
             finally:
                 i += 1
@@ -67,6 +68,65 @@ class BaseFetcher:
         url = self.get_url()
         return requests.get(url=url, headers=self.headers, params=params)
 
+    def execute_insert_queries(self):
+        i = 0
+        for query in self.queries:
+            i += 1
+            try:
+                response = sql_executor.insert(query, use_ssh=True)
+                print('Query {} succeeded'.format(i))
+                self.db_responses.append(response)
+            except Exception as e:
+                print('Query {} failed: {}'.format(i, e))
+                self.db_errors.append(traceback.format_exc())
+
+    def get_summary(self):
+        """
+        :return: JSON response with a summary of the fetching results
+        """
+        request_count = len(self.requests)
+        success_count = len(self.api_responses)
+        summary = {
+            'data_fetch': {
+                'summary': 'Finished processing {} requests, {} succeeded'.format(request_count, success_count),
+                'errors': self.api_errors},
+            'data_insertion': {
+                'summary': 'Finished preparing and executing {} queries, {} succeeded'.format(len(self.queries), len(self.db_responses)),
+                'errors': self.db_errors
+            }
+        }
+        return summary
+
+    # ------------------------------------------------------------------------------- #
+    # ------------------ Functions to be overridden by subclasses ------------------- #
+    # ------------------------------------------------------------------------------- #
+
+    def prepare_requests(self):
+        """
+        Prepare the params of the requests. Specific for each data source and path
+        """
+        pass
+
+    def response_to_items(self, request, response):
+        """
+        Process the results JSON into the relevant structure before inserting to our DB
+        Each of these JSON items can be inserted to one table or more
+        :return: list of JSON items
+        """
+        pass
+
+    def response_to_insert_queries(self, request, response):
+        """
+        Process the results JSON into the relevant insert queries for our DB
+        :param request: dictionary with params of HTTP request
+        :param response: HTTP response
+        :return: list insert queries
+        """
+        pass
+
+
+# OLD CODE:
+'''
     def build_insert_queries(self):
         """
         Converts item list to DB record structure and populates query list with the final queries
@@ -134,52 +194,4 @@ class BaseFetcher:
 
             records[model.table].append(tuple(record))
         return records
-
-    def execute_insert_queries(self):
-        i = 0
-        for query in self.queries:
-            i += 1
-            try:
-                response = sql_executor.insert(query, use_ssh=True)
-                print('Query {} succeeded'.format(i))
-                self.db_responses.append(response)
-            except Exception as e:
-                print('Query {} failed: {}'.format(i, e))
-                self.db_errors.append(traceback.format_exc())
-
-    def get_summary(self):
-        """
-        :return: JSON response with a summary of the fetching results
-        """
-        request_count = len(self.requests)
-        success_count = len(self.api_responses)
-        summary = {
-            'data_fetch': {
-                'summary': 'Finished processing {} requests, {} succeeded'.format(request_count, success_count),
-                'errors': self.api_errors},
-            'data_insertion': {
-                'summary': 'Finished preparing and executing {} queries, {} succeeded'.format(len(self.queries), len(self.db_responses)),
-                'tables_updated': self.tables_updated,
-                'errors': self.db_errors
-            }
-        }
-        return summary
-
-    # ------------------------------------------------------------------------------- #
-    # ------------------ Functions to be overridden by subclasses ------------------- #
-    # ------------------------------------------------------------------------------- #
-
-    def prepare_requests(self):
-        """
-        Prepare the params of the requests. Specific for each data source and path
-        """
-        pass
-
-    def response_to_items(self, request, response):
-        """
-        Process the results JSON into the relevant structure before inserting to our DB
-        Each of these JSON items can be inserted to one table or more
-        :return: list of JSON items
-        """
-        pass
-
+'''

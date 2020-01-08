@@ -30,10 +30,10 @@ class AlbumPath(MusixFetcher):
         album = response['message']['body']['album']
         release_date = validate_timestamp(album['updated_time'])
         query = "insert ignore into Albums (album_id, artist_id, album_name, album_rating, album_release_date)" \
-                "values ({}, {}, {}, {}, {})"\
+                "values ({}, {}, '{}', {}, '{}')"\
             .format(album['album_id'],
                     album['artist_id'],
-                    album['album_name'],
+                    clean_string(album['album_name']),
                     album['album_rating'],
                     release_date if release_date is not None else 'NULL')
 

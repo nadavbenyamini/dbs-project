@@ -15,5 +15,9 @@ def validate_timestamp(value):
         return None
 
 
+def clean_string(s):
+    return s.replace("'", "\\'").replace("%", "\\%")
+
+
 class BaseModel:
     pass
