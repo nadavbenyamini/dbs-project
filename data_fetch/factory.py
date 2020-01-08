@@ -16,7 +16,6 @@ def test_api_call(source, path, params):
     return fetcher.fetch(params).json()
 
 
-# The only interface with app.py other than test function
 def fetch_remote_data(source, path):
     """
     Builds the relevant data fetcher class and calls that class to start fetching data
@@ -28,7 +27,7 @@ def fetch_remote_data(source, path):
     return fetcher.fetch_all()
 
 
-# Factory function. # TODO: Automate this, find the right object with the path string only
+# Factory function to find the relevant class per path and source
 def build_fetchers(source, path):
     fetchers = {
         'musix': {
