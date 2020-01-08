@@ -25,3 +25,16 @@ class AlbumPath(MusixFetcher):
         item['album_release_date'] = item['updated_time']
         return [item]
 
+    def response_to_insert_queries(self, request, response):
+        assert 'message' in response and 'body' in response['message'] and 'album' in response['message']['body']
+        album = response['message']['body']['album']
+        release_date = validate_timestamp(album['updated_time'])
+        query = "insert ignore into Albums (album_id, artist_id, album_name, album_rating, album_release_date)" \
+                "values ({}, {}, {}, {}, {})"\
+            .format(album['album_id'],
+                    album['artist_id'],
+                    album['album_name'],
+                    album['album_rating'],
+                    release_date if release_date is not None else 'NULL')
+
+        return [query]

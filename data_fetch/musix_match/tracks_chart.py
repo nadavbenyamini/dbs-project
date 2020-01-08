@@ -48,3 +48,32 @@ class TracksChartPath(MusixFetcher):
 
             items.append(item)
         return items
+
+    def response_to_insert_queries(self, request, response):
+        chart_q = "insert ignore into Charts (country_id, track_id, track_rank) values {}"
+        track_q = "insert ignore into Tracks " \
+                  "(track_id, track_name, track_rating, genre_id, artist_id, album_id, track_release_date) values {}"
+        chart_values = []
+        track_values = []
+        i = 0
+        for track in response['message']['body']['track_list']:
+            i += 1
+            chart_values += "({}, {}, {})".format(request['country'], track['track_id'], i)
+            release_date = validate_timestamp(track['updated_time'])
+
+            genre_list = track.get('primary_genres', {}).get('music_genre_list', [])
+            genre_id = None
+            if len(genre_list) > 0:
+                genre_id = genre_list[0]['music_genre']['music_genre_id']
+
+            track_values += "({}, {}, {}, {}, {}, {}, {})".format(track['track_id'],
+                                                                  track['track_name'],
+                                                                  track['track_rating'],
+                                                                  genre_id if genre_id else 'NULL',
+                                                                  track['artist_id'],
+                                                                  track['album_id'],
+                                                                  release_date if release_date else 'NULL')
+        track_q = track_q.format(','.join(track_values))
+        chart_q = chart_q.format(','.join(chart_values))
+        return [chart_q, track_q]
+
