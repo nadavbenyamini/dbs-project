@@ -10,16 +10,10 @@ def test_template():
     return render_template(template_name_or_list='index.html', title="TEST")
 
 
-@app_routes.route('/show/<tab_name>')
-def show_table(tab_name):
-    params = request.args
-    query = "select * from {}".format(tab_name)  # TODO - Fix to prevent SQL Injection
-    args = {}
-    if params and 'name' in params:
-        query += " where name = %s"
-        args = (params['name'], )
-
-    db_results = sql_executor.select(query=query, args=args)
+@app_routes.route('/show/<tab_name>/<limit>')
+def show_table(tab_name, limit=100):
+    query = "select * from {} limit {}".format(tab_name, limit)  # TODO - prevent SQL Injection
+    db_results = sql_executor.select(query=query)
     rows = []
     headers = db_results['headers']
     for row in db_results['rows']:
