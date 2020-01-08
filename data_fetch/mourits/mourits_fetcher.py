@@ -30,7 +30,7 @@ class MouritsFetcher(BaseFetcher):
 
     def response_to_insert_queries(self, request, response):
         assert response['success']
-        query = "insert ignore into Lyrics (track_id, track_lyrics) values ({})"\
+        query = "insert ignore into Lyrics (track_id, track_lyrics) values ({}, {})"\
             .format(request['track_id'],
-                    response['result']['lyrics'])
+                    clean_string(response['result']['lyrics']))
         return [query]
