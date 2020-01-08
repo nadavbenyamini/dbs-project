@@ -47,7 +47,7 @@ def __execute(queries, use_ssh=False):
     :param use_ssh: True iff connection should use ssh
     :return: list of cursors after cursor.execute
     """
-    with open("./config/mysql_config.json") as mysql_conf_file:
+    with open("./database/config/mysql_config.json") as mysql_conf_file:
         mysql_conf = json.load(mysql_conf_file)
         sql_hostname = mysql_conf['sql_hostname']
         sql_username = mysql_conf['sql_username']
@@ -55,7 +55,7 @@ def __execute(queries, use_ssh=False):
         sql_main_database = mysql_conf['sql_main_database']
         sql_port = mysql_conf['sql_port']
 
-    with open("./config/ssh_config.json") as ssh_conf_file:
+    with open("./database/config/ssh_config.json") as ssh_conf_file:
         ssh_conf = json.load(ssh_conf_file)
         ssh_host = ssh_conf['ssh_host']
         ssh_user = ssh_conf['ssh_user']
