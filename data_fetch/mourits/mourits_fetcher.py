@@ -1,5 +1,5 @@
 from data_fetch.base_fetcher import BaseFetcher
-from models.all_models import *
+from database.db_utils import *
 
 
 class MouritsFetcher(BaseFetcher):
@@ -8,7 +8,6 @@ class MouritsFetcher(BaseFetcher):
         self.base_url = 'https://mourits.xyz:2096'
         self.headers = {'Content-Type': 'application/json'}
         self.path = ''
-        self.models = [Lyrics()]
 
     def prepare_requests(self):
         query = "select distinct t.track_id, track_name, artist_name " \
