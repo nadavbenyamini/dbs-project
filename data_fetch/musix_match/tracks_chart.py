@@ -13,7 +13,16 @@ class TracksChartPath(MusixFetcher):
         first_country = 1
         last_country = 10  # pull countries [X:Y]
 
-        query = "select distinct country_id, population from Countries order by population desc"
+        min_rank = (page_count-1) * page_size
+        max_rank = page_count * page_size
+
+        # Pulling only countries that do not have chart data in the relevant ranks
+        query = "select distinct c1.country_id, c1.population from " \
+                "Countries c1 left join " \
+                "Charts c2 on c1.country_id = c2.country_id " \
+                "and c2.track_rank >= {} and c2.track_rank <= {} " \
+                "where c2.country_id is null " \
+                "order by population desc".format(min_rank, max_rank)
         query_results = self.sql_executor.select(query)
         all_countries = [r[0] for r in query_results['rows']]
         countries = all_countries[first_country: last_country]
