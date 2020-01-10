@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS Tracks(
    );
 
    CREATE TABLE IF NOT EXISTS Albums(
-     album_id INT PRIMARY KEY,
+    album_id INT PRIMARY KEY,
     artist_id INT NOT NULL ,
     album_name VARCHAR(255),
     album_release_date DATETIME,
