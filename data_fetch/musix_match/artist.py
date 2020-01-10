@@ -23,7 +23,7 @@ class ArtistPath(MusixFetcher):
         artist = response['message']['body']['artist']
         query = "insert ignore into Artists (artist_id, artist_name, artist_country_id, artist_rating)" \
                 "values ({}, '{}', '{}', {})"\
-            .format(artist['artist_id'],
+            .format(request['artist_id'],
                     clean_string(artist['artist_name']),
                     artist['artist_country'],
                     artist['artist_rating'])
