@@ -27,4 +27,4 @@ def validate_timestamp(value):
 
 
 def clean_string(s):
-    return s.replace("'", "\\'").replace("%", "\\%")
+    return s.replace("'", "''").replace("%", "\\%")
