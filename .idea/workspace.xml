@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/queries/add_foreign_keys.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/queries/add_foreign_keys.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,14 +180,7 @@
       <workItem from="1578402874714" duration="8812000" />
       <workItem from="1578424904133" duration="15142000" />
       <workItem from="1578514791521" duration="393000" />
-      <workItem from="1578592186203" duration="7432000" />
-    </task>
-    <task id="LOCAL-00058" summary="Added IGNORE to insert queries to ignore errors such as duplicate pk">
-      <created>1577978705462</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1577978705462</updated>
+      <workItem from="1578592186203" duration="7678000" />
     </task>
     <task id="LOCAL-00059" summary="Added more logs to query execution process">
       <created>1577979442445</created>
@@ -524,7 +516,13 @@
       <option name="presentableId" value="LOCAL‎00106" />
       <updated>1578657282750</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL‎00107" summary="Deleted tons of redundant code">
+      <created>1578658627981</created>
+      <option name="number" value="LOCAL‎00107" />
+      <option name="presentableId" value="LOCAL‎00107" />
+      <updated>1578658627981</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,10 +561,14 @@
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
     <state x="872" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1050/-3840.-448.1536.834@0.0.2560.1050" timestamp="1578592231393" />
-    <state x="278" y="125" key="CommitChangelistDialog2" timestamp="1578657281378">
+    <state x="278" y="125" key="CommitChangelistDialog2" timestamp="1578658626785">
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
-    <state x="278" y="125" key="CommitChangelistDialog2/0.0.2560.1050/-3840.-448.1536.834@0.0.2560.1050" timestamp="1578657281378" />
+    <state x="278" y="125" key="CommitChangelistDialog2/0.0.2560.1050/-3840.-448.1536.834@0.0.2560.1050" timestamp="1578658626785" />
+    <state x="872" y="261" key="Vcs.Push.Dialog.v2" timestamp="1578658632394">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state x="872" y="261" key="Vcs.Push.Dialog.v2/0.0.2560.1050/-3840.-448.1536.834@0.0.2560.1050" timestamp="1578658632394" />
     <state x="1091" y="444" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578658550585">
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
