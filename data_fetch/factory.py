@@ -3,6 +3,7 @@ from data_fetch.musix_match.artist import ArtistPath
 from data_fetch.musix_match.genre import GenrePath
 from data_fetch.musix_match.album import AlbumPath
 from data_fetch.mourits.mourits_fetcher import MouritsFetcher
+from data_fetch.musix_match.track import TracksPath
 
 
 def test_api_call(source, path, params):
@@ -34,7 +35,8 @@ def build_fetchers(source, path):
             'chart.tracks.get': TracksChartPath(),
             'artist.get': ArtistPath(),
             'album.get': AlbumPath(),
-            'music.genres.get': GenrePath()
+            'music.genres.get': GenrePath(),
+            'tracks.get': TracksPath()
         },
         'mourits': {
             'lyrics': MouritsFetcher()
