@@ -10,7 +10,7 @@ class MouritsFetcher(BaseFetcher):
         self.path = ''
 
     def prepare_requests(self):
-        SIZE = 1
+        SIZE = 500
         query = "select distinct t.track_id, track_name, artist_name " \
                 "from Tracks t join Artists a on t.artist_id = a.artist_id " \
                 "left join Lyrics l on l.track_id = t.track_id where l.track_id is NULL"
@@ -20,9 +20,9 @@ class MouritsFetcher(BaseFetcher):
             requests.append({'track_id': row[0], 's': row[1], 'a': row[2], 'separator': '<br/>'})
         return requests
 
+    # Inserting track_id to Lyrics table regardless of the response - if no lyrics found, insert NULL
     def response_to_insert_queries(self, request, response):
-        assert response['success']
         query = "insert ignore into Lyrics (track_id, track_lyrics) values ({}, '{}')"\
             .format(request['track_id'],
-                    clean_string(response['result']['lyrics']))
+                    clean_string(response.get('result', {}).get('lyrics', 'NULL')))
         return [query]

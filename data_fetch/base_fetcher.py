@@ -44,6 +44,7 @@ class BaseFetcher:
                 self.api_responses.append(response.json())
                 self.queries += self.response_to_insert_queries(req, response.json())
             except Exception as e:
+                print(e)
                 self.api_errors.append(str(e))
             finally:
                 i += 1
