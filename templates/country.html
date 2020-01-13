@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ country_id }}</title>
+</head>
+<body>
+<h1>Top hits in {{ country_name }}</h1>
+{% for track in tracks %}
+    <div>
+        {% for key in track %}
+        {{ key }}: <b>{{ track[key] }}</b>
+        {% endfor %}
+    </div>
+{% endfor %}
+</body>
+</html>
