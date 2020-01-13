@@ -1,6 +1,7 @@
 import requests
 from database import sql_executor
 import traceback
+import time
 
 
 class BaseFetcher:
@@ -41,8 +42,11 @@ class BaseFetcher:
             print('Path: {} started request {}: {}'.format(self.path, i, req))
             try:
                 response = self.fetch(req)
+                time.sleep(1)  # Against timeouts
                 self.api_responses.append(response.json())
-                self.queries += self.response_to_insert_queries(req, response.json())
+                # self.queries += self.response_to_insert_queries(req, response.json())
+                self.queries = self.response_to_insert_queries(req, response.json())#!!!! DELETE THIS
+                self.execute_insert_queries() #!!!! DELETE THIS
             except Exception as e:
                 print(e)
                 self.api_errors.append(str(e))

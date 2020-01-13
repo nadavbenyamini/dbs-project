@@ -14,7 +14,7 @@ def test_api_call(source, path, params):
     :return: HTTP Response
     """
     fetcher = build_fetchers(source, path)
-    return fetcher.fetch(params).json()
+    return str(fetcher.fetch(params))
 
 
 def fetch_remote_data(source, path):

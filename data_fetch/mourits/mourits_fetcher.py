@@ -10,19 +10,33 @@ class MouritsFetcher(BaseFetcher):
         self.path = ''
 
     def prepare_requests(self):
-        SIZE = 500
+        SIZE = 50
         query = "select distinct t.track_id, track_name, artist_name " \
                 "from Tracks t join Artists a on t.artist_id = a.artist_id " \
-                "left join Lyrics l on l.track_id = t.track_id where l.track_id is NULL"
+                "left join Lyrics l on l.track_id = t.track_id where l.track_lyrics is NULL"
         rows = self.sql_executor.select(query)['rows']
         requests = []
         for row in rows[:SIZE]:
+            print({'track_id': row[0], 's': row[1], 'a': row[2], 'separator': '<br/>'})
             requests.append({'track_id': row[0], 's': row[1], 'a': row[2], 'separator': '<br/>'})
         return requests
 
     # Inserting track_id to Lyrics table regardless of the response - if no lyrics found, insert NULL
-    def response_to_insert_queries(self, request, response):
+    """def response_to_insert_queries(self, request, response):
         query = "insert ignore into Lyrics (track_id, track_lyrics) values ({}, '{}')"\
             .format(request['track_id'],
                     clean_string(response.get('result', {}).get('lyrics', 'NULL')))
+        return [query]
+"""
+    # TEMP
+    def response_to_insert_queries(self, request, response):
+        print(response)
+        if 'success' not in response:
+            return []
+        if 'result' in response and 'lyrics' in response['result']:
+            lyrics = clean_string(response['result']['lyrics'])
+        else:
+            lyrics = '!'
+        track_id = request['track_id']
+        query = "update Lyrics set track_lyrics = '{}' where track_id={} ".format(lyrics, track_id)
         return [query]
