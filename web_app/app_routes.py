@@ -10,6 +10,11 @@ Internal logic, queries etc. are in other places
 """
 
 
+@app_routes.route('/countries')
+def all_countries():
+    return get_all_countries()
+
+
 @app_routes.route('/country_tracks/<country_id>')
 def country_tracks(country_id):
     return get_tracks_by_country(country_id)
