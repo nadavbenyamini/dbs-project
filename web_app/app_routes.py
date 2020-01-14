@@ -10,11 +10,14 @@ Internal logic, queries etc. are in other places
 """
 
 
-@app_routes.route('/country/<country_id>')
-def country_chart(country_id):
-    tracks = get_tracks_by_country(country_id)
-    country_name = tracks[0]['country_name']
-    return render_template(template_name_or_list="country.html", tracks=tracks, country_name=country_name)
+@app_routes.route('/country_tracks/<country_id>')
+def country_tracks(country_id):
+    return get_tracks_by_country(country_id)
+
+
+@app_routes.route('/artist_tracks/<artist_id>')
+def artist_tracks(artist_id):
+    return get_tracks_by_artist(artist_id)
 
 
 @app_routes.route('/show/<tab_name>/<limit>')

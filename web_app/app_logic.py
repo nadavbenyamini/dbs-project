@@ -16,11 +16,22 @@ def get_tracks_by_country(country_id):
             " order by track_rank"
     args = (country_id, )  # Converting to tuple...
     db_results = sql_executor.select(query=query, args=args)
-    tracks = []
-    headers = db_results['headers']
-    for row in db_results['rows']:
-        tracks.append({headers[i]: row[i] for i in range(len(headers))})
-    return tracks
+    return res_to_json(db_results)
+
+
+def get_tracks_by_artist(artist_id):
+    """
+    :param artist_id:
+    :return: tracks: json of the artist's tracks
+    """
+    query = "select * " \
+            "  from Artists a " \
+            "  join Tracks t " \
+            "    on a.artist_id = t.artist_id "\
+            " where a.artist_id = %s"
+    args = (int(artist_id), )  # Converting to tuple...
+    db_results = sql_executor.select(query=query, args=args)
+    return res_to_json(db_results)
 
 
 def get_all_from_table(tab_name, limit):
@@ -32,7 +43,12 @@ def get_all_from_table(tab_name, limit):
     """
     query = "select * from {} limit {}".format(tab_name, limit)  # TODO - prevent SQL Injection
     db_results = sql_executor.select(query=query)
-    rows = []
-    headers = db_results['headers']
-    for row in db_results['rows']:
-        rows.append({headers[i]: row[i] for i in range(len(headers))})
+    return res_to_json(db_results)
+
+
+def res_to_json(res):
+    _rows = []
+    headers = res['headers']
+    for row in res['rows']:
+        _rows.append({headers[i]: row[i] for i in range(len(headers))})
+    return {'success': True, 'results': _rows}
