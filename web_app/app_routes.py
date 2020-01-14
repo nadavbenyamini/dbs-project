@@ -1,11 +1,11 @@
 from flask import render_template
 from flask import Blueprint
-from app.app_logic import *
+from web_app.app_logic import *
 
 app_routes = Blueprint('app_routes', __name__)
 
 """
-This file is for defining inputs and outputs of each route of the app itself
+This file is for defining inputs and outputs of each route of the web_app itself
 Internal logic, queries etc. are in other places
 """
 
