@@ -1,6 +1,7 @@
 from flask import render_template
 from flask import Blueprint
 from web_app.app_logic import *
+from config import *
 
 app_routes = Blueprint('app_routes', __name__)
 
@@ -29,3 +30,8 @@ def artist_tracks(artist_id):
 def show_table(tab_name, limit=100):
     rows = get_all_from_table(tab_name, limit)
     return render_template(template_name_or_list="base.html", rows=rows, title=tab_name)
+
+
+@app_routes.route('/us')
+def temp():
+    return render_template(template_name_or_list="country.html", base_url=BASE_URL)
