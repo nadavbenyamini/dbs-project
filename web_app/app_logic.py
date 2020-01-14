@@ -71,4 +71,4 @@ def res_to_json(res):
     headers = res['headers']
     for row in res['rows']:
         _rows.append({headers[i]: row[i] for i in range(len(headers))})
-    return jsonify({'success': True, 'results': _rows})
+    return jsonify(_rows)

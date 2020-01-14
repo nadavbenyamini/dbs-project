@@ -21,9 +21,10 @@ def country_tracks(country_id):
     return get_tracks_by_country(country_id)
 
 
-@app_routes.route('/artist_tracks/<artist_id>')
+@app_routes.route('/artist_tracks/<artist_id>', methods=['GET'])
 def artist_tracks(artist_id):
-    return get_tracks_by_artist(artist_id)
+    response = get_tracks_by_artist(artist_id)
+    return response
 
 
 @app_routes.route('/show/<tab_name>/<limit>')
