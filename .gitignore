@@ -1,0 +1,8 @@
+**/database/config/
+**/misc.xml
+**/workspace.xml
+
+__pycache__/
+venv/
+tmp/
+.idea/
