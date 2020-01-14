@@ -18,10 +18,10 @@
         for(const row of rows) {
             const tr = document.createElement('tr');
             console.log(row);
-            tr.innerHTML = '<td>' + row['track_name'] + '</td>' +
-            '<td>' + row.track_id + '</td>' +
-            '<td>' + row.country_id + '</td>' +
-            '<td>' + row.rank + '</td>';
+            tr.innerHTML = '<td>' + row['country_id'] + '</td>' +
+            '<td>' + row['country_name'] + '</td>' +
+            '<td>' + row['track_name'] + '</td>' +
+            '<td>' + row['track_rank'] + '</td>';
             $(table).append(tr);
         }
     }
@@ -85,10 +85,10 @@
             <col class="twentyfive" />
         </colgroup>
         <tr>
-            <th onclick="sortTable(0)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspCOUNTRY</th>
-            <th onclick="sortTable(1)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspLOCATION</th>
-            <th onclick="sortTable(2)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspBALANCE</th>
-            <th onclick="sortTable(3)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspDATE</th>
+            <th onclick="sortTable(0)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspCOUNTRY CODE</th>
+            <th onclick="sortTable(1)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspCOUNTRY NAME</th>
+            <th onclick="sortTable(2)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspTRACK</th>
+            <th onclick="sortTable(3)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspRANK</th>
         </tr>
     </table>
 
