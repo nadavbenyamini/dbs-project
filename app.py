@@ -1,6 +1,6 @@
 from flask import Flask
 from data_fetch.data_fetch_routes import data_fetch_routes
-from app.app_routes import app_routes
+from web_app.app_routes import app_routes
 
 app = Flask(__name__)
 app.register_blueprint(data_fetch_routes)
