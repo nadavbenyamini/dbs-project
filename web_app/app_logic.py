@@ -1,5 +1,6 @@
 import traceback
 from database import sql_executor
+from flask import jsonify
 
 
 def get_all_countries():
@@ -70,4 +71,4 @@ def res_to_json(res):
     headers = res['headers']
     for row in res['rows']:
         _rows.append({headers[i]: row[i] for i in range(len(headers))})
-    return {'success': True, 'results': _rows}
+    return jsonify({'success': True, 'results': _rows})
