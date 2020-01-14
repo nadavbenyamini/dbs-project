@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="Code cleanup">
-      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/country.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/country.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/app_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/app_routes.py" afterDir="false" />
-    </list>
+    <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="" />
     <ignored path="database/config/ssh_config.json" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -226,6 +220,16 @@
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="final_project" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="web_app" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -350,13 +354,6 @@
       <workItem from="1578840719778" duration="690000" />
       <workItem from="1578859886015" duration="2316000" />
       <workItem from="1578897866878" duration="3385000" />
-    </task>
-    <task id="LOCAL-00074" summary="Returning full tracebacks and not just error strings">
-      <created>1578034458037</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1578034458037</updated>
     </task>
     <task id="LOCAL-00075" summary="Small fixes in paths">
       <created>1578034476385</created>
@@ -691,17 +688,23 @@
       <option name="project" value="LOCAL" />
       <updated>1579012648839</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="Basic table in html template">
+      <created>1579016020877</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1579016020877</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39465000" />
+    <option name="totallyTimeSpent" value="39966000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="28" width="1857" height="1018" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19513543" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19513543" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -714,7 +717,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.50193477" side_tool="true" visible="true" weight="0.4777651" />
+      <window_info anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.50193477" side_tool="true" visible="true" weight="0.4777651" />
       <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.4997236" weight="0.3295325" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="13" />
@@ -730,7 +733,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Cleaning useless code" />
     <MESSAGE value="Added population to country model, pulling charts for top countries" />
     <MESSAGE value="Pulling top 3 countries only for a start" />
     <MESSAGE value="Comment" />
@@ -755,7 +757,8 @@
     <MESSAGE value="API returns real JSON instead of template" />
     <MESSAGE value="Added /countries API" />
     <MESSAGE value="Code cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup" />
+    <MESSAGE value="Basic table in html template" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic table in html template" />
   </component>
   <component name="WindowStateProjectService">
     <state x="872" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578592231393">
