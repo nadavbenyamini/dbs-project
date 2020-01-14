@@ -27,6 +27,5 @@ class MouritsFetcher(BaseFetcher):
             track_lyrics = '!'
         else:
             track_lyrics = clean_string(response['result']['lyrics'])
-        query = "insert ignore into Lyrics (track_id, track_lyrics) values ({}, '{}')"\
-            .format(request['track_id'], track_lyrics)
+        query = "update Lyrics set track_lyrics = {} where track_id = {}".format(request['track_id'], track_lyrics)
         return [query]
