@@ -63,7 +63,7 @@ def query_to_json(query, args=None):
         db_results = sql_executor.select(query=query, args=args)
         return res_to_json(db_results)
     except Exception as e:
-        return {'success': False, 'error': str(e), 'traceback': traceback.format_exc()}
+        return jsonify({'success': False, 'error': str(e), 'traceback': traceback.format_exc()})
 
 
 def res_to_json(res):

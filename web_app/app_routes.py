@@ -6,8 +6,8 @@ from config import *
 app_routes = Blueprint('app_routes', __name__)
 
 """
-This file is for defining inputs and outputs of each route of the web_app itself
-Internal logic, queries etc. are in other places
+This file is for defining the app's API routes
+Internal logic, queries, etc. are in other places
 """
 
 
@@ -36,27 +36,3 @@ def show_table(tab_name, limit=100):
 @app_routes.route('/test')
 def temp():
     return render_template(template_name_or_list="charts_albums.html", base_url=BASE_URL)
-
-"""
-    <script>
-    function launch() {
-        const base_url = '{{ base_url }}';
-            fetch('http://' + base_url + '/country_tracks/us').then(res => res.json())
-                .then(res => build_table(res['results']))
-                .catch(e => console.log(e));
-        }
-
-    function build_table(rows) {
-        const table = document.getElementById('gable');
-        for(const row of rows) {
-            const tr = document.createElement('tr');
-            console.log(row);
-            tr.innerHTML = '<td>' + row['track_name'] + '</td>' +
-            '<td>' + row.track_id + '</td>' +
-            '<td>' + row.country_id + '</td>' +
-            '<td>' + row.rank + '</td>';
-            $(table).append(tr);
-        }
-    }
-    </script>
-"""
