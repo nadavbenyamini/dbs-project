@@ -43,14 +43,19 @@ def get_tracks_by_artist(artist_id):
 def get_all_from_table(tab_name, limit):
     """
     An *UNSAFE* *TEMPORARY* method for testing
+    # TODO - prevent SQL Injection (maybe make this a private method)
     :param tab_name: table in our DB
     :param limit: #rows
     :return: simple JSON of select * from tab_name
     """
-    query = "select * from {} limit {}".format(tab_name, limit)  # TODO - prevent SQL Injection
+    query = "select * from {} limit {}".format(tab_name, limit)
     db_results = sql_executor.select(query=query)
     return res_to_json(db_results)
 
+
+# ------------------------------------------------------------------------------------------ #
+# -----------------------------------  Utilities ------------------------------------------- #
+# ------------------------------------------------------------------------------------------ #
 
 def query_to_json(query, args=None):
     try:
