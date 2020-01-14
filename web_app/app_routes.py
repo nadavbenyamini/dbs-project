@@ -36,3 +36,11 @@ def show_table(tab_name, limit=100):
 @app_routes.route('/test')
 def temp():
     return render_template(template_name_or_list="charts_albums.html", base_url=BASE_URL)
+
+
+@app_routes.errorhandler(APIException)
+def handle_error(error):
+    response = error.to_json()
+    response.status_code = error.status_code
+    return response
+

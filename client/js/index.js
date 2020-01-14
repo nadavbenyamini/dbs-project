@@ -18,7 +18,7 @@ var table_artists = new Tabulator("#artists-table", {
 var table_artist = new Tabulator("#artist-table", {
  	height:"311px",
     layout:"fitColumns",
-	ajaxURL:"http://127.0.0.1:5001/artist_tracks/26",
+	ajaxURL:"http://127.0.0.1:5001/artist_tracks/107777739",
 	paginationSize:20,
     placeholder:"No Data Set",
  	columns:[ //Define Table Columns

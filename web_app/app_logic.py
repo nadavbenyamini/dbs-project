@@ -55,15 +55,17 @@ def get_all_from_table(tab_name, limit):
 
 
 # ------------------------------------------------------------------------------------------ #
-# -----------------------------------  Utilities ------------------------------------------- #
+# ---------------------------------  General Utilities ------------------------------------- #
 # ------------------------------------------------------------------------------------------ #
 
 def query_to_json(query, args=None):
     try:
         db_results = sql_executor.select(query=query, args=args)
         return res_to_json(db_results)
+    except sql_executor.NoResultsException as e:
+        raise APIException(e.message, status_code=404)
     except Exception as e:
-        return jsonify({'success': False, 'error': str(e), 'traceback': traceback.format_exc()})
+        raise APIException(e.message, status_code=500)
 
 
 def res_to_json(res):
@@ -72,3 +74,22 @@ def res_to_json(res):
     for row in res['rows']:
         _rows.append({headers[i]: row[i] for i in range(len(headers))})
     return jsonify(_rows)
+
+
+class APIException(Exception):
+    """
+    Customer error raising.
+    For example wrong track id should be error 404 not 500
+    """
+    status_code = 400
+
+    def __init__(self, message, status_code=400):
+        Exception.__init__(self)
+        print('Message: {}\n{}'.format(message, traceback.format_exc()))
+        self.message = message
+        if status_code is not None:
+            self.status_code = status_code
+
+    def to_json(self):
+        return jsonify({'message': self.message})
+
