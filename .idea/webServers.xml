@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="32757b74-c3f7-4a50-857e-8fdd359372cf" name="nova" url="http://nova.cs.tau.ac.il">
+        <fileTransfer host="nova.cs.tau.ac.il" port="22" rootFolder="/a/home/cc/students/cs/benyamini1/DBSystems/final-project" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -22,7 +22,8 @@ def country_chart(country_id):
     for row in db_results['rows']:
         tracks.append({headers[i]: row[i] for i in range(len(headers))})
     country_name = tracks[0]['country_name']
-    return render_template(template_name_or_list="country.html", tracks=tracks, country_name=country_name)
+    return country_name
+    # render_template(template_name_or_list="country.html", tracks=tracks, country_name=country_name)
 
 
 @app_routes.route('/show/<tab_name>/<limit>')

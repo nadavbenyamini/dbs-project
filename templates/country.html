@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        const base_url = '{{ base_url }}';
+        function launch() {
+            console.log('fetching from ' + base_url + '/country/us');
+            fetch('http://' + base_url + '/country/us')
+                .then(res => console.log(res.body))
+                .catch(e => console.log(e));
+        }
+    </script>
     <meta charset="UTF-8">
-    <title>{{ country_id }}</title>
+    <title></title>
 </head>
-<body>
-<h1>Top hits in {{ country_name }}</h1>
-{% for track in tracks %}
-    <div>
-        {% for key in track %}
-        {{ key }}: <b>{{ track[key] }}</b>
-        {% endfor %}
-    </div>
-{% endfor %}
+<body onload="launch()">
+    <h1>Loading...</h1>
 </body>
 </html>

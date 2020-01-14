@@ -10,7 +10,7 @@ class MouritsFetcher(BaseFetcher):
         self.path = ''
 
     def prepare_requests(self):
-        SIZE = 2
+        SIZE = 3
         query = "select distinct t.track_id, track_name, artist_name " \
                 "from Tracks t join Artists a on t.artist_id = a.artist_id " \
                 "left join Lyrics l on l.track_id = t.track_id where l.track_lyrics is NULL"
@@ -27,5 +27,5 @@ class MouritsFetcher(BaseFetcher):
             track_lyrics = '!'
         else:
             track_lyrics = clean_string(response['result']['lyrics'])
-        query = "update Lyrics set track_lyrics = {} where track_id = {}".format(request['track_id'], track_lyrics)
+        query = "update Lyrics set track_lyrics = '{}' where track_id = {}".format(track_lyrics, request['track_id'])
         return [query]

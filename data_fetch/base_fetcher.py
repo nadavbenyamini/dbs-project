@@ -42,12 +42,16 @@ class BaseFetcher:
             try:
                 response = self.fetch(req)
                 self.api_responses.append(response.json())
-                self.queries += self.response_to_insert_queries(req, response.json())
+                # self.queries += self.response_to_insert_queries(req, response.json())
+                self.queries = self.response_to_insert_queries(req, response.json())
+                self.execute_insert_queries()
             except Exception as e:
                 print(e)
                 self.api_errors.append(str(e))
             finally:
                 i += 1
+        self.queries = []
+
 
     def get_url(self):
         """
@@ -69,6 +73,7 @@ class BaseFetcher:
         """
         i = 0
         for query in self.queries:
+            print(query)
             i += 1
             try:
                 response = sql_executor.insert(query, use_ssh=True)
