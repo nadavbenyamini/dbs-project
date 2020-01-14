@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app_logic.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/app_logic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/app_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_fetch/data_fetch_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetch/data_fetch_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/app_logic.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/app_logic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/app_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/app_routes.py" afterDir="false" />
     </list>
     <ignored path="database/config/ssh_config.json" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_app/app_routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+            <state relative-caret-position="36">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -63,20 +62,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web_app/app_logic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+            <state relative-caret-position="265">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,16 +134,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Flask Main" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>countries</find>
-      <find>desc</find>
-      <find>select</find>
       <find>responses_to_</find>
       <find>self.responses</find>
       <find>self.respon</find>
@@ -178,6 +168,9 @@
       <find>fetc</find>
       <find>print(str(a</find>
       <find>execute_insert_queries</find>
+      <find>from</find>
+      <find>from app.</find>
+      <find>artist</find>
     </findStrings>
     <replaceStrings>
       <replace>execute_insert_queries</replace>
@@ -187,6 +180,7 @@
       <replace>get_model_distinct_values_by_field</replace>
       <replace>get_values_by_field</replace>
       <replace>get_values_by_multiple_fields</replace>
+      <replace>from web_app.</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -216,6 +210,10 @@
         <option value="$PROJECT_DIR$/app/app_routes.py" />
         <option value="$PROJECT_DIR$/app/logic.py" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/artist.html" />
+        <option value="$PROJECT_DIR$/web_app/app_routes.py" />
+        <option value="$PROJECT_DIR$/web_app/utils.py" />
+        <option value="$PROJECT_DIR$/web_app/app_logic.py" />
       </list>
     </option>
   </component>
@@ -243,6 +241,11 @@
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="final_project" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="web_app" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -277,11 +280,11 @@
       <recent name="$PROJECT_DIR$/models/models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web_app" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/data_fetch" />
       <recent name="$PROJECT_DIR$/data_fetch/musix_match" />
       <recent name="$PROJECT_DIR$/database/queries" />
-      <recent name="$PROJECT_DIR$/models/models" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -368,20 +371,6 @@
       <workItem from="1578840719778" duration="690000" />
       <workItem from="1578859886015" duration="2316000" />
       <workItem from="1578897866878" duration="3385000" />
-    </task>
-    <task id="LOCAL-00070" summary="Renaming column">
-      <created>1577983709282</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1577983709282</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Aligning column names between artist fetcher and model">
-      <created>1577985080330</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1577985080331</updated>
     </task>
     <task id="LOCAL-00072" summary="Printing full traceback instead of error message only">
       <created>1578002254578</created>
@@ -709,17 +698,31 @@
       <option name="project" value="LOCAL" />
       <updated>1579009440737</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="Fixed names">
+      <created>1579009547522</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1579009547522</updated>
+    </task>
+    <task id="LOCAL-00120" summary="API returns real JSON instead of template">
+      <created>1579010362366</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1579010362366</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33420000" />
+    <option name="totallyTimeSpent" value="36115000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="28" width="1857" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19513543" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19513543" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -748,8 +751,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Raising error if query returned 0 results" />
-    <MESSAGE value="Made path fetcher's code more readable" />
     <MESSAGE value="Query to build DB" />
     <MESSAGE value="Cleaner documentation" />
     <MESSAGE value="Cleaning useless code" />
@@ -773,7 +774,9 @@
     <MESSAGE value="Lyrics - one by one" />
     <MESSAGE value="Refactoring folders" />
     <MESSAGE value="initiated an api to get country chart" />
-    <option name="LAST_COMMIT_MESSAGE" value="initiated an api to get country chart" />
+    <MESSAGE value="Fixed names" />
+    <MESSAGE value="API returns real JSON instead of template" />
+    <option name="LAST_COMMIT_MESSAGE" value="API returns real JSON instead of template" />
   </component>
   <component name="WindowStateProjectService">
     <state x="872" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578592231393">
@@ -948,13 +951,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/track.html" />
-    <entry file="file://$PROJECT_DIR$/templates/country.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_fetch/data_fetch_routes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -962,23 +958,6 @@
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/app_routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/app_logic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -991,8 +970,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/artist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/country.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/app_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/app_logic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

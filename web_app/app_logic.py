@@ -1,4 +1,12 @@
+import traceback
 from database import sql_executor
+
+
+def get_all_countries():
+    """
+    :return: JSON of Countries table
+    """
+    return get_all_from_table('Countries', 1000)
 
 
 def get_tracks_by_country(country_id):
@@ -15,8 +23,7 @@ def get_tracks_by_country(country_id):
             " where c.country_id = %s" \
             " order by track_rank"
     args = (country_id, )  # Converting to tuple...
-    db_results = sql_executor.select(query=query, args=args)
-    return res_to_json(db_results)
+    return query_to_json(query, args)
 
 
 def get_tracks_by_artist(artist_id):
@@ -30,8 +37,7 @@ def get_tracks_by_artist(artist_id):
             "    on a.artist_id = t.artist_id "\
             " where a.artist_id = %s"
     args = (int(artist_id), )  # Converting to tuple...
-    db_results = sql_executor.select(query=query, args=args)
-    return res_to_json(db_results)
+    return query_to_json(query, args)
 
 
 def get_all_from_table(tab_name, limit):
@@ -44,6 +50,14 @@ def get_all_from_table(tab_name, limit):
     query = "select * from {} limit {}".format(tab_name, limit)  # TODO - prevent SQL Injection
     db_results = sql_executor.select(query=query)
     return res_to_json(db_results)
+
+
+def query_to_json(query, args=None):
+    try:
+        db_results = sql_executor.select(query=query, args=args)
+        return res_to_json(db_results)
+    except Exception as e:
+        return {'success': False, 'error': str(e), 'traceback': traceback.format_exc()}
 
 
 def res_to_json(res):
