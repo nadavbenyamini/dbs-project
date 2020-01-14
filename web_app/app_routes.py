@@ -6,8 +6,8 @@ from config import *
 app_routes = Blueprint('app_routes', __name__)
 
 """
-This file is for defining inputs and outputs of each route of the web_app itself
-Internal logic, queries etc. are in other places
+This file is for defining the app's API routes
+Internal logic, queries, etc. are in other places
 """
 
 
