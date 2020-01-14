@@ -15,10 +15,12 @@ def select(query, args=None, use_ssh=False):
                 res['headers'] = list(row.keys())
             res['rows'].append([row[k] for k in res['headers']])
         if len(res['headers']) == 0:
-            raise Exception('Query returned 0 results: {}'.format(query))
+            raise NoResultsException()
         else:
             return res
     except Exception as e:
+        if type(e) == NoResultsException:
+            raise e
         raise Exception('Select query failed. Query: {} Error Traceback: {}'.format(query, traceback.format_exc()))
     finally:
         if cursor:
@@ -39,7 +41,7 @@ def insert(query, args=None, use_ssh=False):
             cursor.close()
 
 
-# TODO: Implement "use_ssh" feature
+# TODO: Implement "use_ssh" feature or remove this before deployment
 def __execute(queries, use_ssh=False):
     """
     Private function, should be accessed by one of the functions above
@@ -82,3 +84,10 @@ def __execute(queries, use_ssh=False):
             db.commit()
             cursors.append(cur)
     return cursors
+
+
+# To separate errors 404 and 500 in UI
+class NoResultsException(Exception):
+    def __init__(self, message='Query returned 0 results'):
+        self.message = message
+
