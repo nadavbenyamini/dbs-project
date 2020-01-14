@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        const base_url = '{{ base_url }}';
+        function launch() {
+            fetch('http://' + base_url + '/country_tracks/us').then(res => res.json())
+                .then(res => build_table(res['results']))
+                .catch(e => console.log(e));
+        }
+
+        function build_table(rows){
+            console.log(rows);
+            const table = document.getElementById('table');
+            document.getElementById("header").innerHTML="Track Chart";
+            // Adding headers
+            const tr = $('<tr/>');
+            for (const col in rows[0]) {
+                console.log(col);
+                tr.append($('<th/>').html(col));
+            }
+            $(table).append(tr);
+
+            // Adding rows
+            for (let i = 0; i < rows.length; i++) {
+                const tr = $('<tr/>');
+                for (const col in rows[i]) {
+                    let val = rows[i][col];
+                    if (!val) val = "";
+                    tr.append($('<td/>').html(val));
+                }
+                // Adding each row to the table
+                $(table).append(tr);
+            }
+        }
+    </script>
     <meta charset="UTF-8">
-    <title>{{ country_id }}</title>
+    <title></title>
 </head>
-<body>
-<h1>Top hits in {{ country_name }}</h1>
-{% for track in tracks %}
-    <div>
-        {% for key in track %}
-        {{ key }}: <b>{{ track[key] }}</b>
-        {% endfor %}
-    </div>
-{% endfor %}
+<body onload="launch()" id="body">
+    <h1 id="header">Loading...</h1>
+    <table id="table" border="1"/>
 </body>
 </html>
