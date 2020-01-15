@@ -78,6 +78,12 @@ def get_tracks_by_country(country_id):
     return query_to_json(query, args)
 
 
+def get_artists_by_country(country_id):
+    query = "select * from Artists where artist_country_id = %s"
+    args = (country_id,)  # Converting to tuple...
+    return query_to_json(query, args)
+
+
 def get_tracks_by_artist(artist_id):
     """
     :param artist_id:
