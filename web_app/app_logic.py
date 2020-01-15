@@ -23,37 +23,34 @@ def search_track(by_lyrics=False, search_text="", from_date=None, to_date=None,
     :param artist: Optional
     :return: List of tracks that match the above conditions
     """
-    query = "select t.*, ar.artist_name, al.album_name, g.genre_name" \
+    query = "select t.track_id, t.track_name, t.track_release_date, ar.artist_name, al.album_name, g.genre_name" \
             "  from Tracks t" \
             "  join Albums al on al.album_id = t.album_id and ({ALBUM_FILTER})" \
-            "  join Artist ar on ar.artist_id = t.artist_id and ({ARTIST_FILTER}) " \
-            "  join Genres g on g.genre = g.genre and ({GENRE_FILTER}) " \
+            "  join Artists ar on ar.artist_id = t.artist_id and ({ARTIST_FILTER}) " \
+            "  join Genres g on g.genre_id = t.genre_id and ({GENRE_FILTER}) " \
             " where ({DATE_FILTER})" \
             "   and ({TEXT_FILTER})"
 
     args = []
     date_filter, album_filter, genre_filter, artist_filter = "1=1", "1=1", "1=1", "1=1"
     if album is not None:
-        album_filter = 'al.album_name = %(album)s'
+        album_filter = "al.album_name = %s"
         args.append(album)
 
     if artist is not None:
-        artist_filter = 'ar.artist_name = %(artist)s'
+        artist_filter = "ar.artist_name = %s"
         args.append(artist)
 
     if genre is not None:
-        genre_filter = 'g.genre_name = %(genre)s'
+        genre_filter = "g.genre_name = %s"
         args.append(genre)
 
     if from_date is not None and to_date is not None:
-        date_filter = 'track_release date between %(from_date)s and %(to_date)s'
+        date_filter = 'track_release date between %s and %s'
         args += [from_date, to_date]
 
-    if by_lyrics:
-        text_filter = " track_lyrics like '%'||%(text)s||'%'"
-    else:
-        text_filter = " track_name like '%'||%(text)s||'%'"
-    args.append(search_text)
+    text_filter = "{} like %s".format('track_lyrics' if by_lyrics else 'track_name')
+    args.append("%"+search_text+"%")
 
     query = query.format(DATE_FILTER=date_filter,
                          ALBUM_FILTER=album_filter,
@@ -122,9 +119,9 @@ def query_to_json(query, args=None):
         db_results = sql_executor.select(query=query, args=args)
         return res_to_json(db_results)
     except sql_executor.NoResultsException as e:
-        raise APIException(e.message, status_code=404)
+        raise APIException(str(e), status_code=404)
     except Exception as e:
-        raise APIException(e.message, status_code=500)
+        raise APIException(str(e), status_code=500)
 
 
 def res_to_json(res):

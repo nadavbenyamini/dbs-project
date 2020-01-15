@@ -15,6 +15,7 @@ Internal logic, queries, etc. are in other places
 @app_routes.route('/search/track')
 def search_tracks_route():
     params = request.args
+    assert 'search_text' in params
     return search_track(by_lyrics=params.get('by_lyrics', False),
                         search_text=params.get('search_text', None),
                         from_date=params.get('from_date', None),
