@@ -1,5 +1,6 @@
 from flask import render_template
 from flask import Blueprint
+from flask import request
 from web_app.app_logic import *
 from config import *
 
@@ -9,6 +10,18 @@ app_routes = Blueprint('app_routes', __name__)
 This file is for defining the app's API routes
 Internal logic, queries, etc. are in other places
 """
+
+
+@app_routes.route('/search/track')
+def search_tracks_route():
+    params = request.args
+    return search_track(by_lyrics=params.get('by_lyrics', False),
+                        search_text=params.get('search_text', None),
+                        from_date=params.get('from_date', None),
+                        to_date=params.get('to_date', None),
+                        genre=params.get('genre', None),
+                        album=params.get('album', None),
+                        artist=params.get('artist', None))
 
 
 @app_routes.route('/countries')
