@@ -2,6 +2,7 @@ from flask import render_template
 from flask import Blueprint
 from flask import request
 from web_app.app_logic import *
+from web_app.track import *
 from config import *
 
 app_routes = Blueprint('app_routes', __name__)
@@ -43,7 +44,7 @@ def artist_tracks(artist_id):
 
 @app_routes.route('/tracks/<track_id>', methods=['GET'])
 def get_track(track_id):
-    response = get_tracks_by_id(track_id)
+    response = get_track_by_id(track_id)
     return response
 
 
