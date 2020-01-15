@@ -1,8 +1,8 @@
 from flask import render_template
 from flask import Blueprint
 from flask import request
-from web_app.app_logic import *
 from web_app.track import *
+from web_app.artist import *
 from config import *
 
 app_routes = Blueprint('app_routes', __name__)
@@ -28,10 +28,10 @@ def search_tracks_route():
 
 @app_routes.route('/artists/<country_id>', methods=['GET'])
 def country_artists(country_id):
-    return get_artists_by_country(country_id)
+    return get_artists_by_country_id(country_id)
 
 
-@app_routes.route('/countries')
+@app_routes.route('/countries', methods=['GET'])
 def all_countries():
     return get_all_countries()
 
