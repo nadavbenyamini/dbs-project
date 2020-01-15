@@ -19,8 +19,9 @@ function getAllCountries(){
 }
 
 $(function(){
-    getAllCountries()
-});
+    console.log("load");
+    getAllCountries();
+})
 
 function spinner_visibilty(show){
 	console.log(show)
