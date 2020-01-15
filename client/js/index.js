@@ -4,12 +4,28 @@ server = "127.0.0.1"
 port = "5001"
 var table_artist;
 
+function spinner_visibilty(show){
+	console.log(show)
+	if(show){
+		$(".spinner-border").show();
+	}else{
+		$(".spinner-border").hide();
+	}
+}
+
  //create Tabulator on DOM element with id "example-table"
 var table_artists = new Tabulator("#artists-table", {
  	height:"311px",
     layout:"fitColumns",
 	ajaxURL:`http://${server}:${port}/artists`,
     placeholder:"No Data Set",
+	ajaxResponse:function(url, params, response){
+        //url - the URL of the request
+        //params - the parameters passed with the request
+        //response - the JSON object returned in the body of the response.
+	
+        return response; //return the tableData property of a response json object
+    },
  	columns:[ //Define Table Columns
 		{title:"Id", field:"artist_id", visible:false},
 	 	{title:"Name", field:"artist_name", width:150},
@@ -18,7 +34,7 @@ var table_artists = new Tabulator("#artists-table", {
  	],
  	rowClick:function(e, row){ //trigger an alert message when the row is clicked
  		//alert("Row " + row.getData().artist_id + " Clicked!!!!");
-		console.log(`http://${server}:${port}/artist_tracks/${row.getData().artist_id}`)
+		//console.log(`http://${server}:${port}/artist_tracks/${row.getData().artist_id}`)
 		table_artist.setData(`http://${server}:${port}/artist_tracks/${row.getData().artist_id}`)
 		$("#artists-table").hide();
 		$("#artist-table").show();
@@ -50,10 +66,12 @@ table_artist = new Tabulator("#artist-table", {
  	],
  	rowClick:function(e, row){ //trigger an alert message when the row is clicked
  		//alert("Row " + row.getData().id + " Clicked!!!!");
+		spinner_visibilty(true)
 		$.get({
 			url:`http://${server}:${port}/tracks/${row.getData().track_id}`,
 			success:function(result){
 				console.log(result[0])
+				spinner_visibilty(false)
 				$("#card_track_name").html(result[0]["track_name"])
 				$("#card_lyrics").html(result[0]["track_lyrics"])
 				$("#card_artist").html(result[0]["artist_name"])
