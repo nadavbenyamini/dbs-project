@@ -3,6 +3,24 @@
 server = "127.0.0.1"
 port = "5001"
 var table_artist;
+var countries;
+
+function getAllCountries(){
+    $.get({
+        url:`http://${server}:${port}/countries`,
+        success:function(result){
+           countries = result;
+           //console.log(result)
+            countries.forEach(function(item){
+                 $("#inlineFormCustomSelectPref").append(`<option value="${item.country_id}">${item.country_name}</option>`)
+            });
+        }
+    });
+}
+
+$(function(){
+    getAllCountries()
+});
 
 function spinner_visibilty(show){
 	console.log(show)
@@ -23,7 +41,6 @@ var table_artists = new Tabulator("#artists-table", {
         //url - the URL of the request
         //params - the parameters passed with the request
         //response - the JSON object returned in the body of the response.
-	
         return response; //return the tableData property of a response json object
     },
  	columns:[ //Define Table Columns
@@ -48,7 +65,7 @@ table_artist = new Tabulator("#artist-table", {
         //url - the URL of the request
         //params - the parameters passed with the request
         //response - the JSON object returned in the body of the response.
-		console.log(response)
+		//console.log(response)
 		response.forEach(function(item){
 			item["track_rating"] = item["track_rating"]/20
 		})
@@ -85,8 +102,21 @@ table_artist = new Tabulator("#artist-table", {
 //trigger button click
 $("#card_google_link").click(function(){
 	q = $("#card_track_name").html()+" and "+$("#card_artist").html()
-	window.open('http://google.com/search?q='+q);
+	window.open('http://google.com/search?q='+q, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
 });
+
+$("#music-form").submit(function(e){
+    console.log("submit")
+    e.preventDefault()
+    let country_id = $("#inlineFormCustomSelectPref")[0].value
+    $.get({
+        url:`http://${server}:${port}/artists/${country_id}`,
+        success:function(result){
+            table_artists.setData(result)
+        }
+    });
+
+})
 
 //custom max min header filter
 var minMaxFilterEditor = function(cell, onRendered, success, cancel, editorParams){
