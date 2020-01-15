@@ -30,9 +30,6 @@ def country_artists(country_id):
     return get_artists_by_country(country_id)
 
 
-@app_routes.route('/countries', methods=['GET'])
-
-
 @app_routes.route('/countries')
 def all_countries():
     return get_all_countries()
@@ -41,6 +38,7 @@ def all_countries():
 @app_routes.route('/country_tracks/<country_id>', methods=['GET'])
 def country_tracks(country_id):
     return get_tracks_by_country(country_id)
+
 
 @app_routes.route('/artist_tracks/<artist_id>', methods=['GET'])
 def artist_tracks(artist_id):
