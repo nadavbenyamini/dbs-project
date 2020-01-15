@@ -4,11 +4,11 @@ from flask import jsonify
 
 
 def get_all_countries():
-    return get_all_from_table('Countries', 1000)
+    return get_all_from_table('Countries', 10000)
 
 
 def get_all_artists():
-    return get_all_from_table('Artists', 1000)
+    return get_all_from_table('Artists', 10000)
 
 
 def search_track(by_lyrics=False, search_text="", from_date=None, to_date=None,
