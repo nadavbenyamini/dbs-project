@@ -10,6 +10,11 @@ def get_all_countries():
     return get_all_from_table('Countries', 1000)
 
 
+def get_all_artists():
+    return get_all_from_table('Artists', 1000)
+
+
+
 def get_tracks_by_country(country_id):
     """
     :param country_id:
@@ -33,11 +38,16 @@ def get_tracks_by_artist(artist_id):
     :return: tracks: json of the artist's tracks
     """
     query = "select * " \
-            "  from Artists a " \
-            "  join Tracks t " \
-            "    on a.artist_id = t.artist_id "\
-            " where a.artist_id = %s"
+            "from Artists a, Tracks t, Albums al, Genres g "\
+            "where a.artist_id = %s "\
+            "and t.artist_id = a.artist_id and al.album_id=t.album_id and g.genre_id = t.genre_id "
     args = (int(artist_id), )  # Converting to tuple...
+    return query_to_json(query, args)
+
+
+def get_tracks_by_id(track_id):
+    query = "select * from Tracks t, Artists a where track_id = %s and t.artist_id = a.artist_id"
+    args = int(track_id)
     return query_to_json(query, args)
 
 

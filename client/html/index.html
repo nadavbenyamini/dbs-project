@@ -10,35 +10,40 @@
 	<link href="https://unpkg.com/tabulator-tables@4.5.3/dist/css/tabulator.min.css" rel="stylesheet">
 	<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.5.3/dist/js/tabulator.min.js"></script>
 	
-
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
-	<script type="text/javascript" src="../js/index.js" defer></script>
+	<link href="/dist/css/semantic-ui/tabulator_semantic-ui.min.css" rel="stylesheet">
 	
 </head>
 <body>
 
 	<h1>My First Heading</h1>
+	<br>
 	<div id="artists-table"></div>
-	<div id="artist-table"></div>
+	<br>
+	<div style="display:none;" id="artist-table"></div>
 	
-	<div id="sond_lyrics" class="card">
+	
+	<div style="display:none;" id="sond_lyrics" class="card">
 		<div class="card-header">
 		Song Lyrics
 		</div>
 		<div class="card-body">
-			<h5 class="card-title">Song Name</h5>
-			<h6 class="card-subtitle mb-2 text-muted">Author</h6>
-			<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-			<a href="#" class="btn btn-primary">Google link</a>
+			<h5 id="card_track_name" class="card-title">Song Name</h5>
+			<p id="card_lyrics" class="card-text"></p>
+			<a id="card_google_link" href="#" class="btn btn-secondary">Google link</a>
+			<div id="card_artist" hidden></div>
 		</div>
 	</div>
+	
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/index.js" defer></script>
   
 </body>
 </html>

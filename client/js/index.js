@@ -1,40 +1,149 @@
 //define some sample data
  
+server = "127.0.0.1"
+port = "5001"
+var table_artist;
+
  //create Tabulator on DOM element with id "example-table"
 var table_artists = new Tabulator("#artists-table", {
  	height:"311px",
     layout:"fitColumns",
+	ajaxURL:`http://${server}:${port}/artists`,
     placeholder:"No Data Set",
  	columns:[ //Define Table Columns
-	 	{title:"Name", field:"name", width:150},
-	 	{title:"Rating", field:"age", align:"left", formatter:"progress"},
-	 	{title:"Country", field:"col"},
+		{title:"Id", field:"artist_id", visible:false},
+	 	{title:"Name", field:"artist_name", width:150},
+	 	{title:"Rating", field:"artist_rating", align:"left", formatter:"progress"},
+	 	{title:"Country", field:"artist_country_id"},
  	],
  	rowClick:function(e, row){ //trigger an alert message when the row is clicked
- 		alert("Row " + row.getData().id + " Clicked!!!!");
+ 		//alert("Row " + row.getData().artist_id + " Clicked!!!!");
+		console.log(`http://${server}:${port}/artist_tracks/${row.getData().artist_id}`)
+		table_artist.setData(`http://${server}:${port}/artist_tracks/${row.getData().artist_id}`)
+		$("#artists-table").hide();
+		$("#artist-table").show();
  	},
 });
 
-var table_artist = new Tabulator("#artist-table", {
- 	height:"311px",
+table_artist = new Tabulator("#artist-table", {
+ 	height:"400px",
     layout:"fitColumns",
-	ajaxURL:"http://127.0.0.1:5001/artist_tracks/107777739",
-	paginationSize:20,
-    placeholder:"No Data Set",
+	ajaxResponse:function(url, params, response){
+        //url - the URL of the request
+        //params - the parameters passed with the request
+        //response - the JSON object returned in the body of the response.
+		console.log(response)
+		response.forEach(function(item){
+			item["track_rating"] = item["track_rating"]/20
+		})
+        return response; //return the tableData property of a response json object
+    },
  	columns:[ //Define Table Columns
-	 	{title:"Track", field:"track_name", width:150},
-		{title:"Album", field:"album_id"},
-		{title:"Genere", field:"genre_id"},
+		{title:"Id", field:"al.artist_id", visible:false},
+		{title:"Id", field:"track_id", visible:false},
+		{title:"Id", field:"album_id", visible:false},
+	 	{title:"Track", field:"track_name", width:150, headerFilter:"input"},
+		{title:"Album", field:"album_name", headerFilter:"input"},
+		{title:"Genere", field:"genre_name"},
 	 	{title:"Rating", field:"track_rating", align:"left", formatter:"star"},
-	 	{title:"Track release", field:"track_release_date", sorter:"date"},
+	 	{title:"Track release", field:"track_release_date", sorter:"date", headerFilter:"input"},
  	],
  	rowClick:function(e, row){ //trigger an alert message when the row is clicked
- 		alert("Row " + row.getData().id + " Clicked!!!!");
+ 		//alert("Row " + row.getData().id + " Clicked!!!!");
+		$.get({
+			url:`http://${server}:${port}/tracks/${row.getData().track_id}`,
+			success:function(result){
+				console.log(result[0])
+				$("#card_track_name").html(result[0]["track_name"])
+				$("#card_lyrics").html(result[0]["track_lyrics"])
+				$("#card_artist").html(result[0]["artist_name"])
+				$("#artist-table").hide();
+				$("#sond_lyrics").show();
+			}
+		});
  	},
 });
 
-
-//trigger AJAX load on "Load Data via AJAX" button click
-$("#ajax-trigger").click(function(){
-    table.setData("/artists	data/ajax");
+//trigger button click
+$("#card_google_link").click(function(){
+	q = $("#card_track_name").html()+" and "+$("#card_artist").html()
+	window.open('http://google.com/search?q='+q);
 });
+
+//custom max min header filter
+var minMaxFilterEditor = function(cell, onRendered, success, cancel, editorParams){
+
+    var end;
+
+    var container = document.createElement("span");
+
+    //create and style inputs
+    var start = document.createElement("input");
+    start.setAttribute("type", "number");
+    start.setAttribute("placeholder", "Min");
+    start.setAttribute("min", 0);
+    start.setAttribute("max", 100);
+    start.style.padding = "4px";
+    start.style.width = "50%";
+    start.style.boxSizing = "border-box";
+
+    start.value = cell.getValue();
+
+    function buildValues(){
+        success({
+            start:start.value,
+            end:end.value,
+        });
+    }
+
+    function keypress(e){
+        if(e.keyCode == 13){
+            buildValues();
+        }
+
+        if(e.keyCode == 27){
+            cancel();
+        }
+    }
+
+    end = start.cloneNode();
+    end.setAttribute("placeholder", "Max");
+
+    start.addEventListener("change", buildValues);
+    start.addEventListener("blur", buildValues);
+    start.addEventListener("keydown", keypress);
+
+    end.addEventListener("change", buildValues);
+    end.addEventListener("blur", buildValues);
+    end.addEventListener("keydown", keypress);
+
+
+    container.appendChild(start);
+    container.appendChild(end);
+
+    return container;
+ }
+
+//custom max min filter function
+function minMaxFilterFunction(headerValue, rowValue, rowData, filterParams){
+    //headerValue - the value of the header filter element
+    //rowValue - the value of the column in this row
+    //rowData - the data for the row being filtered
+    //filterParams - params object passed to the headerFilterFuncParams property
+
+        if(rowValue){
+            if(headerValue.start != ""){
+                if(headerValue.end != ""){
+                    return rowValue >= headerValue.start && rowValue <= headerValue.end;
+                }else{
+                    return rowValue >= headerValue.start;
+                }
+            }else{
+                if(headerValue.end != ""){
+                    return rowValue <= headerValue.end;
+                }
+            }
+        }
+
+    return false; //must return a boolean, true if it passes the filter.
+}
