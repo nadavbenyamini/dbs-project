@@ -27,6 +27,18 @@ def artist_tracks(artist_id):
     return response
 
 
+@app_routes.route('/tracks/<track_id>', methods=['GET'])
+def get_track(track_id):
+    response = get_tracks_by_id(track_id)
+    return response
+
+
+@app_routes.route('/artists', methods=['GET'])
+def get_artists():
+    response = get_all_artists()
+    return response
+
+
 @app_routes.route('/show/<tab_name>/<limit>')
 def show_table(tab_name, limit=100):
     rows = get_all_from_table(tab_name, limit)
