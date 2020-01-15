@@ -1,6 +1,7 @@
 import traceback
 from database import sql_executor
 from flask import jsonify
+import decimal
 
 
 def get_all_countries():
@@ -38,12 +39,17 @@ def query_to_json(query, args=None):
         raise APIException(str(e), status_code=500)
 
 
+# TODO - Fix decimals
 def res_to_json(res):
     _rows = []
     headers = res['headers']
     for row in res['rows']:
-        _rows.append({headers[i]: row[i] for i in range(len(headers))})
+        _rows.append({headers[i]: process_val(row[i]) for i in range(len(headers))})
     return jsonify(_rows)
+
+
+def process_val(val):
+    return float(val) if isinstance(val, decimal.Decimal) else val
 
 
 class APIException(Exception):
