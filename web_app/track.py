@@ -1,8 +1,8 @@
 from web_app.app_logic import *
 
 
-def search_track(by_lyrics=False, search_text="", from_date=None, to_date=None,
-                 genre=None, album=None, artist=None):
+def search_track(by_lyrics=False, search_text=None, from_date=None, to_date=None,
+                 genre=None, album=None, artist=None, page_size=100, page_number=1):
     """
     :param by_lyrics: True iff searching lyrics, otherwise searching track name
     :param search_text: Text to search songs by
@@ -11,6 +11,8 @@ def search_track(by_lyrics=False, search_text="", from_date=None, to_date=None,
     :param genre: Optional
     :param album: Optional
     :param artist: Optional
+    :param page_size: Number of results to fetch
+    :param page_number: Offset
     :return: List of tracks that match the above conditions
     """
     query = "select t.track_id, t.track_name, t.track_release_date, ar.artist_name, al.album_name, g.genre_name" \
@@ -22,7 +24,7 @@ def search_track(by_lyrics=False, search_text="", from_date=None, to_date=None,
             "   and ({TEXT_FILTER})"
 
     args = []
-    date_filter, album_filter, genre_filter, artist_filter = "1=1", "1=1", "1=1", "1=1"
+    text_filter, date_filter, album_filter, genre_filter, artist_filter = "1=1", "1=1", "1=1", "1=1", "1=1"
     if album is not None:
         album_filter = "al.album_name = %s"
         args.append(album)
@@ -39,8 +41,9 @@ def search_track(by_lyrics=False, search_text="", from_date=None, to_date=None,
         date_filter = 'track_release date between %s and %s'
         args += [from_date, to_date]
 
-    text_filter = "{} like %s".format('track_lyrics' if by_lyrics else 'track_name')
-    args.append("%"+search_text+"%")
+    if search_text is not None:
+        text_filter = "{} like %s".format('track_lyrics' if by_lyrics else 'track_name')
+        args.append("%"+search_text+"%")
 
     query = query.format(DATE_FILTER=date_filter,
                          ALBUM_FILTER=album_filter,
@@ -48,7 +51,7 @@ def search_track(by_lyrics=False, search_text="", from_date=None, to_date=None,
                          GENRE_FILTER=genre_filter,
                          TEXT_FILTER=text_filter)
 
-    return query_to_json(query=query, args=tuple(args))
+    return query_to_json(query=query, args=tuple(args), page_size=page_size, page_number=page_number)
 
 
 def get_tracks_by_country(country_id):
