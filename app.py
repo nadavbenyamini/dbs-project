@@ -13,8 +13,13 @@ app.register_blueprint(app_routes)
 
 
 @app.route('/')
-def hello_world():
+def home():
     return render_template("index.html")
+
+
+@app.route('/artist/<artist_id>')
+def artist(artist_id):
+    return render_template("artist.html", artist_id=artist_id)
 
 
 if __name__ == '__main__':
