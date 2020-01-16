@@ -20,7 +20,7 @@ def fetch_data(source, path):
 @data_fetch_routes.route('/test/<source>/<path>')
 def test_data(source, path):
     """
-    For testing HTTP responses from remote APIs (only for sources mapped to our web_app, such as Musix).
+    For testing HTTP responses from remote APIs (only for sources mapped to our server, such as Musix).
     For example -
     http://127.0.0.1:5000/fetch/musix/chart.tracks.get?chart_name=top&page=1&page_size=5&country=us
     :param source: the remote data source (Musix/Mourits)

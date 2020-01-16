@@ -1,4 +1,4 @@
-from web_app.app_logic import *
+from server.server_logic import *
 
 
 def search_track(by_lyrics=False, by_artist=False, search_text=None, from_date=None, to_date=None,

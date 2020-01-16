@@ -1,4 +1,4 @@
-from web_app.app_logic import *
+from server.server_logic import *
 
 
 def search_artist(search_text="", page_size=100, page_number=1):
