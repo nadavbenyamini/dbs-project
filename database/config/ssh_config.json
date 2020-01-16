@@ -1,7 +1,0 @@
-{
-  "sql_port": 3306,
-  "ssh_host": "nova.cs.tau.ac.il",
-  "ssh_user": "benyamini1",
-  "ssh_password": "Telaviv5",
-  "ssh_port": 22
-}
