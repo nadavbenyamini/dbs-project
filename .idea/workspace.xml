@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/artist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/artist.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/artist.html" afterDir="false" />
     </list>
     <ignored path="database/config/ssh_config.json" />
     <ignored path=".idea/" />
@@ -54,20 +52,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/artist.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="234">
-              <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="-170">
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -195,8 +195,8 @@
         <option value="$PROJECT_DIR$/web_app/app_routes.py" />
         <option value="$PROJECT_DIR$/web_app/artist.py" />
         <option value="$PROJECT_DIR$/web_app/app_logic.py" />
-        <option value="$PROJECT_DIR$/templates/artist.html" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/artist.html" />
       </list>
     </option>
   </component>
@@ -389,14 +389,7 @@
       <workItem from="1578859886015" duration="2316000" />
       <workItem from="1578897866878" duration="3385000" />
       <workItem from="1579088463142" duration="4027000" />
-      <workItem from="1579161563170" duration="301000" />
-    </task>
-    <task id="LOCAL-00082" summary="In SQL Executor - made ssh optional">
-      <created>1578408537546</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1578408537546</updated>
+      <workItem from="1579161563170" duration="746000" />
     </task>
     <task id="LOCAL-00083" summary="Cleaner documentation">
       <created>1578408604699</created>
@@ -731,11 +724,18 @@
       <option name="project" value="LOCAL" />
       <updated>1579122935138</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="Basic artist page">
+      <created>1579161912090</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1579161912090</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51116000" />
+    <option name="totallyTimeSpent" value="51561000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -750,7 +750,7 @@
     <frame x="63" y="28" width="1857" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2039801" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2039801" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -763,7 +763,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.7918044" weight="0.21104816" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.333113" side_tool="true" visible="true" weight="0.4732041" />
+      <window_info active="true" anchor="bottom" x="111" y="152" width="1809" height="509" id="Terminal" order="10" sideWeight="0.333113" side_tool="true" visible="true" weight="0.4732041" />
       <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.4997236" weight="0.3295325" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="13" />
@@ -779,7 +779,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="No duplicate requests" />
     <MESSAGE value="Fixed small SQL issue" />
     <MESSAGE value="Initiated response_to_insert_query function" />
     <MESSAGE value="Completed new and simple parsing flow" />
@@ -804,7 +803,8 @@
     <MESSAGE value="Added an API function for searching tracks by all fields" />
     <MESSAGE value="Merge branch 'master' of https://github.com/nadavbenyamini/dbs-project&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;web_app/app_logic.py" />
     <MESSAGE value="Fixed JSON decimal" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed JSON decimal" />
+    <MESSAGE value="Basic artist page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic artist page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="872" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578592231393">
@@ -1057,13 +1057,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/artist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_app/app_routes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1076,8 +1069,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="-170">
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/artist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
         </state>
       </provider>
     </entry>
