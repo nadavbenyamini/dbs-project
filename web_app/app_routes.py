@@ -1,9 +1,7 @@
-from flask import render_template
 from flask import Blueprint
 from flask import request
 from web_app.track import *
 from web_app.artist import *
-from config import *
 
 app_routes = Blueprint('app_routes', __name__)
 
@@ -57,17 +55,6 @@ def get_track(track_id):
 def get_artists():
     response = get_all_artists()
     return response
-
-
-@app_routes.route('/show/<tab_name>/<limit>')
-def show_table(tab_name, limit=100):
-    rows = get_all_from_table(tab_name, limit)
-    return render_template(template_name_or_list="old/base.html", rows=rows, title=tab_name)
-
-
-@app_routes.route('/test')
-def temp():
-    return render_template(template_name_or_list="charts_albums.html", base_url=BASE_URL)
 
 
 @app_routes.errorhandler(APIException)
