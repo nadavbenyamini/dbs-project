@@ -1,14 +1,16 @@
 from web_app.app_logic import *
 
 
-def search_artist(search_text=""):
+def search_artist(search_text="", page_size=100, page_number=1):
     """
     :param search_text: Text to search songs by
+    :param page_size: Number of results to fetch
+    :param page_number: Offset
     :return: List of artists that contain search_text in their name
     """
     query = "select * from Artists a where artist_name like %s"
     args = tuple(['%'+search_text+'%'])
-    return query_to_json(query, args)
+    return query_to_json(query, args, page_size=page_size, page_number=page_number)
 
 
 def get_artists_by_country_id(country_id):

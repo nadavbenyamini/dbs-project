@@ -29,21 +29,22 @@ def get_all_from_table(tab_name, limit):
 # ---------------------------------  General Utilities ------------------------------------- #
 # ------------------------------------------------------------------------------------------ #
 
-def query_to_json(query, args=None):
+def query_to_json(query, args=None, page_size=100000, page_number=1):
     try:
         db_results = sql_executor.select(query=query, args=args)
-        return res_to_json(db_results)
+        return res_to_json(db_results, page_size=page_size, page_number=page_number)
     except sql_executor.NoResultsException as e:
         raise APIException(str(e), status_code=404)
     except Exception as e:
         raise APIException(str(e), status_code=500)
 
 
-# TODO - Fix decimals
-def res_to_json(res):
+def res_to_json(res, page_size=100000, page_number=1):
     _rows = []
     headers = res['headers']
-    for row in res['rows']:
+    first_res = (page_number - 1)*page_size
+    last_res = page_number * page_size
+    for row in res['rows'][first_res: last_res]:
         _rows.append({headers[i]: process_val(row[i]) for i in range(len(headers))})
     return jsonify(_rows)
 
