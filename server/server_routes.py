@@ -1,9 +1,9 @@
 from flask import Blueprint
 from flask import request
-from web_app.track import *
-from web_app.artist import *
+from server.track import *
+from server.artist import *
 
-app_routes = Blueprint('app_routes', __name__)
+api_routes = Blueprint('server_routes', __name__)
 
 """
 This file is for defining the app's API routes
@@ -11,7 +11,7 @@ Internal logic, queries, etc. are in other places
 """
 
 
-@app_routes.route('/search/track')
+@api_routes.route('/api/search/track', methods=['GET'])
 def search_tracks_route():
     params = request.args
     by_lyrics = params.get('by_lyrics', False)
@@ -28,7 +28,7 @@ def search_tracks_route():
                         page_number=params.get('page_number', 1))
 
 
-@app_routes.route('/search/artist')
+@api_routes.route('/api/search/artist', methods=['GET'])
 def search_artist_route():
     params = request.args
     return search_artist(search_text=params.get('search_text', None),
@@ -36,40 +36,40 @@ def search_artist_route():
                          page_number=params.get('page_number', 1))
 
 
-@app_routes.route('/artists/<country_id>', methods=['GET'])
+@api_routes.route('/api/artists/<country_id>', methods=['GET'])
 def country_artists(country_id):
     return get_artists_by_country_id(country_id)
 
 
-@app_routes.route('/countries', methods=['GET'])
-def all_countries():
+@api_routes.route('/api/countries', methods=['GET'])
+def api():
     return get_all_countries()
 
 
-@app_routes.route('/country_tracks/<country_id>', methods=['GET'])
+@api_routes.route('/api/country_tracks/<country_id>', methods=['GET'])
 def country_tracks(country_id):
     return get_tracks_by_country(country_id)
 
 
-@app_routes.route('/artist_tracks/<artist_id>', methods=['GET'])
+@api_routes.route('/api/artist_tracks/<artist_id>', methods=['GET'])
 def artist_tracks(artist_id):
     response = get_tracks_by_artist(artist_id)
     return response
 
 
-@app_routes.route('/tracks/<track_id>', methods=['GET'])
+@api_routes.route('/api/tracks/<track_id>', methods=['GET'])
 def get_track(track_id):
     response = get_track_by_id(track_id)
     return response
 
 
-@app_routes.route('/artists', methods=['GET'])
+@api_routes.route('/api/artists', methods=['GET'])
 def get_artists():
     response = get_all_artists()
     return response
 
 
-@app_routes.errorhandler(APIException)
+@api_routes.errorhandler(APIException)
 def handle_error(error):
     response = error.to_json()
     response.status_code = error.status_code
