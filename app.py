@@ -5,8 +5,6 @@ from web_app.app_routes import app_routes
 from web_app.app_logic import *
 from config import *
 
-# initialization
-
 app = Flask(__name__)
 CORS(app)
 app.register_blueprint(data_fetch_routes)
