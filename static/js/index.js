@@ -1,7 +1,7 @@
 //define some sample data
  
 server = "127.0.0.1"
-port = "5001"
+port = "5001/api"
 var table_artist;
 var countries;
 
