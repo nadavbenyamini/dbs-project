@@ -14,13 +14,16 @@ Internal logic, queries, etc. are in other places
 @app_routes.route('/search/track')
 def search_tracks_route():
     params = request.args
+    by_lyrics = params.get('by_lyrics', False)
+    by_artist = params.get('by_artist', False)
+    assert not by_lyrics or not by_artist  # Can't search by both...
     return search_track(by_lyrics=params.get('by_lyrics', False),
+                        by_artist=params.get('by_artist', False),
                         search_text=params.get('search_text', None),
                         from_date=params.get('from_date', None),
                         to_date=params.get('to_date', None),
                         genre=params.get('genre', None),
                         album=params.get('album', None),
-                        artist=params.get('artist', None),
                         page_size=params.get('page_size', 100),
                         page_number=params.get('page_number', 1))
 

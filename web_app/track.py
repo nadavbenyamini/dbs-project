@@ -1,16 +1,16 @@
 from web_app.app_logic import *
 
 
-def search_track(by_lyrics=False, search_text=None, from_date=None, to_date=None,
-                 genre=None, album=None, artist=None, page_size=100, page_number=1):
+def search_track(by_lyrics=False, by_artist=False, search_text=None, from_date=None, to_date=None,
+                 genre=None, album=None, page_size=100, page_number=1):
     """
     :param by_lyrics: True iff searching lyrics, otherwise searching track name
+    :param by_artist: True iff searching tracks by artist name
     :param search_text: Text to search songs by
     :param from_date: Optional
     :param to_date: Optional
     :param genre: Optional
     :param album: Optional
-    :param artist: Optional
     :param page_size: Number of results to fetch
     :param page_number: Offset
     :return: List of tracks that match the above conditions
@@ -18,20 +18,16 @@ def search_track(by_lyrics=False, search_text=None, from_date=None, to_date=None
     query = "select t.track_id, t.track_name, t.track_release_date, ar.artist_name, al.album_name, g.genre_name" \
             "  from Tracks t" \
             "  join Albums al on al.album_id = t.album_id and ({ALBUM_FILTER})" \
-            "  join Artists ar on ar.artist_id = t.artist_id and ({ARTIST_FILTER}) " \
             "  join Genres g on g.genre_id = t.genre_id and ({GENRE_FILTER}) " \
+            "  join Artists ar on ar.artist_id = t.artist_id " \
             " where ({DATE_FILTER})" \
-            "   and ({TEXT_FILTER})"
+            "   and ({TEXT_FILTER})" \
 
     args = []
-    text_filter, date_filter, album_filter, genre_filter, artist_filter = "1=1", "1=1", "1=1", "1=1", "1=1"
+    text_filter, date_filter, album_filter, genre_filter = "1=1", "1=1", "1=1", "1=1"
     if album is not None:
         album_filter = "al.album_name = %s"
         args.append(album)
-
-    if artist is not None:
-        artist_filter = "ar.artist_name = %s"
-        args.append(artist)
 
     if genre is not None:
         genre_filter = "g.genre_name = %s"
@@ -42,12 +38,11 @@ def search_track(by_lyrics=False, search_text=None, from_date=None, to_date=None
         args += [from_date, to_date]
 
     if search_text is not None:
-        text_filter = "{} like %s".format('track_lyrics' if by_lyrics else 'track_name')
-        args.append("%"+search_text+"%")
+        text_filter = "{} like %s".format('track_lyrics' if by_lyrics else 'artist_name' if by_artist else 'track_name')
+        args.append("%" + search_text + "%")
 
     query = query.format(DATE_FILTER=date_filter,
                          ALBUM_FILTER=album_filter,
-                         ARTIST_FILTER=artist_filter,
                          GENRE_FILTER=genre_filter,
                          TEXT_FILTER=text_filter)
 
