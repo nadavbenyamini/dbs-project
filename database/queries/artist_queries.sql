@@ -23,7 +23,6 @@ WHERE a.artist_id = t.artist_id AND
 GROUP BY t.track_id
 ORDER BY track_rating DESC ;
 
-
 # relate artist
 
 SELECT DISTINCT a1.artist_name
