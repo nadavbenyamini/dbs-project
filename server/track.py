@@ -1,6 +1,17 @@
 from server.server_logic import *
 
 
+def get_track(track_id):
+    """
+    GETTER
+    :param track_id
+    :return: Everything from Track table
+    """
+    query = "select * from Track where track_id = %s"
+    args = (track_id, )
+    return query_to_json(query, args)
+
+
 def search_track(by_lyrics=False, by_artist=False, search_text=None, from_date=None, to_date=None,
                  genre=None, album=None, page_size=100, page_number=1):
     """
@@ -76,10 +87,4 @@ def get_tracks_by_artist(artist_id):
             "where a.artist_id = %s "\
             "and t.artist_id = a.artist_id and al.album_id=t.album_id and g.genre_id = t.genre_id "
     args = (int(artist_id), )  # Converting to tuple...
-    return query_to_json(query, args)
-
-
-def get_track_by_id(track_id):
-    query = "select * from Tracks t, Artists a where track_id = %s and t.artist_id = a.artist_id"
-    args = int(track_id)
     return query_to_json(query, args)

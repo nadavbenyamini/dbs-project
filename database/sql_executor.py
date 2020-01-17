@@ -15,7 +15,7 @@ def select(query, args=None, use_ssh=False):
                 res['headers'] = list(row.keys())
             res['rows'].append([row[k] for k in res['headers']])
         if len(res['headers']) == 0:
-            raise NoResultsException()
+            raise NoResultsException('No results found')
         else:
             return res
     except Exception as e:
@@ -88,6 +88,6 @@ def __execute(queries, use_ssh=False):
 
 # To separate errors 404 and 500 in UI
 class NoResultsException(Exception):
-    def __init__(self, message='Query returned 0 results'):
+    def __init__(self, message):
         self.message = message
 

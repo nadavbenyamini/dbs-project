@@ -1,6 +1,17 @@
 from server.server_logic import *
 
 
+def get_artist(artist_id):
+    """
+    GETTER
+    :param artist_id
+    :return: Everything from Artists table
+    """
+    query = "select * from Artists where artist_id = %s"
+    args = (artist_id, )
+    return query_to_json(query, args)
+
+
 def search_artist(search_text="", page_size=100, page_number=1):
     """
     :param search_text: Text to search songs by

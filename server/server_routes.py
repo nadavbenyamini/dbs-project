@@ -11,6 +11,16 @@ Internal logic, queries, etc. are in other places
 """
 
 
+@api_routes.route('/api/track/<track_id>', methods=['GET'])
+def get_track_by_id(track_id):
+    return get_track(track_id)
+
+
+@api_routes.route('/api/artist/<artist_id>', methods=['GET'])
+def get_artist_by_id(artist_id):
+    return get_artist(artist_id)
+
+
 @api_routes.route('/api/search/track', methods=['GET'])
 def search_tracks_route():
     params = request.args
@@ -54,12 +64,6 @@ def country_tracks(country_id):
 @api_routes.route('/api/artist_tracks/<artist_id>', methods=['GET'])
 def artist_tracks(artist_id):
     response = get_tracks_by_artist(artist_id)
-    return response
-
-
-@api_routes.route('/api/tracks/<track_id>', methods=['GET'])
-def get_track(track_id):
-    response = get_track_by_id(track_id)
     return response
 
 
