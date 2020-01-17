@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="a486a862-e713-4b3d-bf30-7cbd08e8367a" name="Default Changelist" comment="" />
     <ignored path="database/config/ssh_config.json" />
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,11 +77,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+            <state relative-caret-position="162">
+              <caret line="9" column="49" lean-forward="true" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/queries/insert_countries.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/config/ssh_config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -165,7 +180,6 @@
         <option value="$PROJECT_DIR$/data_fetch/base_fetcher.py" />
         <option value="$PROJECT_DIR$/data_fetch/mourits/mourits_fetcher.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/database/config/ssh_config.json" />
         <option value="$PROJECT_DIR$/routes/app_routes.py" />
         <option value="$PROJECT_DIR$/app/app_routes.py" />
         <option value="$PROJECT_DIR$/app/logic.py" />
@@ -192,6 +206,7 @@
         <option value="$PROJECT_DIR$/server/server_routes.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/static/js/index.js" />
+        <option value="$PROJECT_DIR$/database/config/ssh_config.json" />
       </list>
     </option>
   </component>
@@ -219,18 +234,13 @@
             <path>
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="final_project" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="final_project" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="final_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="final_project" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="queries" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -386,21 +396,7 @@
       <workItem from="1579088463142" duration="4027000" />
       <workItem from="1579161563170" duration="3928000" />
       <workItem from="1579186265468" duration="3720000" />
-      <workItem from="1579206694253" duration="514000" />
-    </task>
-    <task id="LOCAL-00089" summary="Raising error if query returned 0 results">
-      <created>1578410449965</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1578410449965</updated>
-    </task>
-    <task id="LOCAL-00090" summary="Made path fetcher's code more readable">
-      <created>1578413163484</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1578413163484</updated>
+      <workItem from="1579206694253" duration="2869000" />
     </task>
     <task id="LOCAL-00091" summary="Query to build DB">
       <created>1578416259162</created>
@@ -728,11 +724,25 @@
       <option name="project" value="LOCAL" />
       <updated>1579188906500</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="Fixed api url">
+      <created>1579207229149</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1579207229150</updated>
+    </task>
+    <task id="LOCAL-00139" summary="Merge branch 'master' of https://github.com/nadavbenyamini/dbs-project&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml">
+      <created>1579207305640</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1579207305640</updated>
+    </task>
+    <option name="localTasksCounter" value="140" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58977000" />
+    <option name="totallyTimeSpent" value="61332000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -745,7 +755,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18850194" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -776,8 +785,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Minor fixes in request preparation and response parsing" />
-    <MESSAGE value="Removed old code, fixed string cleanup function" />
     <MESSAGE value="Small changes in data fetching" />
     <MESSAGE value="Pushing ssh config json without user and password" />
     <MESSAGE value="Testing gitignore" />
@@ -801,7 +808,9 @@
     <MESSAGE value="Searching tracks by artist name" />
     <MESSAGE value="cleanup" />
     <MESSAGE value="Refactoring names" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring names" />
+    <MESSAGE value="Fixed api url" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/nadavbenyamini/dbs-project&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/nadavbenyamini/dbs-project&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml" />
   </component>
   <component name="WindowStateProjectService">
     <state x="872" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578592231393">
@@ -830,13 +839,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/queries/insert_countries.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -921,13 +923,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore" />
-    <entry file="file://$PROJECT_DIR$/database/config/ssh_config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_app/utils.py" />
     <entry file="file://$PROJECT_DIR$/templates/old/base.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -1094,10 +1089,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/config/ssh_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        <state relative-caret-position="162">
+          <caret line="9" column="49" lean-forward="true" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/queries/insert_countries.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="39" />
         </state>
       </provider>
     </entry>
