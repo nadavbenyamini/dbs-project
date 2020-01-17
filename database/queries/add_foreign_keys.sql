@@ -26,3 +26,7 @@ ADD FOREIGN KEY (artist_country_id) REFERENCES Countries(country_id);
 
 ALTER TABLE Albums
 ADD FOREIGN KEY (artist_id) REFERENCES Artists(artist_id);
+
+
+ALTER TABLE Tracks
+ADD FULLTEXT(track_lyrics)

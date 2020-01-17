@@ -24,7 +24,7 @@ WHERE a.artist_id = t.artist_id AND
 GROUP BY t.track_id
 ORDER BY track_rating DESC ;
 
-# relate artist
+# relate artist list
 
 SELECT DISTINCT a1.artist_name
 FROM   	Artists a1, Tracks t1  ,Genres g1 ,
