@@ -19,11 +19,6 @@ ADD FOREIGN KEY (genre_id) REFERENCES Genres(genre_id);
 
 
 
-ALTER TABLE Lyrics
-ADD FOREIGN KEY (track_id) REFERENCES Tracks(track_id);
-
-
-
 ALTER TABLE Artists
 ADD FOREIGN KEY (artist_country_id) REFERENCES Countries(country_id);
 
