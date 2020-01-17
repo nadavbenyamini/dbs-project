@@ -52,7 +52,7 @@ def country_artists(country_id):
 
 
 @api_routes.route('/api/countries', methods=['GET'])
-def api():
+def all_countries():
     return get_all_countries()
 
 

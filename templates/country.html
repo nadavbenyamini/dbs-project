@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Country</title>
+	<meta charset="UTF-8">
+
+
+	<script>
+
+		  $.get({
+        url:`http://${server}:${port}/artists/${country_id}`,
+        success:function(result){
+            table_artists.setData(result)
+        }
+    });
+    $("#country_flag_id").show();
+    $("#country_flag_id").attr('src',`https://www.countryflags.io/${country_id}/flat/64.png`)
+
+	</script>
+</head>
+
+<body>
+	<div class="header">
+		<img src="../static/img/database-icon.png" width="64" height="64" alt="db">
+		<h2>DB Course Project</h2>
+		<h4>Our Music</h4>
+	</div>
+
+	<img style="display:none;" class="country_flag" id="country_flag_id"/>
+		</br>
+
+
+</body>
+</html>

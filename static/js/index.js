@@ -1,13 +1,14 @@
 //define some sample data
  
 server = "127.0.0.1"
-port = "5001/api"
+port = "5001"
+port_api = port+"/api"
 var table_artist;
 var countries;
 
 function getAllCountries(){
     $.get({
-        url:`http://${server}:${port}/countries`,
+        url:`http://${server}:${port_api}/countries`,
         success:function(result){
            countries = result;
            //console.log(result)
@@ -36,7 +37,7 @@ function spinner_visibilty(show){
 var table_artists = new Tabulator("#artists-table", {
  	height:"311px",
     layout:"fitColumns",
-	ajaxURL:`http://${server}:${port}/artists`,
+	ajaxURL:`http://${server}:${port_api}/artists`,
     placeholder:"No Data Set",
 	ajaxResponse:function(url, params, response){
         //url - the URL of the request
@@ -51,74 +52,110 @@ var table_artists = new Tabulator("#artists-table", {
 	 	{title:"Country", field:"artist_country_id"},
  	],
  	rowClick:function(e, row){ //trigger an alert message when the row is clicked
- 		//alert("Row " + row.getData().artist_id + " Clicked!!!!");
-		//console.log(`http://${server}:${port}/artist_tracks/${row.getData().artist_id}`)
-		table_artist.setData(`http://${server}:${port}/artist_tracks/${row.getData().artist_id}`)
-		$("#artists-table").hide();
-		$("#artist-table").show();
+         //alert("Row " + row.getData().artist_id + " Clicked!!!!");
+        url = `http://${server}:${port}/artist/${row.getData().artist_id}`
+        console.log(url)
+        location.replace(url)
+		//table_artist.setData(`http://${server}:${port_api}/artist_tracks/${row.getData().artist_id}`)
  	},
 });
 
-table_artist = new Tabulator("#artist-table", {
- 	height:"400px",
-    layout:"fitColumns",
-	ajaxResponse:function(url, params, response){
-        //url - the URL of the request
-        //params - the parameters passed with the request
-        //response - the JSON object returned in the body of the response.
-		//console.log(response)
-		response.forEach(function(item){
-			item["track_rating"] = item["track_rating"]/20
-		})
-        return response; //return the tableData property of a response json object
+var table_songs = new Tabulator("#songs-table", {
+    height:"311px",
+   layout:"fitColumns",
+   ajaxURL:`http://${server}:${port_api}/search/track`,
+   placeholder:"No Data Set",
+   ajaxResponse:function(url, params, response){
+       //url - the URL of the request
+       //params - the parameters passed with the request
+       //response - the JSON object returned in the body of the response.
+       return response; //return the tableData property of a response json object
+   },
+    columns:[ //Define Table Columns
+       {title:"Id", field:"track_id", visible:false},
+        {title:"Name", field:"track_name", width:150},
+        {title:"Artist", field:"artist_name"},
+        {title:"Genere", field:"genre_name"},
+        {title:"Release Date", field:"track_release_date"}
+    ],
+    rowClick:function(e, row){ 
+        console.log(row.getData().track_id)
+       url = `http://${server}:${port}/track/${row.getData().track_id}`
+       console.log(url)
+       location.replace(url)
     },
- 	columns:[ //Define Table Columns
-		{title:"Id", field:"al.artist_id", visible:false},
-		{title:"Id", field:"track_id", visible:false},
-		{title:"Id", field:"album_id", visible:false},
-	 	{title:"Track", field:"track_name", width:150, headerFilter:"input"},
-		{title:"Album", field:"album_name", headerFilter:"input"},
-		{title:"Genere", field:"genre_name"},
-	 	{title:"Rating", field:"track_rating", align:"left", formatter:"star"},
-	 	{title:"Track release", field:"track_release_date", sorter:"date", headerFilter:"input"},
- 	],
- 	rowClick:function(e, row){ //trigger an alert message when the row is clicked
- 		//alert("Row " + row.getData().id + " Clicked!!!!");
-		spinner_visibilty(true)
-		$.get({
-			url:`http://${server}:${port}/tracks/${row.getData().track_id}`,
-			success:function(result){
-				console.log(result[0])
-				spinner_visibilty(false)
-				$("#card_track_name").html(result[0]["track_name"])
-				$("#card_lyrics").html(result[0]["track_lyrics"])
-				$("#card_artist").html(result[0]["artist_name"])
-				$("#artist-table").hide();
-				$("#sond_lyrics").show();
-			}
-		});
- 	},
 });
+
+// table_artist = new Tabulator("#artist-table", {
+//  	height:"400px",
+//     layout:"fitColumns",
+// 	ajaxResponse:function(url, params, response){
+//         //url - the URL of the request
+//         //params - the parameters passed with the request
+//         //response - the JSON object returned in the body of the response.
+// 		//console.log(response)
+// 		response.forEach(function(item){
+// 			item["track_rating"] = item["track_rating"]/20
+// 		})
+//         return response; //return the tableData property of a response json object
+//     },
+//  	columns:[ //Define Table Columns
+// 		{title:"Id", field:"al.artist_id", visible:false},
+// 		{title:"Id", field:"track_id", visible:false},
+// 		{title:"Id", field:"album_id", visible:false},
+// 	 	{title:"Track", field:"track_name", width:150, headerFilter:"input"},
+// 		{title:"Album", field:"album_name", headerFilter:"input"},
+// 		{title:"Genere", field:"genre_name"},
+// 	 	{title:"Rating", field:"track_rating", align:"left", formatter:"star"},
+// 	 	{title:"Track release", field:"track_release_date", sorter:"date", headerFilter:"input"},
+//  	],
+//  	rowClick:function(e, row){ //trigger an alert message when the row is clicked
+//  		//alert("Row " + row.getData().id + " Clicked!!!!");
+// 		spinner_visibilty(true)
+// 		$.get({
+// 			url:`http://${server}:${port_api}/tracks/${row.getData().track_id}`,
+// 			success:function(result){
+// 				console.log(result[0])
+// 				spinner_visibilty(false)
+// 				$("#card_track_name").html(result[0]["track_name"])
+// 				$("#card_lyrics").html(result[0]["track_lyrics"])
+// 				$("#card_artist").html(result[0]["artist_name"])
+// 				$("#artist-table").hide();
+// 				$("#sond_lyrics").show();
+// 			}
+// 		});
+//  	},
+// });
 
 //trigger button click
-$("#card_google_link").click(function(){
-	q = $("#card_track_name").html()+" and "+$("#card_artist").html()
-	window.open('http://google.com/search?q='+q, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
-});
+// $("#card_google_link").click(function(){
+// 	q = $("#card_track_name").html()+" and "+$("#card_artist").html()
+// 	window.open('http://google.com/search?q='+q, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+// });
 
-$("#music-form").submit(function(e){
-    console.log("submit")
+// $("#music-form").submit(function(e){
+//     console.log("submit")
+//     e.preventDefault()
+//     let country_id = $("#inlineFormCustomSelectPref")[0].value
+//     $.get({
+//         url:`http://${server}:${port}/artists/${country_id}`,
+//         success:function(result){
+//             table_artists.setData(result)
+//         }
+//     });
+//     $("#country_flag_id").show();
+//     $("#country_flag_id").attr('src',`https://www.countryflags.io/${country_id}/flat/64.png`)
+
+// })
+
+
+$("#country-form").submit(function(e){
+    console.log("country form click")
     e.preventDefault()
     let country_id = $("#inlineFormCustomSelectPref")[0].value
-    $.get({
-        url:`http://${server}:${port}/artists/${country_id}`,
-        success:function(result){
-            table_artists.setData(result)
-        }
-    });
-    $("#country_flag_id").show();
-    $("#country_flag_id").attr('src',`https://www.countryflags.io/${country_id}/flat/64.png`)
-
+    url = `http://${server}:${port}/country/${country_id}`
+    console.log(url)
+    location.replace(url)
 })
 
 //custom max min header filter

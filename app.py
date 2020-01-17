@@ -21,9 +21,15 @@ def artist(artist_id):
     return render_template("artist.html", artist_id=artist_id)
 
 
-@app.route('/artist/<track_id>')
+@app.route('/track/<track_id>')
 def track(track_id):
     render_template("track.html", track_id=track_id)
+
+
+@app.route('/country/<country_id>')
+def country(country_id):
+    print('go to country ' + country_id)
+    render_template("country.html", track_id=country_id)
 
 
 # --------------- TODO - Delete the following routes ---------------- #

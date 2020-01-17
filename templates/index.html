@@ -15,64 +15,45 @@
 </head>
 
 <body>
+
 	<div class="header">
 		<img src="../static/img/database-icon.png" width="64" height="64" alt="db">
 		<h2>DB Course Project</h2>
 		<h4>Our Music</h4>
 	</div>
-	
+
 	<div class="middle">
-		<div id="input_data">
-			<form id="music-form">
-				<div class="form-row align-items-center">
-					<div class="col-auto">
-						<label class="my-1 mr-2" for="inlineFormCustomSelectPref">Country:</label>
-						<select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref">
-							<option selected>Choose...</option>
-						</select>
-					</div>
-					
-					<div class="col-auto">
-						<label for="colFormLabelSm" class="col-sm-1 col-form-label">Name:</label>
-						<input type="text" class="form-control mb-2 mr-sm-2" id="colFormLabelSm" placeholder="artist name">
-					</div>
-					
-					<div class="col-auto">
-						<label  class="col-sm-1 col-form-label"></label>
-						<div class="col-auto my-1">
-							<button type="submit" class="btn btn-primary">Submit</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<img style="display:none;" class="country_flag" id="country_flag_id"/>
-		</br>
-
-		<div id="artists-table"></div>
 		<br>
-	
-		<div style="display:none;" id="artist-table"></div>
-		</br>
-	
-		<div style="display:none;" id="sond_lyrics" class="card">
-			<div class="card-header">
-			Song Lyrics
+		<form id="country-form">
+			<div class="form-row align-items-center">
+				<div class="col-auto">
+					<label class="my-1 mr-2" for="inlineFormCustomSelectPref">Country:</label>
+					<select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref">
+						<option selected>Choose...</option>
+					</select>
+				</div>		
+			<div class="col-auto">
+				<label  class="col-sm-1 col-form-label"></label>
+				<div class="col-auto my-1">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
 			</div>
-			<div class="card-body">
-				<h5 id="card_track_name" class="card-title">Song Name</h5>
-				<p id="card_lyrics" class="card-text"></p>
-				<a id="card_google_link" href="#" class="btn btn-secondary">Google link</a>
-				<div id="card_artist" hidden></div>
-			</div>
-		</div>
-	
+		</form>
+
 	</div>
-	
-	
+
+		<br>
+		<h2>Artists Table</h2>
+		<div id="artists-table"></div>
+
+		<br><br>
+		<h2>Songs Table</h2>
+		<div id="songs-table"></div>
+
+	</div>
+		
+	<br>
 	<div class="footer">
-		<p>Posted by: Eyal Borovsky, ..... </p>
 		<a href="http://courses.cs.tau.ac.il/databases/databases201920/index.php">Database Systems (Fall 2019/20)</a>
 	</div>
 
