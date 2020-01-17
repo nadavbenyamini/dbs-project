@@ -116,6 +116,8 @@ $("#music-form").submit(function(e){
             table_artists.setData(result)
         }
     });
+    $("#country_flag_id").show();
+    $("#country_flag_id").attr('src',`https://www.countryflags.io/${country_id}/flat/64.png`)
 
 })
 
