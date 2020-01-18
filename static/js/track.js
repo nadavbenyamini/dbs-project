@@ -7,8 +7,11 @@ function temp(){
     success:function(result){
         console.log(result[0])
         $("#card_track_name").html(result[0]["track_name"])
+        $("#card_artist").html(result[0]["artist_name"])
+        $("#card_genere").html(result[0]["genre_name"])
+        $("#track_date").html(result[0]["track_release_date"])
         $("#card_lyrics").html(result[0]["track_lyrics"])
-        // $("#card_artist").html(result[0]["artist_name"])
+        
     }
 });
 }
