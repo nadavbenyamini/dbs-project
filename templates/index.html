@@ -61,7 +61,19 @@
         </form>
         <br/><br/>
         <h2>Tracks</h2>
-        <div id="songs-table"></div>
+        <div id="songs-table" style="min-height: 300px"></div>
+        <br/><br/>
+
+        <label style="margin: 5px">Page Size: </label>
+        <select id="tracks-page-size">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </select>
+        <label style="margin: 5px">Page Number: </label>
+        <b id="tracks-page-number">1</b> / <b id="tracks-page-count">1</b>
+        <button type="submit" style="margin-left: 20px" class="btn btn-secondary" id="tracks-page-prev" onclick="move_page(-1)"><</button>
+        <button type="submit" style="margin-left: 5px" class="btn btn-secondary" id="tracks-page-next"  onclick="move_page(1)">></button>
 
         <br><br><br>
         <h2>Artists</h2>
@@ -88,11 +100,24 @@
             const text = $('#tracks-search-box')[0].value;
             const date_from = $('#tracks-date-from')[0].value;
             const date_to = $('#tracks-date-to')[0].value;
+            const page_size = $('#tracks-page-size')[0].value;
+            const page_number = $('#tracks-page-number')[0].value;
+            const genre = null;
             let search_by = '';
             for (const radio of $('input[type=radio][name=tracks-search-type]')) {
                 if (radio.checked) search_by = radio.value;
             }
-            get_table_songs(text, date_from, date_to, search_by);
+            get_table_songs(text, search_by, date_from, date_to, genre, page_size, page_number);
+        }
+
+        function move_page(move=1){
+            const current = parseInt($('#tracks-page-number')[0].innerText);
+            const page_count = $('#tracks-page-count')[0].innerText;
+            document.getElementById("tracks-page-prev").disabled = current + move <= 1;
+            document.getElementById("tracks-page-next").disabled = current + move >= page_count;
+            if (current + move < 1 || current + move > page_count) return;
+            $('#tracks-page-number').text(current + move);
+            get_table();
         }
 
         $(document).ready(function(){
@@ -106,18 +131,19 @@
             const wait = 500;
             $('#tracks-date-from').change(delay(function() { get_table();}, wait));
             $('#tracks-date-to').change(delay(function() { get_table();}, wait));
+            $('#tracks-page-size').change(delay(function() { get_table();}, wait));
             $('#tracks-search-box').keyup(delay(function() { get_table();}, wait));
             $('input[type=radio][name=tracks-search-type]').change(delay(function() {
                 if($('#tracks-search-box')[0].value.length > 0) get_table();
             }, wait));
-
             // Setting default values
+            $('#tracks-page-number').val(1);
+            $('#tracks-page-number').text(1);
             $('#tracks-date-from').val('1900-01-01');
             $('#tracks-date-to').val(nowString);
 
             // First run
             get_table();
-
         });
     </script>
 </body>

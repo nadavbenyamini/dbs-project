@@ -53,19 +53,26 @@ var table_artists = new Tabulator("#artists-table", {
  	},
 });
 
-function get_table_songs(search_text=null, date_from=null, date_to=null, search_by=null) {
+function get_table_songs(search_text=null, search_by=null, date_from=null, date_to=null, genre=null, page_size=null, page_number=null) {
     const params = {};
     if (search_text) params['search_text'] = search_text;
     if (date_from) params['date_from'] = date_from;
     if (date_to) params['date_to'] = date_to;
     if (search_by) params['search_by'] = search_by;
+    if (genre) params['genre'] = genre;
+    if (page_size) params['page_size'] = page_size;
+    if (page_number) params['page_number'] = page_number;
+
     return new Tabulator("#songs-table", {
-        height:"311px",
         layout:"fitColumns",
         ajaxURL: `http://${server}:${port_api}/search/track`,
         ajaxParams: params,
         placeholder:"No Data Set",
-        ajaxResponse: function(url, params, response){ return response; },
+        ajaxResponse: function(url, params, response){
+            const page_count = Math.floor(response.length / page_size) + 1;
+            document.getElementById('tracks-page-count').innerText = page_count;
+            return response;
+        },
         columns:[ //Define Table Columns
             {title:"Id", field: "track_id", visible:false},
             {title:"Name", field: "track_name"},

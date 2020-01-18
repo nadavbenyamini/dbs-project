@@ -82,7 +82,8 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
             "   and ({ALBUM_FILTER}) " \
             "   and ({GENRE_FILTER})" \
             "   and ({TEXT_FILTER})" \
-            " order by artist_name, track_name;"
+            " order by artist_name, track_name" \
+            " limit {LIMIT};"
 
     args = ["%M %d, %Y"]
     text_filter, date_filter, album_filter, genre_filter = "1=1", "1=1", "1=1", "1=1"
@@ -112,9 +113,15 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
             text_filter = "track_name like %s"
             args.append("%" + search_text + "%")
 
+    try:
+        page_number = int(page_number)
+        page_size = int(page_size)
+        limit = '{}, {}'.format(page_size * (page_number - 1), page_size * page_number)
+    except ValueError:
+        limit = '1, 100000'
     query = query.format(DATE_FILTER=date_filter,
                          ALBUM_FILTER=album_filter,
                          GENRE_FILTER=genre_filter,
-                         TEXT_FILTER=text_filter)
-    print(query, args)
-    return query_to_json(query=query, args=tuple(args), page_size=page_size, page_number=page_number)
+                         TEXT_FILTER=text_filter,
+                         LIMIT=limit)
+    return query_to_json(query=query, args=tuple(args))
