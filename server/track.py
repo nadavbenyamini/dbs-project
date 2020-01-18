@@ -114,5 +114,4 @@ def search_track(by_lyrics=False, by_artist=False, search_text=None, from_date=N
                          ALBUM_FILTER=album_filter,
                          GENRE_FILTER=genre_filter,
                          TEXT_FILTER=text_filter)
-    print(query)
     return query_to_json(query=query, args=tuple(args), page_size=page_size, page_number=page_number)

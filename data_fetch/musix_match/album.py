@@ -30,5 +30,4 @@ class AlbumPath(MusixFetcher):
                     clean_string(album['album_name']),
                     album['album_rating'],
                     release_date if release_date is not None else 'NULL')
-        print(query)
         return [query]
