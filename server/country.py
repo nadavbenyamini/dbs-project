@@ -24,7 +24,7 @@ def get_popular_genres(country_id):
     :return: List of popular genres in the country's charts
     """
     query = "SELECT g.genre_name, COUNT(g.genre_id) AS number_of_songs_in_chart "\
-            "  FROM Charts c  Tracks t, Genres g "\
+            "  FROM Charts c, Tracks t, Genres g "\
             " WHERE c.country_id = %s " \
             "   AND c.track_id = t.track_id " \
             "   AND t.genre_id = g.genre_id "\
