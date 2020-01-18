@@ -19,8 +19,8 @@
 }
 
 .middle {
+  width: 80%;
   margin: 1em 10% 2em;
-  position:  fixed ;
 }
 
 .country_flag {
