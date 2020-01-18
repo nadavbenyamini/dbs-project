@@ -19,11 +19,10 @@
 }
 
 .middle {
-  margin: 1em 10% 2em; 
+  margin: 1em 10% 2em;
+  position:  fixed ;
 }
 
 .country_flag {
-  display: inline-block;
-  position: absolute;
-  right: 0;
+  
 }

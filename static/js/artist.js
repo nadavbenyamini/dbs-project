@@ -1,8 +1,3 @@
-server = "127.0.0.1"
-port = "5001"
-port_api = port +"/api"
-
-
 var table_songs = new Tabulator("#songs-table", {
     height:"311px",
     layout:"fitColumns",

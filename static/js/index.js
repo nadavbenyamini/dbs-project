@@ -1,8 +1,3 @@
-//define some sample data
- 
-server = "127.0.0.1"
-port = "5001"
-port_api = port+"/api"
 var table_artist;
 var countries;
 
@@ -85,68 +80,6 @@ var table_songs = new Tabulator("#songs-table", {
        location.replace(url)
     },
 });
-
-// table_artist = new Tabulator("#artist-table", {
-//  	height:"400px",
-//     layout:"fitColumns",
-// 	ajaxResponse:function(url, params, response){
-//         //url - the URL of the request
-//         //params - the parameters passed with the request
-//         //response - the JSON object returned in the body of the response.
-// 		//console.log(response)
-// 		response.forEach(function(item){
-// 			item["track_rating"] = item["track_rating"]/20
-// 		})
-//         return response; //return the tableData property of a response json object
-//     },
-//  	columns:[ //Define Table Columns
-// 		{title:"Id", field:"al.artist_id", visible:false},
-// 		{title:"Id", field:"track_id", visible:false},
-// 		{title:"Id", field:"album_id", visible:false},
-// 	 	{title:"Track", field:"track_name", width:150, headerFilter:"input"},
-// 		{title:"Album", field:"album_name", headerFilter:"input"},
-// 		{title:"Genere", field:"genre_name"},
-// 	 	{title:"Rating", field:"track_rating", align:"left", formatter:"star"},
-// 	 	{title:"Track release", field:"track_release_date", sorter:"date", headerFilter:"input"},
-//  	],
-//  	rowClick:function(e, row){ //trigger an alert message when the row is clicked
-//  		//alert("Row " + row.getData().id + " Clicked!!!!");
-// 		spinner_visibilty(true)
-// 		$.get({
-// 			url:`http://${server}:${port_api}/tracks/${row.getData().track_id}`,
-// 			success:function(result){
-// 				console.log(result[0])
-// 				spinner_visibilty(false)
-// 				$("#card_track_name").html(result[0]["track_name"])
-// 				$("#card_lyrics").html(result[0]["track_lyrics"])
-// 				$("#card_artist").html(result[0]["artist_name"])
-// 				$("#artist-table").hide();
-// 				$("#sond_lyrics").show();
-// 			}
-// 		});
-//  	},
-// });
-
-//trigger button click
-// $("#card_google_link").click(function(){
-// 	q = $("#card_track_name").html()+" and "+$("#card_artist").html()
-// 	window.open('http://google.com/search?q='+q, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
-// });
-
-// $("#music-form").submit(function(e){
-//     console.log("submit")
-//     e.preventDefault()
-//     let country_id = $("#inlineFormCustomSelectPref")[0].value
-//     $.get({
-//         url:`http://${server}:${port}/artists/${country_id}`,
-//         success:function(result){
-//             table_artists.setData(result)
-//         }
-//     });
-//     $("#country_flag_id").show();
-//     $("#country_flag_id").attr('src',`https://www.countryflags.io/${country_id}/flat/64.png`)
-
-// })
 
 
 $("#country-form").submit(function(e){

@@ -41,7 +41,7 @@ def get_popular_artists(country_id):
     :param country_id:
     :return: List of popular artists in the country's charts
     """
-    query = "SELECT a.artist_name, COUNT(a.artist_id) AS number_of_songs_in_chart "\
+    query = "SELECT a.artist_id, a.artist_name, COUNT(a.artist_id) AS number_of_songs_in_chart "\
             "  FROM Charts c, Tracks t, Artists a " \
             " WHERE c.country_id = %s " \
             "   AND c.track_id =t.track_id " \
