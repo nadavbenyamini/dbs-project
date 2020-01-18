@@ -33,7 +33,7 @@ def search_artist(search_text="", page_size=100, page_number=1):
     :return: List of artists that contain search_text in their name
     """
     query = "select * from Artists a where artist_name like %s"
-    args = tuple(['%'+search_text+'%'])
+    args = ('%'+search_text+'%', )
     return query_to_json(query, args, page_size=page_size, page_number=page_number)
 
 
@@ -47,7 +47,7 @@ def get_tracks_by_artist(artist_id):
             "from Artists a, Tracks t, Albums al, Genres g "\
             "where a.artist_id = %s "\
             "and t.artist_id = a.artist_id and al.album_id=t.album_id and g.genre_id = t.genre_id "
-    args = (int(artist_id), )  # Converting to tuple...
+    args = (int(artist_id), )
     return query_to_json(query, args)
 
 
