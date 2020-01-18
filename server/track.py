@@ -99,8 +99,15 @@ def search_track(by_lyrics=False, by_artist=False, search_text=None, from_date=N
         args += [from_date, to_date]
 
     if search_text is not None:
-        text_filter = "{} like %s".format('track_lyrics' if by_lyrics else 'artist_name' if by_artist else 'track_name')
-        args.append("%" + search_text + "%")
+        if by_lyrics:
+            text_filter = "MATCH(track_lyrics) AGAINST (%s)"
+            args.append(search_text)
+        elif by_artist:
+            text_filter = "artist_name like %s"
+            args.append("%" + search_text + "%")
+        else:
+            text_filter = "track_name like %s"
+            args.append("%" + search_text + "%")
 
     query = query.format(DATE_FILTER=date_filter,
                          ALBUM_FILTER=album_filter,
