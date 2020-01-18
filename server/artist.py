@@ -40,7 +40,7 @@ def search_artist(search_text="", page_size=100, page_number=1):
 @artist_routes.route('/api/artist_tracks/<artist_id>', methods=['GET'])
 def get_tracks_by_artist(artist_id):
     """
-    :param artist_id:
+    :param artist_id
     :return: tracks: json of the artist's tracks
     """
     query = "select * " \
@@ -54,7 +54,7 @@ def get_tracks_by_artist(artist_id):
 @artist_routes.route('/api/similar_artists/<artist_id>', methods=['GET'])
 def get_similar_artists(artist_id):
     """
-    :param artist_id:
+    :param artist_id
     :return: List of similar artists
     """
     query = "SELECT DISTINCT a1.artist_name "\

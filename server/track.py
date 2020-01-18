@@ -20,7 +20,7 @@ def get_track(track_id):
 @track_routes.route('/api/similar_tracks/<track_id>', methods=['GET'])
 def get_similar_tracks(track_id):
     """
-    :param track_id:
+    :param track_id
     :return: List of tracks similar to the input track according to genre and chart rankings
     """
     query = "SELECT DISTINCT t.track_id,  t.track_name , a.artist_name,al.album_name, " \
