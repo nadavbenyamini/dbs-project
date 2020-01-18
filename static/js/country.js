@@ -25,6 +25,34 @@ var table_artists = new Tabulator("#artists-table", {
 });
 
 
+var table_songs = new Tabulator("#songs-table", {
+    height:"311px",
+    layout:"fitColumns",
+    placeholder:"No Data Set",
+    ajaxResponse:function(url, params, response){
+       //url - the URL of the request
+       //params - the parameters passed with the request
+       //response - the JSON object returned in the body of the response.
+       return response; //return the tableData property of a response json object
+    },
+    columns:[ //Define Table Columns
+        {title:"Id", field:"track_id", visible:false},
+        {title:"Track Name", field:"track_name"},
+        {title:"Artist Name", field:"artist_name"},
+        {title:"Genere", field:"genre_name"},
+        {title:"Rank", field:"track_rank"},
+        {title:"Release Date", field:"track_release_date"},
+       
+    ],
+    rowClick:function(e, row){ //trigger an alert message when the row is clicked
+        //alert("Row " + row.getData().artist_id + " Clicked!!!!");
+        url = `http://${server}:${port}/track/${row.getData().track_id}`
+       console.log(url)
+       location.replace(url)
+    },
+});
+
+
 function temp(){
     let country_id = $("#country_id").last().html();
     $("#country_flag_id").attr('src',`https://www.countryflags.io/${country_id}/flat/64.png`)
@@ -53,5 +81,14 @@ function temp(){
             var data = google.visualization.arrayToDataTable(arr);
             chart.draw(data, options);
         }
-    });    
+    });  
+    
+    let url3 = `http://${server}:${port_api}/country_tracks/${country_id}`
+    console.log(url3)
+    $.get({
+        url:url3,
+        success:function(result){
+            table_songs.setData(result)
+        }
+    });  
 }
