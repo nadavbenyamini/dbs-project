@@ -23,7 +23,7 @@ def get_tracks_by_artist(artist_id):
     :param artist_id
     :return: tracks: json of the artist's tracks
     """
-    query = "select * from TracksView where a.artist_id = %s;"
+    query = "select * from TracksView where artist_id = %s;"
     args = (artist_id, )
     return query_to_json(query, args)
 
