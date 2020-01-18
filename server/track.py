@@ -1,4 +1,4 @@
-from server.server_utils import *
+from server.utils import *
 from flask import request
 from flask import Blueprint
 
