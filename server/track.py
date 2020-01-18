@@ -1,6 +1,11 @@
-from server.server_logic import *
+from server.server_utils import *
+from flask import request
+from flask import Blueprint
+
+track_routes = Blueprint('track_routes', __name__)
 
 
+@track_routes.route('/api/track/<track_id>', methods=['GET'])
 def get_track(track_id):
     """
     GETTER
@@ -10,6 +15,23 @@ def get_track(track_id):
     query = "select * from Track where track_id = %s"
     args = (track_id, )
     return query_to_json(query, args)
+
+
+@track_routes.route('/api/search/track', methods=['GET'])
+def search_tracks_route():
+    params = request.args
+    by_lyrics = params.get('by_lyrics', False)
+    by_artist = params.get('by_artist', False)
+    assert not by_lyrics or not by_artist  # Can't search by both...
+    return search_track(by_lyrics=params.get('by_lyrics', False),
+                        by_artist=params.get('by_artist', False),
+                        search_text=params.get('search_text', None),
+                        from_date=params.get('from_date', None),
+                        to_date=params.get('to_date', None),
+                        genre=params.get('genre', None),
+                        album=params.get('album', None),
+                        page_size=params.get('page_size', 100),
+                        page_number=params.get('page_number', 1))
 
 
 def search_track(by_lyrics=False, by_artist=False, search_text=None, from_date=None, to_date=None,
@@ -58,33 +80,3 @@ def search_track(by_lyrics=False, by_artist=False, search_text=None, from_date=N
                          TEXT_FILTER=text_filter)
 
     return query_to_json(query=query, args=tuple(args), page_size=page_size, page_number=page_number)
-
-
-def get_tracks_by_country(country_id):
-    """
-    :param country_id:
-    :return: tracks: json of tracks from the country's chart
-    """
-    query = "select t.*, c.*, ch.track_rank " \
-            "  from Countries c " \
-            "  join Charts ch " \
-            "    on c.country_id = ch.country_id" \
-            "  join Tracks t" \
-            "    on t.track_id = ch.track_id" \
-            " where c.country_id = %s" \
-            " order by track_rank"
-    args = (country_id, )  # Converting to tuple...
-    return query_to_json(query, args)
-
-
-def get_tracks_by_artist(artist_id):
-    """
-    :param artist_id:
-    :return: tracks: json of the artist's tracks
-    """
-    query = "select * " \
-            "from Artists a, Tracks t, Albums al, Genres g "\
-            "where a.artist_id = %s "\
-            "and t.artist_id = a.artist_id and al.album_id=t.album_id and g.genre_id = t.genre_id "
-    args = (int(artist_id), )  # Converting to tuple...
-    return query_to_json(query, args)

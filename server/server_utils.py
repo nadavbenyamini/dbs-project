@@ -4,18 +4,9 @@ from flask import jsonify
 import decimal
 
 
-def get_all_countries():
-    return get_all_from_table('Countries', 10000)
-
-
-def get_all_artists():
-    return get_all_from_table('Artists', 10000)
-
-
 def get_all_from_table(tab_name, limit):
     """
-    An *UNSAFE* *TEMPORARY* method for testing
-    # TODO - prevent SQL Injection (maybe make this a private method)
+    Warning this function is for internal use only with a hardcoded value in tab_name to avoid SQL Injection
     :param tab_name: table in our DB
     :param limit: #rows
     :return: simple JSON of select * from tab_name

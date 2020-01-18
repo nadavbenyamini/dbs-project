@@ -1,14 +1,17 @@
 from flask import Flask, render_template
 from flask_cors import CORS
 from data_fetch.data_fetch_routes import data_fetch_routes
-from server.server_routes import api_routes
-from server.server_logic import *
+from server.country import country_routes
+from server.track import track_routes
+from server.artist import artist_routes
 from config import *
 
 app = Flask(__name__)
 CORS(app)
 app.register_blueprint(data_fetch_routes)
-app.register_blueprint(api_routes)
+app.register_blueprint(country_routes)
+app.register_blueprint(track_routes)
+app.register_blueprint(artist_routes)
 
 
 @app.route('/')
@@ -23,26 +26,13 @@ def artist(artist_id):
 
 @app.route('/track/<track_id>')
 def track(track_id):
-    render_template("track.html", track_id=track_id)
+    return render_template("track.html", track_id=track_id)
 
 
 @app.route('/country/<country_id>')
 def country(country_id):
     print('go to country ' + country_id)
-    render_template("country.html", track_id=country_id)
-
-
-# --------------- TODO - Delete the following routes ---------------- #
-@api_routes.route('/show/<tab_name>/<limit>')
-def show_table(tab_name, limit=100):
-    rows = get_all_from_table(tab_name, limit)
-    return render_template(template_name_or_list="old/base.html", rows=rows, title=tab_name)
-
-
-@api_routes.route('/test')
-def test():
-    return render_template(template_name_or_list="old/charts_albums.html", base_url=BASE_URL)
-# -------------------------------------------------------------------- #
+    return render_template("country.html", track_id=country_id)
 
 
 if __name__ == '__main__':
