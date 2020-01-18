@@ -53,6 +53,18 @@ var table_artists = new Tabulator("#artists-table", {
  	},
 });
 
+function update_genre_list(){
+    const genres = JSON.parse(this.responseText);
+    for (const g in genres) {
+        $('#tracks-search-genre').append(`<option value="${g}">${genres[g]['genre_name']}</option>`);
+    }
+}
+function get_genres(){
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", update_genre_list);
+    xhr.open("GET", `http://${server}:${port_api}/genres`,);
+    xhr.send();
+}
 function get_table_songs(search_text=null, search_by=null, date_from=null, date_to=null, genre=null, page_size=null, page_number=null) {
     const params = {};
     if (search_text) params['search_text'] = search_text;
@@ -69,7 +81,7 @@ function get_table_songs(search_text=null, search_by=null, date_from=null, date_
         ajaxParams: params,
         placeholder:"No Data Set",
         ajaxResponse: function(url, params, response){return response;},
-        columns:[ //Define Table Columns
+        columns: [
             {title:"Id", field: "track_id", visible:false},
             {title:"Name", field: "track_name"},
             {title:"Artist", field: "artist_name"},

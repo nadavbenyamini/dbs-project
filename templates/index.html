@@ -53,6 +53,8 @@
             Track Lyrics
             <br/>
 
+            <select id="tracks-search-genre"></select>
+
             <label style="margin: 5px">Track Name: </label><input id="tracks-search-box" type="text" placeholder="Search tracks"/>
             <label style="margin: 5px">Release date from: </label><input id="tracks-date-from" type="date"/>
             <label style="margin: 5px">Release date to: </label><input id="tracks-date-to" type="date"/>
@@ -119,6 +121,7 @@
         }
 
         $(document).ready(function(){
+            get_genres();
             const now = new Date();
             const nowString =
                 now.getFullYear().toString() + '-' +
