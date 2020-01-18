@@ -2,7 +2,7 @@
 
 # popular genres in country
 
-SELECT g.genre_name , COUNT(DISTINCT g.genre_id) AS number_of_songs_in_chart
+SELECT g.genre_name , COUNT(g.genre_id) AS number_of_songs_in_chart
 FROM Charts c , Tracks t , Genres g
 WHERE c.country_id = %s AND
 		c.track_id =t.track_id AND
@@ -12,7 +12,7 @@ ORDER BY number_of_songs_in_chart DESC;
 
 # popular artist in country
 
-SELECT a.artist_name , COUNT(DISTINCT a.artist_id) AS number_of_songs_in_chart
+SELECT a.artist_name , COUNT(a.artist_id) AS number_of_songs_in_chart
 FROM Charts c , Tracks t ,Artists a
 WHERE c.country_id = %s AND
 		c.track_id =t.track_id AND
