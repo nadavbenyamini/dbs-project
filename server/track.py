@@ -19,11 +19,15 @@ def get_track(track_id):
 
 @track_routes.route('/api/similar_tracks/<track_id>', methods=['GET'])
 def get_similar_tracks(track_id):
+    """
+    :param track_id:
+    :return: List of tracks similar to the input track according to genre and chart rankings
+    """
     query = "SELECT DISTINCT t.track_id,  t.track_name , a.artist_name,al.album_name, " \
             "genre_name AS track_genre, t.track_release_date " \
             "FROM Tracks t ,Artists a, Albums al, Genres g, " \
             "   (SELECT MIN(c.track_rank) AS min_rank," \
-            "   MAX(c.track_rank) AS max_rank " \
+            "           MAX(c.track_rank) AS max_rank " \
             "   FROM Charts c " \
             "   WHERE c.track_id = %s " \
             ") AS  min_max_rank " \

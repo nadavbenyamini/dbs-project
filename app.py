@@ -1,18 +1,25 @@
 from flask import Flask, render_template
 from flask_cors import CORS
-from data_fetch.data_fetch_routes import data_fetch_routes
 from server.country import country_routes
 from server.track import track_routes
 from server.artist import artist_routes
 from config import *
 
+# ---- Removed for production app, these routes were used for data fetching process --- #
+# from data_fetch.data_fetch_routes import data_fetch_routes
+# app.register_blueprint(data_fetch_routes)
+# ------------------------------------------------------------------------------------- #
+
 app = Flask(__name__)
 CORS(app)
-app.register_blueprint(data_fetch_routes)
+
+# ----------- Server Routes --------- #
 app.register_blueprint(country_routes)
 app.register_blueprint(track_routes)
 app.register_blueprint(artist_routes)
 
+
+# ----------- Client Routes --------- #
 
 @app.route('/')
 def home():

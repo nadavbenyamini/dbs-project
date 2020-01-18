@@ -3,6 +3,10 @@ from database import sql_executor
 from flask import jsonify
 import decimal
 
+"""
+General utilities supporting the different backend functions  
+"""
+
 
 def get_all_from_table(tab_name, limit):
     """
@@ -15,10 +19,6 @@ def get_all_from_table(tab_name, limit):
     db_results = sql_executor.select(query=query)
     return res_to_json(db_results)
 
-
-# ------------------------------------------------------------------------------------------ #
-# ---------------------------------  General Utilities ------------------------------------- #
-# ------------------------------------------------------------------------------------------ #
 
 def query_to_json(query, args=None, page_size=100000, page_number=1):
     try:
@@ -33,13 +33,14 @@ def query_to_json(query, args=None, page_size=100000, page_number=1):
 def res_to_json(res, page_size=100000, page_number=1):
     _rows = []
     headers = res['headers']
-    first_res = (page_number - 1)*page_size
+    first_res = (page_number - 1) * page_size
     last_res = page_number * page_size
     for row in res['rows'][first_res: last_res]:
         _rows.append({headers[i]: process_val(row[i]) for i in range(len(headers))})
     return jsonify(_rows)
 
 
+# Fixing decimal issue in jsonify()
 def process_val(val):
     return float(val) if isinstance(val, decimal.Decimal) else val
 
