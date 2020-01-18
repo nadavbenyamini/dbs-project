@@ -17,36 +17,13 @@ def get_artist(artist_id):
     return query_to_json(query, args)
 
 
-@artist_routes.route('/api/search/artist', methods=['GET'])
-def search_artist_route():
-    params = request.args
-    return search_artist(search_text=params.get('search_text', None),
-                         page_size=params.get('page_size', 100),
-                         page_number=params.get('page_number', 1))
-
-
-def search_artist(search_text="", page_size=100, page_number=1):
-    """
-    :param search_text: Text to search songs by
-    :param page_size: Number of results to fetch
-    :param page_number: Offset
-    :return: List of artists that contain search_text in their name
-    """
-    query = "select * from Artists a where artist_name like %s"
-    args = ('%'+search_text+'%', )
-    return query_to_json(query, args, page_size=page_size, page_number=page_number)
-
-
 @artist_routes.route('/api/artist_tracks/<artist_id>', methods=['GET'])
 def get_tracks_by_artist(artist_id):
     """
     :param artist_id
     :return: tracks: json of the artist's tracks
     """
-    query = "select * " \
-            "from Artists a, Tracks t, Albums al, Genres g "\
-            "where a.artist_id = %s "\
-            "and t.artist_id = a.artist_id and al.album_id=t.album_id and g.genre_id = t.genre_id "
+    query = "select * from TracksView where a.artist_id = %s;"
     args = (artist_id, )
     return query_to_json(query, args)
 

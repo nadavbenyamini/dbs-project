@@ -12,7 +12,7 @@ def get_track(track_id):
     :param track_id
     :return: Everything from Tracks table
     """
-    query = "select * from Tracks where track_id = %s"
+    query = "select * from TracksView where track_id = %s"
     args = (track_id, )
     return query_to_json(query, args)
 
@@ -23,27 +23,25 @@ def get_similar_tracks(track_id):
     :param track_id
     :return: List of tracks similar to the input track according to genre and chart rankings
     """
-    query = "SELECT DISTINCT t.track_id,  t.track_name , a.artist_name,al.album_name, " \
-            "genre_name AS track_genre, t.track_release_date " \
-            "FROM Tracks t ,Artists a, Albums al, Genres g, " \
+    query = "SELECT DISTINCT t.* "\
+            "FROM TracksView " \
             "   (SELECT MIN(c.track_rank) AS min_rank," \
             "           MAX(c.track_rank) AS max_rank " \
             "   FROM Charts c " \
             "   WHERE c.track_id = %s " \
             ") AS  min_max_rank " \
-            "WHERE a.artist_id = t.artist_id AND " \
-            "al.album_id =t.album_id AND " \
-            "g.genre_id =t.genre_id AND " \
-            "t.genre_id = (SELECT t2.genre_id " \
-            "FROM Tracks t2 " \
-            "WHERE  t2.track_id = %s) AND " \
-            "t.track_id != %s " \
-            "AND min_max_rank.max_rank >= (SELECT AVG(c3.track_rank) " \
-            "   FROM Charts c3 " \
-            "   WHERE c3.track_id=t.track_id ) " \
-            "AND min_max_rank.min_rank <= (SELECT AVG(c4.track_rank) " \
-            "   FROM Charts c4 " \
-            "   WHERE c4.track_id=t.track_id ); "
+            "WHERE t.genre_id = " \
+            "   (SELECT t2.genre_id " \
+            "   FROM Tracks t2 " \
+            "   WHERE  t2.track_id = %s) AND t.track_id != %s " \
+            "     AND min_max_rank.max_rank >= " \
+            "       (SELECT AVG(c3.track_rank) " \
+            "           FROM Charts c3 " \
+            "           WHERE c3.track_id=t.track_id) " \
+            "     AND min_max_rank.min_rank <= " \
+            "       (SELECT AVG(c4.track_rank) " \
+            "           FROM Charts c4 " \
+            "           WHERE c4.track_id=t.track_id ); "
     args = (track_id, track_id, track_id)
     return query_to_json(query, args)
 
@@ -79,23 +77,22 @@ def search_track(by_lyrics=False, by_artist=False, search_text=None, from_date=N
     :param page_number: Offset
     :return: List of tracks that match the above conditions
     """
-    query = "select t.track_id, t.track_name, t.track_release_date, ar.artist_name, al.album_name, g.genre_name" \
-            "  from Tracks t" \
-            "  join Albums al on al.album_id = t.album_id and ({ALBUM_FILTER})" \
-            "  join Genres g on g.genre_id = t.genre_id and ({GENRE_FILTER}) " \
-            "  join Artists ar on ar.artist_id = t.artist_id " \
+    query = "select t.*" \
+            "  from TracksView t" \
             " where ({DATE_FILTER})" \
+            "   and ({ALBUM_FILTER}) " \
+            "   and ({GENRE_FILTER})" \
             "   and ({TEXT_FILTER})" \
-            " order by artist_name " \
+            " order by artist_name, track_name " \
 
     args = []
     text_filter, date_filter, album_filter, genre_filter = "1=1", "1=1", "1=1", "1=1"
     if album is not None:
-        album_filter = "al.album_name = %s"
+        album_filter = "album_name = %s"
         args.append(album)
 
     if genre is not None:
-        genre_filter = "g.genre_name = %s"
+        genre_filter = "genre_name = %s"
         args.append(genre)
 
     if from_date is not None and to_date is not None:
@@ -117,5 +114,5 @@ def search_track(by_lyrics=False, by_artist=False, search_text=None, from_date=N
                          ALBUM_FILTER=album_filter,
                          GENRE_FILTER=genre_filter,
                          TEXT_FILTER=text_filter)
-
+    print(query)
     return query_to_json(query=query, args=tuple(args), page_size=page_size, page_number=page_number)
