@@ -4,19 +4,6 @@ from flask import Blueprint
 country_routes = Blueprint('country_routes', __name__)
 
 
-@country_routes.route('/api/country/<country_id>', methods=['GET'])
-def get_country_chart(country_id):
-    """
-    GETTER
-    :param country_id
-    :return: Everything from Countries x Charts tables
-    """
-    query = "select c2.*, c1.country_name, c1.population " \
-            "from Countries c1 join Charts c2 on c1.country_id=c2.country_id where c1.country_id = %s"
-    args = (country_id, )
-    return query_to_json(query, args)
-
-
 @country_routes.route('/api/country_genres/<country_id>', methods=['GET'])
 def get_popular_genres(country_id):
     """

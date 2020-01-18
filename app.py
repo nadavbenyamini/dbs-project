@@ -32,7 +32,7 @@ def track(track_id):
 @app.route('/country/<country_id>')
 def country(country_id):
     print('go to country ' + country_id)
-    return render_template("country.html", track_id=country_id)
+    return render_template("country.html", country_id=country_id)
 
 
 if __name__ == '__main__':
