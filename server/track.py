@@ -10,9 +10,9 @@ def get_track(track_id):
     """
     GETTER
     :param track_id
-    :return: Everything from Track table
+    :return: Everything from Tracks table
     """
-    query = "select * from Track where track_id = %s"
+    query = "select * from Tracks where track_id = %s"
     args = (track_id, )
     return query_to_json(query, args)
 
