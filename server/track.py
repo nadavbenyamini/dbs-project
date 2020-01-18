@@ -52,8 +52,7 @@ def search_tracks_route():
     by_lyrics = params.get('by_lyrics', False)
     by_artist = params.get('by_artist', False)
     assert not by_lyrics or not by_artist  # Can't search by both...
-    return search_track(by_lyrics=params.get('by_lyrics', False),
-                        by_artist=params.get('by_artist', False),
+    return search_track(search_by=params.get('search_by', False),
                         search_text=params.get('search_text', None),
                         date_from=params.get('date_from', None),
                         date_to=params.get('date_to', None),
@@ -63,11 +62,10 @@ def search_tracks_route():
                         page_number=params.get('page_number', 1))
 
 
-def search_track(by_lyrics=False, by_artist=False, search_text=None, date_from=None, date_to=None,
+def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
                  genre=None, album=None, page_size=100, page_number=1):
     """
-    :param by_lyrics: True iff searching lyrics, otherwise searching track name
-    :param by_artist: True iff searching tracks by artist name
+    :param search_by: Textual search field ('track_name'/'artist_name'/'album_name'/'track_lyrics')
     :param search_text: Text to search songs by
     :param date_from: Optional (YYYY-mm-dd)
     :param date_to: Optional (YYYY-mm-dd)
@@ -101,11 +99,14 @@ def search_track(by_lyrics=False, by_artist=False, search_text=None, date_from=N
         args += [date_from.replace('-', '/'), date_to.replace('-', '/')]
 
     if search_text is not None:
-        if by_lyrics:
+        if search_by == 'track_lyrics':
             text_filter = "MATCH(track_lyrics) AGAINST (%s)"
             args.append(search_text)
-        elif by_artist:
+        elif search_by == 'artist_name':
             text_filter = "artist_name like %s"
+            args.append("%" + search_text + "%")
+        elif search_by == 'album_name':
+            text_filter = "album_name like %s"
             args.append("%" + search_text + "%")
         else:
             text_filter = "track_name like %s"

@@ -53,11 +53,12 @@ var table_artists = new Tabulator("#artists-table", {
  	},
 });
 
-function get_table_songs(search_text=null, date_from=null, date_to=null) {
+function get_table_songs(search_text=null, date_from=null, date_to=null, search_by=null) {
     const params = {};
     if (search_text) params['search_text'] = search_text;
     if (date_from) params['date_from'] = date_from;
     if (date_to) params['date_to'] = date_to;
+    if (search_by) params['search_by'] = search_by;
     return new Tabulator("#songs-table", {
         height:"311px",
         layout:"fitColumns",
