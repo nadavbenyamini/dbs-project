@@ -10,7 +10,6 @@
 	<!--<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.5.3/dist/js/tabulator.min.js"></script>-->
 	<link rel="stylesheet" type="text/css" href="../static/css/index.css">
 	<link href="../static/css/tabulator_materialize.min.css" rel="stylesheet">
-	
 </head>
 
 <body>
@@ -40,18 +39,22 @@
             </div>
 		</form>
 
-    <br><br><br>
-	<h2>Artists Table</h2>
-	<div id="artists-table"></div>
+	    <br><br><br>
 
-	<br><br><br>
-	<h2>Songs Table</h2>
-	<div id="songs-table"></div>
+        <form id="tracks-form" style="display: inline">
+            <label style="margin: 5px">Track Name: </label><input id="tracks-search-box" type="text" placeholder="Search tracks"/>
+            <label style="margin: 5px">Release date from: </label><input id="tracks-date-from" type="date"/>
+            <label style="margin: 5px">Release date to: </label><input id="tracks-date-to" type="date"/>
+        </form>
+        <h2>Songs Table</h2>
+        <div id="songs-table"></div>
 
-	</div>
+        <br><br><br>
+        <h2>Artists Table</h2>
+        <div id="artists-table"></div>
 
-	
-		
+    </div>
+
 	<br><br>
 	<div class="footer">
 		<a href="http://courses.cs.tau.ac.il/databases/databases201920/index.php">Database Systems (Fall 2019/20)</a>
@@ -66,6 +69,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="../static/js/config.js" defer></script>
 	<script type="text/javascript" src="../static/js/index.js" defer></script>
-  
+    <script>
+        function get_table(){
+            const text = $('#tracks-search-box')[0].value;
+            const date_from = $('#tracks-date-from')[0].value;
+            const date_to = $('#tracks-date-to')[0].value;
+            get_table_songs(text, date_from, date_to);
+        }
+
+        $(document).ready(function(){
+            const now = new Date();
+            const nowString =
+                now.getFullYear().toString() + '-' +
+                ('0' + (now.getMonth()+1).toString()).substring(-1, 2) + '-' +
+                now.getDate().toString();
+            $('#tracks-date-from').val('1900-01-01');
+            $('#tracks-date-to').val(nowString);
+            get_table();
+
+            $('#tracks-date-from').change(delay(function() { get_table();}, 500));
+            $('#tracks-date-to').change(delay(function() { get_table();}, 500));
+            $('#tracks-search-box').keyup(delay(function() { get_table();}, 500));
+        });
+    </script>
 </body>
 </html>

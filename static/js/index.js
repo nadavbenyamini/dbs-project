@@ -47,39 +47,38 @@ var table_artists = new Tabulator("#artists-table", {
 	 	{title:"Country", field:"artist_country_id"},
  	],
  	rowClick:function(e, row){ //trigger an alert message when the row is clicked
-         //alert("Row " + row.getData().artist_id + " Clicked!!!!");
-        url = `http://${server}:${port}/artist/${row.getData().artist_id}`
-        console.log(url)
-        location.replace(url)
+        const url = `http://${server}:${port}/artist/${row.getData()['artist_id']}`;
+        window.location.href = url;
 		//table_artist.setData(`http://${server}:${port_api}/artist_tracks/${row.getData().artist_id}`)
  	},
 });
 
-var table_songs = new Tabulator("#songs-table", {
-    height:"311px",
-   layout:"fitColumns",
-   ajaxURL:`http://${server}:${port_api}/search/track`,
-   placeholder:"No Data Set",
-   ajaxResponse:function(url, params, response){
-       //url - the URL of the request
-       //params - the parameters passed with the request
-       //response - the JSON object returned in the body of the response.
-       return response; //return the tableData property of a response json object
-   },
-    columns:[ //Define Table Columns
-       {title:"Id", field:"track_id", visible:false},
-        {title:"Name", field:"track_name", width:150},
-        {title:"Artist", field:"artist_name"},
-        {title:"Genere", field:"genre_name"},
-        {title:"Release Date", field:"track_release_date"}
-    ],
-    rowClick:function(e, row){ 
-        console.log(row.getData().track_id)
-       url = `http://${server}:${port}/track/${row.getData().track_id}`
-       console.log(url)
-       location.replace(url)
-    },
-});
+function get_table_songs(search_text=null, date_from=null, date_to=null) {
+    const params = {};
+    if (search_text) params['search_text'] = search_text;
+    if (date_from) params['date_from'] = date_from;
+    if (date_to) params['date_to'] = date_to;
+    return new Tabulator("#songs-table", {
+        height:"311px",
+        layout:"fitColumns",
+        ajaxURL: `http://${server}:${port_api}/search/track`,
+        ajaxParams: params,
+        placeholder:"No Data Set",
+        ajaxResponse: function(url, params, response){ return response; },
+        columns:[ //Define Table Columns
+            {title:"Id", field: "track_id", visible:false},
+            {title:"Name", field: "track_name"},
+            {title:"Artist", field: "artist_name"},
+            {title:"Album", field: "album_name"},
+            {title:"Genre", field: "genre_name", width: 150},
+            {title:"Release Date", field:"track_release_date", width: 300}
+        ],
+        rowClick:function(e, row){
+            const url = `http://${server}:${port}/track/${row.getData()['track_id']}`;
+            window.location.href = url;
+        },
+    });
+}
 
 
 $("#country-form").submit(function(e){
@@ -167,4 +166,15 @@ function minMaxFilterFunction(headerValue, rowValue, rowData, filterParams){
         }
 
     return false; //must return a boolean, true if it passes the filter.
+}
+
+function delay(callback, ms) {
+  let timer = 0;
+  return function() {
+    const context = this, args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      callback.apply(context, args);
+    }, ms || 0);
+  };
 }
