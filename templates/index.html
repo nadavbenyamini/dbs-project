@@ -71,7 +71,7 @@
             <option value="50">50</option>
         </select>
         <label style="margin: 5px">Page Number: </label>
-        <b id="tracks-page-number">1</b> / <b id="tracks-page-count">1</b>
+        <b id="tracks-page-number">1</b>
         <button type="submit" style="margin-left: 20px" class="btn btn-secondary" id="tracks-page-prev" onclick="move_page(-1)"><</button>
         <button type="submit" style="margin-left: 5px" class="btn btn-secondary" id="tracks-page-next"  onclick="move_page(1)">></button>
 
@@ -101,7 +101,7 @@
             const date_from = $('#tracks-date-from')[0].value;
             const date_to = $('#tracks-date-to')[0].value;
             const page_size = $('#tracks-page-size')[0].value;
-            const page_number = $('#tracks-page-number')[0].value;
+            const page_number = parseInt($('#tracks-page-number')[0].innerText);
             const genre = null;
             let search_by = '';
             for (const radio of $('input[type=radio][name=tracks-search-type]')) {
@@ -112,10 +112,8 @@
 
         function move_page(move=1){
             const current = parseInt($('#tracks-page-number')[0].innerText);
-            const page_count = $('#tracks-page-count')[0].innerText;
             document.getElementById("tracks-page-prev").disabled = current + move <= 1;
-            document.getElementById("tracks-page-next").disabled = current + move >= page_count;
-            if (current + move < 1 || current + move > page_count) return;
+            if (current + move < 1) return;
             $('#tracks-page-number').text(current + move);
             get_table();
         }

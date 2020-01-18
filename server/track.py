@@ -119,6 +119,8 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
         limit = '{}, {}'.format(page_size * (page_number - 1), page_size * page_number)
     except ValueError:
         limit = '1, 100000'
+
+    print(limit)
     query = query.format(DATE_FILTER=date_filter,
                          ALBUM_FILTER=album_filter,
                          GENRE_FILTER=genre_filter,

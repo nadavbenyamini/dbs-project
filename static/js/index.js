@@ -68,11 +68,7 @@ function get_table_songs(search_text=null, search_by=null, date_from=null, date_
         ajaxURL: `http://${server}:${port_api}/search/track`,
         ajaxParams: params,
         placeholder:"No Data Set",
-        ajaxResponse: function(url, params, response){
-            const page_count = Math.floor(response.length / page_size) + 1;
-            document.getElementById('tracks-page-count').innerText = page_count;
-            return response;
-        },
+        ajaxResponse: function(url, params, response){return response;},
         columns:[ //Define Table Columns
             {title:"Id", field: "track_id", visible:false},
             {title:"Name", field: "track_name"},
