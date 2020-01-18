@@ -17,6 +17,33 @@ def get_track(track_id):
     return query_to_json(query, args)
 
 
+@track_routes.route('/api/similar_tracks/<track_id>', methods=['GET'])
+def get_similar_tracks(track_id):
+    query = "SELECT DISTINCT t.track_id,  t.track_name , a.artist_name,al.album_name, " \
+            "genre_name AS track_genre, t.track_release_date " \
+            "FROM Tracks t ,Artists a, Albums al, Genres g, " \
+            "   (SELECT MIN(c.track_rank) AS min_rank," \
+            "   MAX(c.track_rank) AS max_rank " \
+            "   FROM Charts c " \
+            "   WHERE c.track_id = %s " \
+            ") AS  min_max_rank " \
+            "WHERE a.artist_id = t.artist_id AND " \
+            "al.album_id =t.album_id AND " \
+            "g.genre_id =t.genre_id AND " \
+            "t.genre_id = (SELECT t2.genre_id " \
+            "FROM Tracks t2 " \
+            "WHERE  t2.track_id = %s) AND " \
+            "t.track_id != %s " \
+            "AND min_max_rank.max_rank >= (SELECT AVG(c3.track_rank) " \
+            "   FROM Charts c3 " \
+            "   WHERE c3.track_id=t.track_id ) " \
+            "AND min_max_rank.min_rank <= (SELECT AVG(c4.track_rank) " \
+            "   FROM Charts c4 " \
+            "   WHERE c4.track_id=t.track_id ); "
+    args = (track_id, track_id, track_id)
+    return query_to_json(query, args)
+
+
 @track_routes.route('/api/search/track', methods=['GET'])
 def search_tracks_route():
     params = request.args
@@ -55,6 +82,7 @@ def search_track(by_lyrics=False, by_artist=False, search_text=None, from_date=N
             "  join Artists ar on ar.artist_id = t.artist_id " \
             " where ({DATE_FILTER})" \
             "   and ({TEXT_FILTER})" \
+            " order by artist_name " \
 
     args = []
     text_filter, date_filter, album_filter, genre_filter = "1=1", "1=1", "1=1", "1=1"
