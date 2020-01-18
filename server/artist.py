@@ -47,7 +47,34 @@ def get_tracks_by_artist(artist_id):
             "from Artists a, Tracks t, Albums al, Genres g "\
             "where a.artist_id = %s "\
             "and t.artist_id = a.artist_id and al.album_id=t.album_id and g.genre_id = t.genre_id "
-    args = (int(artist_id), )
+    args = (artist_id, )
+    return query_to_json(query, args)
+
+
+@artist_routes.route('/api/similar_artists/<artist_id>', methods=['GET'])
+def get_similar_artists(artist_id):
+    """
+    :param artist_id:
+    :return: List of similar artists
+    """
+    query = "SELECT DISTINCT a1.artist_name "\
+            "FROM Artists a1, Tracks t1  ,Genres g1 , "\
+            "   (SELECT MAX(c.track_rank) AS max_rating , MIN(c.track_rank) AS min_rating "\
+            "   FROM Artists a , Tracks t ,Charts c "\
+            "   WHERE a.artist_id = t.artist_id AND "\
+            "   c.track_id = t.track_id AND "\
+            "   a.artist_id = %s) AS min_max_rating "\
+            "WHERE a1.artist_id = t1.artist_id AND "\
+            "t1.genre_id =g1.genre_id AND "\
+            "g1.genre_id IN " \
+            "   (SELECT DISTINCT  g0.genre_id "\
+            "   FROM Artists a0, Tracks t0, Genres g0 "\
+            "   WHERE a0.artist_id = t0.artist_id " \
+            "     AND t0.genre_id = g0.genre_id " \
+            "     AND a0.artist_id = %s) " \
+            "AND t1.track_rating>=min_max_rating.min_rating " \
+            "AND t1.track_rating<=min_max_rating.max_rating;"
+    args = (artist_id, artist_id)
     return query_to_json(query, args)
 
 
