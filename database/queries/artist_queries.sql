@@ -40,5 +40,5 @@ WHERE a1.artist_id = t1.artist_id AND
 							 WHERE a0.artist_id = t0.artist_id AND
 					  				t0.genre_id = g0.genre_id AND
 					  			  	a0.artist_id = "artist id") AND
-		t1.track_rating>min_max_rating.min_rating AND
-		t1.track_rating<min_max_rating.max_rating;
+		t1.track_rating>=min_max_rating.min_rating AND
+		t1.track_rating<=min_max_rating.max_rating;
