@@ -43,19 +43,21 @@
 
         <form id="tracks-form" style="display: inline">
             <label style="margin: 5px">Search by: </label>
-            <input id="tracks-search-type" name="tracks-search-type" type="radio" value="track_name">
+            <input id="tracks-search-type" name="tracks-search-type" type="radio" value="track_name" checked="true" style="margin-left: 15px">
             Track Name
-            <input id="tracks-search-type" name="tracks-search-type" type="radio" value="artist_name">
+            <input id="tracks-search-type" name="tracks-search-type" type="radio" value="artist_name" style="margin-left: 15px">
             Artist Name
-            <input id="tracks-search-type" name="tracks-search-type" type="radio" value="album_name">
+            <input id="tracks-search-type" name="tracks-search-type" type="radio" value="album_name" style="margin-left: 15px">
             Album Name
-            <input id="tracks-search-type" name="tracks-search-type" type="radio" value="track_lyrics">
+            <input id="tracks-search-type" name="tracks-search-type" type="radio" value="track_lyrics" style="margin-left: 15px">
             Track Lyrics
             <br/>
 
             <label style="margin: 5px">Track Name: </label><input id="tracks-search-box" type="text" placeholder="Search tracks"/>
             <label style="margin: 5px">Release date from: </label><input id="tracks-date-from" type="date"/>
             <label style="margin: 5px">Release date to: </label><input id="tracks-date-to" type="date"/>
+
+            <button type="submit" style="margin-left: 20px" class="btn btn-primary" onclick="get_table()">GO</button>
         </form>
         <br/><br/>
         <h2>Tracks</h2>
@@ -86,7 +88,10 @@
             const text = $('#tracks-search-box')[0].value;
             const date_from = $('#tracks-date-from')[0].value;
             const date_to = $('#tracks-date-to')[0].value;
-            const search_by = $('#tracks-search-type')[0].value;
+            let search_by = '';
+            for (const radio of $('input[type=radio][name=tracks-search-type]')) {
+                if (radio.checked) search_by = radio.value;
+            }
             get_table_songs(text, date_from, date_to, search_by);
         }
 
@@ -102,14 +107,13 @@
             $('#tracks-date-from').change(delay(function() { get_table();}, wait));
             $('#tracks-date-to').change(delay(function() { get_table();}, wait));
             $('#tracks-search-box').keyup(delay(function() { get_table();}, wait));
-            $('#tracks-search-type').change(delay(function() {
+            $('input[type=radio][name=tracks-search-type]').change(delay(function() {
                 if($('#tracks-search-box')[0].value.length > 0) get_table();
             }, wait));
 
             // Setting default values
             $('#tracks-date-from').val('1900-01-01');
             $('#tracks-date-to').val(nowString);
-            $('#tracks-search-type').val('track_name');
 
             // First run
             get_table();
