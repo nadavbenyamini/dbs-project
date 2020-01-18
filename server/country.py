@@ -53,7 +53,7 @@ def get_tracks_by_country(country_id):
             "  join Albums al on al.album_id = t.album_id "\
             "  join Genres g on g.genre_id = t.genre_id "\
             " where c.country_id = %s "\
-            " order by track_rank"
+            " order by track_rank desc"
     args = (country_id, )
     return query_to_json(query, args)
 
