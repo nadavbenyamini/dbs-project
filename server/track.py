@@ -56,44 +56,45 @@ def search_tracks_route():
                         search_text=params.get('search_text', None),
                         date_from=params.get('date_from', None),
                         date_to=params.get('date_to', None),
-                        genre=params.get('genre', None),
+                        genre_id=params.get('genre_id', None),
                         album=params.get('album', None),
                         page_size=params.get('page_size', 100),
                         page_number=params.get('page_number', 1))
 
 
 def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
-                 genre=None, album=None, page_size=100, page_number=1):
+                 genre_id=None, album=None, page_size=100, page_number=1):
     """
     :param search_by: Textual search field ('track_name'/'artist_name'/'album_name'/'track_lyrics')
     :param search_text: Text to search songs by
     :param date_from: Optional (YYYY-mm-dd)
     :param date_to: Optional (YYYY-mm-dd)
-    :param genre: Optional
+    :param genre_id: Optional (exact ID from list, not free text.
+                     Searching also parent id so e.g. 'rock' will return 'hard rock' tracks too
     :param album: Optional
     :param page_size: Number of results to fetch
     :param page_number: Offset
     :return: List of tracks that match the above conditions
     """
     query = "select track_id, track_name, album_name, artist_name, genre_name," \
-            "       DATE_FORMAT(track_release_date, %s) as track_release_date" \
+            "       REPLACE(DATE_FORMAT(track_release_date, %s), '\\\\', '') as track_release_date " \
             "  from TracksView t" \
-            " where ({DATE_FILTER})" \
-            "   and ({ALBUM_FILTER}) " \
-            "   and ({GENRE_FILTER})" \
+            " where ({GENRE_FILTER})" \
             "   and ({TEXT_FILTER})" \
+            "   and ({DATE_FILTER})" \
             " order by artist_name, track_name" \
             " limit {LIMIT};"
 
-    args = ["%M %d, %Y"]
-    text_filter, date_filter, album_filter, genre_filter = "1=1", "1=1", "1=1", "1=1"
-    if album is not None:
-        album_filter = "album_name = %s"
-        args.append(album)
+    args = ["\\%M \\%d, \\%Y"]
+    text_filter = date_filter = genre_filter = "1=1"
 
-    if genre is not None:
-        genre_filter = "genre_name = %s"
-        args.append(genre)
+    if genre_id is not None:
+        try:
+            genre_id = int(genre_id)
+            genre_filter = "(genre_id = %s) or (genre_parent_id = %s)"
+            args += [genre_id, genre_id]
+        except ValueError:
+            pass
 
     if date_from is not None and date_to is not None:
         date_filter = 'track_release_date > %s and track_release_date < %s'
@@ -120,10 +121,10 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
     except ValueError:
         limit = '1, 100000'
 
-    print(limit)
+
     query = query.format(DATE_FILTER=date_filter,
-                         ALBUM_FILTER=album_filter,
                          GENRE_FILTER=genre_filter,
                          TEXT_FILTER=text_filter,
                          LIMIT=limit)
+    print(query, args)
     return query_to_json(query=query, args=tuple(args))

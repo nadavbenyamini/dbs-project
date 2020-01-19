@@ -6,6 +6,8 @@ genre_routes = Blueprint('genre_routes', __name__)
 
 @genre_routes.route('/api/genres', methods=['GET'])
 def get_artist():
+    return get_all_from_table('GenresView')
+    ''' TODO - DELETE THIS:
     query = " select g1.genre_id, "\
             "        case when g2.genre_id=34 or g2.genre_id is NULL "\
             "             then g1.genre_name "\
@@ -15,3 +17,5 @@ def get_artist():
             " where g2.genre_id is null or g1.genre_id != 34 /*34='Music' the root genre*/ " \
             " order by genre_full_name "
     return query_to_json(query)
+    '''
+
