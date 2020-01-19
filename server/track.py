@@ -67,7 +67,6 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
     :param date_to: Optional (YYYY-mm-dd)
     :param genre_id: Optional (exact ID from list, not free text.
                      Searching also parent id so e.g. 'rock' will return 'hard rock' tracks too
-    :param album: Optional
     :param page_size: Number of results to fetch
     :param page_number: Offset
     :return: List of tracks that match the above conditions
