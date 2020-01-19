@@ -1,6 +1,6 @@
 import traceback
 from database import sql_executor
-from flask import jsonify
+from flask import jsonify, abort, Response
 import decimal
 
 """
@@ -24,10 +24,10 @@ def query_to_json(query, args=None, page_size=100000, page_number=1):
     try:
         db_results = sql_executor.select(query=query, args=args)
         return res_to_json(db_results, page_size=page_size, page_number=page_number)
-    except sql_executor.NoResultsException as e:
-        raise APIException(str(e), status_code=404)
+    except sql_executor.NoResultsException:
+        abort(404)
     except Exception as e:
-        raise APIException(str(e), status_code=500)
+        raise e
 
 
 def res_to_json(res, page_size=100000, page_number=1):
@@ -44,21 +44,20 @@ def res_to_json(res, page_size=100000, page_number=1):
 def process_val(val):
     return float(val) if isinstance(val, decimal.Decimal) else val
 
-
+# TODO: DELETE THIS:
+'''
 class APIException(Exception):
     """
     Customer error raising.
     For example wrong track id should be error 404 not 500
     """
-    status_code = 400
-
-    def __init__(self, message, status_code=400):
+    def __init__(self, message, status_code=404):
         Exception.__init__(self)
         print('Message: {}\n{}'.format(message, traceback.format_exc()))
         self.message = message
-        if status_code is not None:
-            self.status_code = status_code
+        self.status_code = status_code
 
     def to_json(self):
         return jsonify({'message': self.message})
 
+'''
