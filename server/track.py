@@ -76,7 +76,7 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
     :param page_number: Offset
     :return: List of tracks that match the above conditions
     """
-    query = "select track_id, track_name, album_name, artist_name, genre_name," \
+    query = "select track_id, artist_id, track_name, album_name, artist_name, genre_name," \
             "       REPLACE(DATE_FORMAT(track_release_date, %s), '\\\\', '') as track_release_date " \
             "  from TracksView t" \
             " where ({DATE_FILTER})" \
@@ -106,13 +106,13 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
             args.append(search_text)
         elif search_by == 'artist_name':
             text_filter = "artist_name like %s"
-            args.append("%" + search_text + "%")
+            args.append(search_text + "%")
         elif search_by == 'album_name':
             text_filter = "album_name like %s"
-            args.append("%" + search_text + "%")
+            args.append(search_text + "%")
         else:
             text_filter = "track_name like %s"
-            args.append("%" + search_text + "%")
+            args.append(search_text + "%")
 
     try:
         page_number = int(page_number)
