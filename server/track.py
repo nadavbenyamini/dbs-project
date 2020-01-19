@@ -57,13 +57,12 @@ def search_tracks_route():
                         date_from=params.get('date_from', None),
                         date_to=params.get('date_to', None),
                         genre_id=params.get('genre_id', None),
-                        album=params.get('album', None),
                         page_size=params.get('page_size', 100),
                         page_number=params.get('page_number', 1))
 
 
 def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
-                 genre_id=None, album=None, page_size=100, page_number=1):
+                 genre_id=None, page_size=100, page_number=1):
     """
     :param search_by: Textual search field ('track_name'/'artist_name'/'album_name'/'track_lyrics')
     :param search_text: Text to search songs by
@@ -106,10 +105,10 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
             args.append(search_text)
         elif search_by == 'artist_name':
             text_filter = "artist_name like %s"
-            args.append(search_text + "%") # '%' only on the right to use index
+            args.append(search_text + "%")  # '%' only on the right to use index
         elif search_by == 'album_name':
             text_filter = "album_name like %s"
-            args.append(search_text + "%") # '%' only on the right to use index
+            args.append(search_text + "%")  # '%' only on the right to use index
         else:
             text_filter = "track_name like %s"
             args.append(search_text + "%")  # '%' only on the right to use index
