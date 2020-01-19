@@ -12,7 +12,15 @@ def get_artist(artist_id):
     :param artist_id
     :return: Everything from Artists table
     """
-    query = "select * from Artists where artist_id = %s;"
+    query = "select a.*, c.country_name as artist_country_name, " \
+            "       count(ch.country_id) as total_tracks_in_charts," \
+            "       count(distinct ch.country_id) as unique_country_charts " \
+            " from Artists a " \
+            " left join Tracks t on t.artist_id = a.artist_id" \
+            " left join Charts ch on ch.track_id = t.track_id " \
+            " left join Countries c on c.country_id = a.artist_country_id " \
+            "where a.artist_id = %s " \
+            "group by a.artist_id, a.artist_name, a.artist_country_id, a.artist_rating, c.country_name"
     args = (artist_id, )
     return query_to_json(query, args)
 
@@ -21,9 +29,24 @@ def get_artist(artist_id):
 def get_tracks_by_artist(artist_id):
     """
     :param artist_id
-    :return: tracks: json of the artist's tracks
+    :return: tracks: json of the artist's tracks in each chart including chart appearances
     """
-    query = "select * from TracksView where artist_id = %s;"
+    query = "select * from TracksView where artist_id = %s"
+    args = (artist_id, )
+    return query_to_json(query, args)
+
+
+@artist_routes.route('/api/artist_charts/<artist_id>', methods=['GET'])
+def get_charts_by_artist(artist_id):
+    """
+    :param artist_id
+    :return: tracks: json of the artist's tracks in each chart including chart appearances
+    """
+    query = "select t.track_id, t.album_name, t.track_name, c.country_id, c.country_name, ch.track_rank "\
+            " from TracksView t"\
+            " left join Charts ch on ch.track_id = t.track_id "\
+            " left join Countries c on ch.country_id = c.country_id "\
+            "where artist_id = %s;"
     args = (artist_id, )
     return query_to_json(query, args)
 
@@ -58,4 +81,3 @@ def get_similar_artists(artist_id):
 @artist_routes.route('/api/artists', methods=['GET'])
 def get_all_artists():
     return get_all_from_table('Artists')
-
