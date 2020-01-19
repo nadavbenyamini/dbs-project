@@ -1,12 +1,45 @@
-var countries;
+// Launch function
+$(document).ready(function() {
+    getAllCountries();
+    getGenres();
+
+    // Setting listeners
+    const wait = 500;
+    $('#tracks-date-from').change(delay(function() { get_table();}, wait));
+    $('#tracks-date-to').change(delay(function() { get_table();}, wait));
+    $('#tracks-page-size').change(delay(function() { get_table();}, wait));
+    $('#tracks-search-genre').change(delay(function() { get_table();}, wait));
+    $('#tracks-search-box').keyup(delay(function() { get_table();}, wait));
+    $('input[type=radio][name=tracks-search-type]').change(delay(function() {
+        const searchType = getSearchType();
+        document.getElementById('tracks-search-type-label').innerText = titleCase(searchType) + ':';
+        if($('#tracks-search-box')[0].value.length > 0) get_table();
+    }, wait*2));
+    reset()
+});
+
+
+function reset() {
+    const now = new Date();
+    const nowString =
+        now.getFullYear().toString() + '-' +
+        ('0' + (now.getMonth()+1).toString()).substring(-1, 2) + '-' +
+        now.getDate().toString();
+
+    // Setting default values
+    document.getElementById('tracks-search-type-label').innerText = 'Track Name:';
+    $('#tracks-date-from').val('1900-01-01');
+    $('#tracks-date-to').val(nowString);
+
+    // First run
+    get_table();
+}
 
 function getAllCountries(){
     $.get({
         url:`http://${server}:${port_api}/countries`,
         success:function(result){
-           countries = result;
-           //console.log(result)
-            countries.forEach(function(item){
+            result.forEach(function(item){
                  $("#inlineFormCustomSelectPref").append(`<option value="${item.country_id}">${item.country_name}</option>`)
             });
         },
@@ -16,59 +49,33 @@ function getAllCountries(){
     });
 }
 
-$(function(){
-    console.log("load");
-    getAllCountries();
-})
-
-function spinner_visibilty(show){
-	console.log(show)
-	if(show){
-		$(".spinner-border").show();
-	}else{
-		$(".spinner-border").hide();
-	}
-}
-
- //create Tabulator on DOM element with id "example-table"
-var table_artists = new Tabulator("#artists-table", {
- 	height:"311px",
-    layout:"fitColumns",
-	ajaxURL:`http://${server}:${port_api}/artists`,
-    placeholder:"No Data Set",
-	ajaxResponse:function(url, params, response){
-        //url - the URL of the request
-        //params - the parameters passed with the request
-        //response - the JSON object returned in the body of the response.
-        return response; //return the tableData property of a response json object
-    },
- 	columns:[ //Define Table Columns
-		{title:"Id", field:"artist_id", visible:false},
-	 	{title:"Name", field:"artist_name", width:150},
-	 	{title:"Rating", field:"artist_rating", align:"left", formatter:"progress"},
-	 	{title:"Country", field:"artist_country_id"},
- 	],
- 	rowClick:function(e, row){ //trigger an alert message when the row is clicked
-        const url = `http://${server}:${port}/artist/${row.getData()['artist_id']}`;
-        window.location.href = url;
-		//table_artist.setData(`http://${server}:${port_api}/artist_tracks/${row.getData().artist_id}`)
- 	},
-});
-
-function update_genre_list(){
+function updateGenreList(){
     const genres = JSON.parse(this.responseText);
     for (const g of genres) {
         $('#tracks-search-genre').append(`<option value="${g['genre_id']}">${g['genre_full_name']}</option>`);
     }
 }
-function get_genres(){
+function getGenres(){
     const xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", update_genre_list);
+    xhr.addEventListener("load", updateGenreList);
     xhr.open("GET", `http://${server}:${port_api}/genres`,);
     xhr.send();
 }
 
-function get_table_songs(search_text=null, search_by=null, date_from=null, date_to=null, genre_id=null, page_size=null, page_number=null) {
+function get_table(page_changed=false) {
+    if (!page_changed) move_to_first_page();
+    const text = $('#tracks-search-box')[0].value;
+    const date_from = $('#tracks-date-from')[0].value;
+    const date_to = $('#tracks-date-to')[0].value;
+    const page_size = $('#tracks-page-size')[0].value;
+    const page_number = parseInt($('#tracks-page-number')[0].innerText);
+    let genre_id = $('#tracks-search-genre')[0].value;
+    if (genre_id == '-1') genre_id = null;
+    const search_by = getSearchType();
+    getTracks(text, search_by, date_from, date_to, genre_id, page_size, page_number);
+}
+
+function getTracks(search_text=null, search_by=null, date_from=null, date_to=null, genre_id=null, page_size=null, page_number=null) {
     const params = {};
     if (search_text) params['search_text'] = search_text;
     if (date_from) params['date_from'] = date_from;
@@ -126,13 +133,37 @@ function addCountryButton() {
     $("#country-submit-div").append(`<button type="submit" id="country-submit-button" class="btn btn-primary">GO</button>`);
 }
 
+
+function getSearchType() {
+    for (const radio of $('input[type=radio][name=tracks-search-type]')) {
+        if (radio.checked) return radio.value;
+    }
+}
+
+function move_to_first_page() {
+    $('#tracks-page-number').val(1);
+    $('#tracks-page-number').text(1);
+    document.getElementById("tracks-page-prev").disabled = true;
+}
+
+function move_page(move=1) {
+    const current = parseInt($('#tracks-page-number')[0].innerText);
+    document.getElementById("tracks-page-prev").disabled = current + move <= 1;
+    if (current + move < 1) return;
+    $('#tracks-page-number').text(current + move);
+    get_table(true);
+}
+
+function disable_next_page_button() {
+    const pageSize = parseInt($('#tracks-page-size')[0].value);
+    const resultsShown = parseInt($('#tracks-results-count')[0].innerText);
+    document.getElementById("tracks-page-next").disabled = resultsShown < pageSize;
+}
+
 //custom max min header filter
 var minMaxFilterEditor = function(cell, onRendered, success, cancel, editorParams){
-
     var end;
-
     var container = document.createElement("span");
-
     //create and style inputs
     var start = document.createElement("input");
     start.setAttribute("type", "number");
@@ -202,15 +233,4 @@ function minMaxFilterFunction(headerValue, rowValue, rowData, filterParams){
         }
 
     return false; //must return a boolean, true if it passes the filter.
-}
-
-function delay(callback, ms) {
-  let timer = 0;
-  return function() {
-    const context = this, args = arguments;
-    clearTimeout(timer);
-    timer = setTimeout(function () {
-      callback.apply(context, args);
-    }, ms || 0);
-  };
 }
