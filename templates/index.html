@@ -62,7 +62,7 @@
             <label style="margin: 5px">Release date from: </label><input id="tracks-date-from" type="date"/>
             <label style="margin: 5px">Release date to: </label><input id="tracks-date-to" type="date"/>
 
-            <button type="submit" style="margin-left: 20px" class="btn btn-primary" onclick="get_table()">Refresh</button>
+            <button type="submit" style="float: right" class="btn btn-primary" onclick="reset()">Reset</button>
         </form>
         <br/><br/>
         <h2>Tracks</h2>
@@ -117,11 +117,6 @@
 
         $(document).ready(function() {
             get_genres();
-            const now = new Date();
-            const nowString =
-                now.getFullYear().toString() + '-' +
-                ('0' + (now.getMonth()+1).toString()).substring(-1, 2) + '-' +
-                now.getDate().toString();
 
             // Setting listeners
             const wait = 500;
@@ -134,7 +129,17 @@
                 const searchType = getSearchType();
                 document.getElementById('tracks-search-type-label').innerText = titleCase(searchType) + ':';
                 if($('#tracks-search-box')[0].value.length > 0) get_table();
-            }, wait));
+            }, wait*2));
+            reset()
+        });
+
+        function reset(){
+            const now = new Date();
+            const nowString =
+                now.getFullYear().toString() + '-' +
+                ('0' + (now.getMonth()+1).toString()).substring(-1, 2) + '-' +
+                now.getDate().toString();
+
             // Setting default values
             document.getElementById('tracks-search-type-label').innerText = 'Track Name:';
             $('#tracks-page-number').val(1);
@@ -144,7 +149,7 @@
 
             // First run
             get_table();
-        });
+        }
 
         function getSearchType() {
             for (const radio of $('input[type=radio][name=tracks-search-type]')) {

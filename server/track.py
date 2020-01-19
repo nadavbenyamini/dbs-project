@@ -79,9 +79,9 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
     query = "select track_id, track_name, album_name, artist_name, genre_name," \
             "       REPLACE(DATE_FORMAT(track_release_date, %s), '\\\\', '') as track_release_date " \
             "  from TracksView t" \
-            " where ({GENRE_FILTER})" \
+            " where ({DATE_FILTER})" \
+            "   and ({GENRE_FILTER})" \
             "   and ({TEXT_FILTER})" \
-            "   and ({DATE_FILTER})" \
             " order by artist_name, track_name" \
             " limit {LIMIT};"
 
@@ -120,7 +120,6 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
         limit = '{}, {}'.format(page_size * (page_number - 1), page_size * page_number)
     except ValueError:
         limit = '1, 100000'
-
 
     query = query.format(DATE_FILTER=date_filter,
                          GENRE_FILTER=genre_filter,
