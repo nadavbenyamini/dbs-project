@@ -106,13 +106,13 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
             args.append(search_text)
         elif search_by == 'artist_name':
             text_filter = "artist_name like %s"
-            args.append(search_text + "%")
+            args.append(search_text + "%") # '%' only on the right to use index
         elif search_by == 'album_name':
             text_filter = "album_name like %s"
-            args.append(search_text + "%")
+            args.append(search_text + "%") # '%' only on the right to use index
         else:
             text_filter = "track_name like %s"
-            args.append(search_text + "%")
+            args.append(search_text + "%")  # '%' only on the right to use index
 
     try:
         page_number = int(page_number)
