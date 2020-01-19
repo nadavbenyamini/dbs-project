@@ -66,7 +66,7 @@
         </form>
         <br/><br/>
         <h2 style="display: inline">Tracks</h2>
-        <span id="tracks-results-count">0</span>
+        <span style="float: right"><span id="tracks-results-count">0</span><span> results</span></span>
         <div id="songs-table" style="min-height: 300px"></div>
         <br/><br/>
 
@@ -174,7 +174,6 @@
         function disable_next_page_button() {
             const pageSize = parseInt($('#tracks-page-size')[0].value);
             const resultsShown = parseInt($('#tracks-results-count')[0].innerText);
-            console.log(pageSize, resultsShown);
             document.getElementById("tracks-page-next").disabled = resultsShown < pageSize;
         }
     </script>

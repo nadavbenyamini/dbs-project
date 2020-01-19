@@ -64,6 +64,7 @@ function get_genres(){
     xhr.open("GET", `http://${server}:${port_api}/genres`,);
     xhr.send();
 }
+
 function get_table_songs(search_text=null, search_by=null, date_from=null, date_to=null, genre_id=null, page_size=null, page_number=null) {
     const params = {};
     if (search_text) params['search_text'] = search_text;
@@ -73,6 +74,9 @@ function get_table_songs(search_text=null, search_by=null, date_from=null, date_
     if (genre_id) params['genre_id'] = genre_id;
     if (page_size) params['page_size'] = page_size;
     if (page_number) params['page_number'] = page_number;
+
+    const trackUrl = function(cell) { return `track/${cell['_cell']['value']}`;};
+    const artistUrl = function(cell) { return `artist/${cell['_cell']['value']}`;};
 
     return new Tabulator("#songs-table", {
         layout:"fitColumns",
@@ -85,26 +89,22 @@ function get_table_songs(search_text=null, search_by=null, date_from=null, date_
             return response;
         },
         columns: [
-            {title:"Id", field: "track_id", visible:false},
-            {title:"Name", field: "track_name"},
+            {title:"Name", field: "track_id", formatter: "link",
+                formatterParams: {url: trackUrl, target: '_blank', labelField: 'track_name'}},
+            {title:"Name", field: "artist_id", formatter: "link",
+                formatterParams: {url: artistUrl, target: '_blank', labelField: 'artist_name'}},
             {title:"Artist", field: "artist_name"},
             {title:"Album", field: "album_name"},
             {title:"Genre", field: "genre_name", width: 200},
             {title:"Release Date", field:"track_release_date", width: 300}
-        ],
-        rowClick:function(e, row) {
-            const url = `http://${server}:${port}/track/${row.getData()['track_id']}`;
-            window.location.href = url;
-        },
+        ]
     });
 }
-
 
 $("#country-form").submit(function(e){
     console.log("country form click")
     e.preventDefault()
     let country_id = $("#inlineFormCustomSelectPref")[0].value
-    url = `http://${server}:${port}/country/${country_id}`
     console.log(url)
     location.replace(url)
 })
