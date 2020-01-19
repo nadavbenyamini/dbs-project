@@ -51,7 +51,7 @@ def get_tracks_by_country(country_id):
             "  join Tracks t on t.track_id = ch.track_id " \
             "  join Artists ar on ar.artist_id = t.artist_id "\
             "  join Albums al on al.album_id = t.album_id "\
-            "  join Genres g on g.genre_id = t.genre_id "\
+            " LEFT join Genres g on g.genre_id = t.genre_id "\
             " where c.country_id = %s "\
             " order by track_rank desc"
     args = (country_id, )
