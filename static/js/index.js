@@ -9,6 +9,9 @@ function getAllCountries(){
             countries.forEach(function(item){
                  $("#inlineFormCustomSelectPref").append(`<option value="${item.country_id}">${item.country_name}</option>`)
             });
+        },
+        error:function(e) {
+            console.log(e)
         }
     });
 }
@@ -104,10 +107,24 @@ function get_table_songs(search_text=null, search_by=null, date_from=null, date_
 $("#country-form").submit(function(e){
     let country_id = $("#inlineFormCustomSelectPref")[0].value;
     const url = `http://${server}:${port}/country/${country_id}`;
-    const win = window.open(url, '_blank');
-    win.focus();
+    window.open(url, '_blank');
 });
 
+$("#inlineFormCustomSelectPref").change(function(e) {
+    toggleCountryButton();
+});
+
+function toggleCountryButton() {
+    const chosen = $("#inlineFormCustomSelectPref")[0].value;
+    if(!document.getElementById("country-submit-button")) addCountryButton();
+    const button = $("#country-submit-button");
+    if(chosen == '-1') button.hide();
+    else button.show();
+}
+
+function addCountryButton() {
+    $("#country-submit-div").append(`<button type="submit" id="country-submit-button" class="btn btn-primary">GO</button>`);
+}
 
 //custom max min header filter
 var minMaxFilterEditor = function(cell, onRendered, success, cancel, editorParams){
