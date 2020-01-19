@@ -84,4 +84,4 @@ def get_artists_by_country(country_id):
 
 @country_routes.route('/api/countries', methods=['GET'])
 def get_all_countries():
-    return get_all_from_table('Countries', 10000)
+    return get_all_from_table('Countries')

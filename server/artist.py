@@ -57,5 +57,5 @@ def get_similar_artists(artist_id):
 
 @artist_routes.route('/api/artists', methods=['GET'])
 def get_all_artists():
-    return get_all_from_table('Artists', 10000)
+    return get_all_from_table('Artists')
 
