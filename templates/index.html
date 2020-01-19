@@ -78,11 +78,6 @@
         <b id="tracks-page-number">1</b>
         <button type="submit" style="margin-left: 20px" class="btn btn-secondary" id="tracks-page-prev" onclick="move_page(-1)">Load Previous</button>
         <button type="submit" style="margin-left: 5px" class="btn btn-secondary" id="tracks-page-next"  onclick="move_page(1)">Load Next</button>
-
-        <br><br><br>
-        <h2>Artists</h2>
-        <div id="artists-table"></div>
-
     </div>
 
 	<br><br>
@@ -101,79 +96,5 @@
 	<script type="text/javascript" src="../static/js/index.js" defer></script>
     <script type="text/javascript" src="../static/js/utils.js" defer></script>
 
-    <script>
-        function get_table(page_changed=false) {
-            if (!page_changed) move_to_first_page();
-            const text = $('#tracks-search-box')[0].value;
-            const date_from = $('#tracks-date-from')[0].value;
-            const date_to = $('#tracks-date-to')[0].value;
-            const page_size = $('#tracks-page-size')[0].value;
-            const page_number = parseInt($('#tracks-page-number')[0].innerText);
-            let genre_id = $('#tracks-search-genre')[0].value;
-            if (genre_id == '-1') genre_id = null;
-            const search_by = getSearchType();
-            get_table_songs(text, search_by, date_from, date_to, genre_id, page_size, page_number);
-        }
-
-        $(document).ready(function() {
-            get_genres();
-
-            // Setting listeners
-            const wait = 500;
-            $('#tracks-date-from').change(delay(function() { get_table();}, wait));
-            $('#tracks-date-to').change(delay(function() { get_table();}, wait));
-            $('#tracks-page-size').change(delay(function() { get_table();}, wait));
-            $('#tracks-search-genre').change(delay(function() { get_table();}, wait));
-            $('#tracks-search-box').keyup(delay(function() { get_table();}, wait));
-            $('input[type=radio][name=tracks-search-type]').change(delay(function() {
-                const searchType = getSearchType();
-                document.getElementById('tracks-search-type-label').innerText = titleCase(searchType) + ':';
-                if($('#tracks-search-box')[0].value.length > 0) get_table();
-            }, wait*2));
-            reset()
-        });
-
-        function reset(){
-            const now = new Date();
-            const nowString =
-                now.getFullYear().toString() + '-' +
-                ('0' + (now.getMonth()+1).toString()).substring(-1, 2) + '-' +
-                now.getDate().toString();
-
-            // Setting default values
-            document.getElementById('tracks-search-type-label').innerText = 'Track Name:';
-            $('#tracks-date-from').val('1900-01-01');
-            $('#tracks-date-to').val(nowString);
-
-            // First run
-            get_table();
-        }
-
-        function getSearchType() {
-            for (const radio of $('input[type=radio][name=tracks-search-type]')) {
-                if (radio.checked) return radio.value;
-            }
-        }
-
-        function move_to_first_page() {
-            $('#tracks-page-number').val(1);
-            $('#tracks-page-number').text(1);
-            document.getElementById("tracks-page-prev").disabled = true;
-        }
-
-        function move_page(move=1) {
-            const current = parseInt($('#tracks-page-number')[0].innerText);
-            document.getElementById("tracks-page-prev").disabled = current + move <= 1;
-            if (current + move < 1) return;
-            $('#tracks-page-number').text(current + move);
-            get_table(true);
-        }
-
-        function disable_next_page_button() {
-            const pageSize = parseInt($('#tracks-page-size')[0].value);
-            const resultsShown = parseInt($('#tracks-results-count')[0].innerText);
-            document.getElementById("tracks-page-next").disabled = resultsShown < pageSize;
-        }
-    </script>
 </body>
 </html>
