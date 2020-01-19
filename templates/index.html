@@ -104,7 +104,8 @@
     <script type="text/javascript" src="../static/js/utils.js" defer></script>
 
     <script>
-        function get_table() {
+        function get_table(page_changed=false) {
+            if (!page_changed) move_to_first_page();
             const text = $('#tracks-search-box')[0].value;
             const date_from = $('#tracks-date-from')[0].value;
             const date_to = $('#tracks-date-to')[0].value;
@@ -143,8 +144,6 @@
 
             // Setting default values
             document.getElementById('tracks-search-type-label').innerText = 'Track Name:';
-            $('#tracks-page-number').val(1);
-            $('#tracks-page-number').text(1);
             $('#tracks-date-from').val('1900-01-01');
             $('#tracks-date-to').val(nowString);
 
@@ -158,15 +157,25 @@
             }
         }
 
+        function move_to_first_page() {
+            $('#tracks-page-number').val(1);
+            $('#tracks-page-number').text(1);
+            document.getElementById("tracks-page-prev").disabled = true;
+        }
+
         function move_page(move=1) {
             const current = parseInt($('#tracks-page-number')[0].innerText);
-            const pageSize = parseInt($('#tracks-page-size')[0].innerText);
-            const resultsShown = parseInt($('#tracks-results-count')[0].innerText);
             document.getElementById("tracks-page-prev").disabled = current + move <= 1;
-            document.getElementById("tracks-page-next").disabled = resultsShown <= pageSize;
             if (current + move < 1) return;
             $('#tracks-page-number').text(current + move);
-            get_table();
+            get_table(true);
+        }
+
+        function disable_next_page_button() {
+            const pageSize = parseInt($('#tracks-page-size')[0].value);
+            const resultsShown = parseInt($('#tracks-results-count')[0].innerText);
+            console.log(pageSize, resultsShown);
+            document.getElementById("tracks-page-next").disabled = resultsShown < pageSize;
         }
     </script>
 </body>
