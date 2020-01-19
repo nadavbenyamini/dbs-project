@@ -88,17 +88,17 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
     args = ["\\%M \\%d, \\%Y"]
     text_filter = date_filter = genre_filter = "1=1"
 
-    if genre_id is not None:
-        try:
-            genre_id = int(genre_id)
-            genre_filter = "(genre_id = %s) or (genre_parent_id = %s)"
-            args += [genre_id, genre_id]
-        except ValueError:
-            pass
-
     if date_from is not None and date_to is not None:
         date_filter = 'track_release_date > %s and track_release_date < %s'
         args += [date_from.replace('-', '/'), date_to.replace('-', '/')]
+
+    if genre_id is not None:
+        try:
+            genre_id = int(genre_id)
+            genre_filter = "genre_id = %s or genre_parent_id = %s"
+            args += [genre_id, genre_id]
+        except ValueError:
+            pass
 
     if search_text is not None:
         if search_by == 'track_lyrics':
@@ -125,5 +125,4 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
                          GENRE_FILTER=genre_filter,
                          TEXT_FILTER=text_filter,
                          LIMIT=limit)
-    print(query, args, limit)
     return query_to_json(query=query, args=tuple(args))
