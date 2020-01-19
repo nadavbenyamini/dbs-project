@@ -40,8 +40,10 @@ function getAllCountries(){
         url:`http://${server}:${port_api}/countries`,
         success:function(result){
             result.forEach(function(item){
-                 $("#inlineFormCustomSelectPref").append(`<option value="${item.country_id}">${item.country_name}</option>`)
+                 $("#country-selector").append(`<option value="${item.country_id}">${item.country_name}</option>`)
             });
+            $("#country-selector-default")[0].innerText = 'Choose...';
+            $("#country-selector")[0].disabled = false;
         },
         error:function(e) {
             console.log(e)
@@ -112,17 +114,17 @@ function getTracks(search_text=null, search_by=null, date_from=null, date_to=nul
 }
 
 $("#country-form").submit(function(e){
-    let country_id = $("#inlineFormCustomSelectPref")[0].value;
+    let country_id = $("#country-selector")[0].value;
     const url = `http://${server}:${port}/country/${country_id}`;
     window.open(url, '_blank');
 });
 
-$("#inlineFormCustomSelectPref").change(function(e) {
+$("#country-selector").change(function(e) {
     toggleCountryButton();
 });
 
 function toggleCountryButton() {
-    const chosen = $("#inlineFormCustomSelectPref")[0].value;
+    const chosen = $("#country-selector")[0].value;
     if(!document.getElementById("country-submit-button")) addCountryButton();
     const button = $("#country-submit-button");
     if(chosen == '-1') button.hide();

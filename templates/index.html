@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head profile="http://www.w3.org/2005/10/profile">
 	<title>DB Course</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="../static/img/database-icon.png">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../static/css/index.css">
 	<link href="../static/css/tabulator_materialize.min.css" rel="stylesheet">
@@ -11,7 +12,7 @@
 
 <body>
 
-	<div class="header"
+	<div class="header">
 		<img src="../static/img/database-icon.png" width="64" height="64" alt="db">
 		<h2>DB Course Project</h2>
 		<h4>Our Music</h4>
@@ -24,8 +25,8 @@
 			<div class="form-row align-items-center">
 				<div class="col-auto">
 					<label class="my-1 mr-2" for="inlineFormCustomSelectPref">Country:</label>
-					<select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref">
-						<option selected value="-1">Choose...</option>
+					<select class="custom-select mr-sm-2" id="country-selector" disabled="true">
+						<option selected value="-1" id="country-selector-default">Loading...</option>
 					</select>
 				</div>		
                 <div class="col-auto">
