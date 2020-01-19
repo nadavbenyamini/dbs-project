@@ -5,6 +5,6 @@ genre_routes = Blueprint('genre_routes', __name__)
 
 
 @genre_routes.route('/api/genres', methods=['GET'])
-def get_artist():
+def get_genres():
     return get_all_from_table('GenresView')
 
