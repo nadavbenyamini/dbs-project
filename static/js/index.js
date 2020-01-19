@@ -45,8 +45,8 @@ function getAllCountries(){
             $("#country-selector-default")[0].innerText = 'Choose...';
             $("#country-selector")[0].disabled = false;
         },
-        error:function(e) {
-            console.log(e)
+        error: function(e) {
+            console.log(e.statusText);
         }
     });
 }
@@ -103,9 +103,8 @@ function getTracks(search_text=null, search_by=null, date_from=null, date_to=nul
         columns: [
             {title:"Name", field: "track_id", formatter: "link",
                 formatterParams: {url: trackUrl, target: '_blank', labelField: 'track_name'}},
-            {title:"Name", field: "artist_id", formatter: "link",
+            {title:"Artist", field: "artist_id", formatter: "link",
                 formatterParams: {url: artistUrl, target: '_blank', labelField: 'artist_name'}},
-            {title:"Artist", field: "artist_name"},
             {title:"Album", field: "album_name"},
             {title:"Genre", field: "genre_name", width: 200},
             {title:"Release Date", field:"track_release_date", width: 300}
@@ -160,79 +159,4 @@ function disable_next_page_button() {
     const pageSize = parseInt($('#tracks-page-size')[0].value);
     const resultsShown = parseInt($('#tracks-results-count')[0].innerText);
     document.getElementById("tracks-page-next").disabled = resultsShown < pageSize;
-}
-
-//custom max min header filter
-var minMaxFilterEditor = function(cell, onRendered, success, cancel, editorParams){
-    var end;
-    var container = document.createElement("span");
-    //create and style inputs
-    var start = document.createElement("input");
-    start.setAttribute("type", "number");
-    start.setAttribute("placeholder", "Min");
-    start.setAttribute("min", 0);
-    start.setAttribute("max", 100);
-    start.style.padding = "4px";
-    start.style.width = "50%";
-    start.style.boxSizing = "border-box";
-
-    start.value = cell.getValue();
-
-    function buildValues(){
-        success({
-            start:start.value,
-            end:end.value,
-        });
-    }
-
-    function keypress(e){
-        if(e.keyCode == 13){
-            buildValues();
-        }
-
-        if(e.keyCode == 27){
-            cancel();
-        }
-    }
-
-    end = start.cloneNode();
-    end.setAttribute("placeholder", "Max");
-
-    start.addEventListener("change", buildValues);
-    start.addEventListener("blur", buildValues);
-    start.addEventListener("keydown", keypress);
-
-    end.addEventListener("change", buildValues);
-    end.addEventListener("blur", buildValues);
-    end.addEventListener("keydown", keypress);
-
-
-    container.appendChild(start);
-    container.appendChild(end);
-
-    return container;
- }
-
-//custom max min filter function
-function minMaxFilterFunction(headerValue, rowValue, rowData, filterParams){
-    //headerValue - the value of the header filter element
-    //rowValue - the value of the column in this row
-    //rowData - the data for the row being filtered
-    //filterParams - params object passed to the headerFilterFuncParams property
-
-        if(rowValue){
-            if(headerValue.start != ""){
-                if(headerValue.end != ""){
-                    return rowValue >= headerValue.start && rowValue <= headerValue.end;
-                }else{
-                    return rowValue >= headerValue.start;
-                }
-            }else{
-                if(headerValue.end != ""){
-                    return rowValue <= headerValue.end;
-                }
-            }
-        }
-
-    return false; //must return a boolean, true if it passes the filter.
 }
