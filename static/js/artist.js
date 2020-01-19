@@ -1,7 +1,33 @@
 
 function launch(){
+    getArtistInfoTable()
     getChartsTable();
     getTracksTable();
+    getSimilarTable()
+}
+
+
+function getArtistInfoTable() {
+    const artist_id = $("#artist_id").last().html();
+    return new Tabulator("#artist-info-table", {
+        height:"311px",
+        layout:"fitColumns",
+        placeholder:"No Data Set",
+        ajaxURL: `http://${server}:${port_api}/artist/${artist_id}`,
+        ajaxResponse:function(url, params, response){
+            return response; //return the tableData property of a response json object
+        },
+        columns:[ //Define Table Columns
+            {title:"Name", field:"artist_name", width:150},
+            {title:"artist_country_id", field:"artist_country_id", visible:false},
+            {title:"Country Name", field:"artist_country_name"},
+            {title:"Id", field:"artist_id", visible:false},
+            {title:"Rating", field:"artist_rating", align:"left", formatter:"star"},
+            {title:"total_tracks_in_charts", field:"total_tracks_in_charts"},
+            {title:"Genere", field:"genre_name"},
+            {title:"unique_country_charts", field:"unique_country_charts"}
+        ]
+    });
 }
 
 function getTracksTable() {
@@ -47,6 +73,22 @@ function getChartsTable() {
             {title: "track_id", field: "track_id", width: 150},
             {title: "track_name", field: "track_name", align: "left"},
             {title: "track_rank", field: "track_rank"},
+        ]
+    });
+}
+function getSimilarTable() {
+    const artist_id = $("#artist_id").last().html();
+    return new Tabulator("#similar-artist-chart", {
+        height: "311px",
+        layout: "fitColumns",
+        placeholder: "No Data Set",
+        ajaxURL: `http://${server}:${port_api}/similar_artists/${artist_id}`,
+        ajaxResponse: function (url, params, response) {
+            return response; //return the tableData property of a response json object
+        },
+        columns: [ //Define Table Columns
+            {title: "artist_id", field: "artist_id"},
+            {title: "artist_name", field: "artist_name"},
         ]
     });
 }
