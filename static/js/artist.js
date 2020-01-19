@@ -25,7 +25,7 @@ function getArtistInfoTable() {
             {title:"Id", field:"artist_id", visible:false},
             {title:"Rating", field:"artist_rating", align:"left"},
             {title:"Total tracks in charts", field:"total_tracks_in_charts"},
-            {title:"Number of countries in charts", field:"unique_country_charts"}
+            {title:"Number of countries in charts", field:"unique_country_charts",width:300}
         ]
     });
 }
