@@ -49,9 +49,6 @@ def get_similar_tracks(track_id):
 @track_routes.route('/api/search/track', methods=['GET'])
 def search_tracks_route():
     params = request.args
-    by_lyrics = params.get('by_lyrics', False)
-    by_artist = params.get('by_artist', False)
-    assert not by_lyrics or not by_artist  # Can't search by both...
     return search_track(search_by=params.get('search_by', False),
                         search_text=params.get('search_text', None),
                         date_from=params.get('date_from', None),
