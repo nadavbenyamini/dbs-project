@@ -117,7 +117,7 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
     try:
         page_number = int(page_number)
         page_size = int(page_size)
-        limit = '{}, {}'.format(page_size * (page_number - 1), page_size * page_number)
+        limit = '{}, {}'.format(page_size * (page_number - 1), page_size)
     except ValueError:
         limit = '1, 100000'
 
@@ -125,5 +125,5 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
                          GENRE_FILTER=genre_filter,
                          TEXT_FILTER=text_filter,
                          LIMIT=limit)
-    print(query, args)
+    print(query, args, limit)
     return query_to_json(query=query, args=tuple(args))

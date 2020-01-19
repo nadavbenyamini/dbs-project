@@ -65,7 +65,8 @@
             <button type="submit" style="float: right" class="btn btn-primary" onclick="reset()">Reset</button>
         </form>
         <br/><br/>
-        <h2>Tracks</h2>
+        <h2 style="display: inline">Tracks</h2>
+        <span id="tracks-results-count">0</span>
         <div id="songs-table" style="min-height: 300px"></div>
         <br/><br/>
 
@@ -77,8 +78,8 @@
         </select>
         <label style="margin: 5px">Page Number: </label>
         <b id="tracks-page-number">1</b>
-        <button type="submit" style="margin-left: 20px" class="btn btn-secondary" id="tracks-page-prev" onclick="move_page(-1)"><</button>
-        <button type="submit" style="margin-left: 5px" class="btn btn-secondary" id="tracks-page-next"  onclick="move_page(1)">></button>
+        <button type="submit" style="margin-left: 20px" class="btn btn-secondary" id="tracks-page-prev" onclick="move_page(-1)">Load Previous</button>
+        <button type="submit" style="margin-left: 5px" class="btn btn-secondary" id="tracks-page-next"  onclick="move_page(1)">Load Next</button>
 
         <br><br><br>
         <h2>Artists</h2>
@@ -159,7 +160,10 @@
 
         function move_page(move=1) {
             const current = parseInt($('#tracks-page-number')[0].innerText);
+            const pageSize = parseInt($('#tracks-page-size')[0].innerText);
+            const resultsShown = parseInt($('#tracks-results-count')[0].innerText);
             document.getElementById("tracks-page-prev").disabled = current + move <= 1;
+            document.getElementById("tracks-page-next").disabled = resultsShown <= pageSize;
             if (current + move < 1) return;
             $('#tracks-page-number').text(current + move);
             get_table();
