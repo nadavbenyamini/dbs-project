@@ -57,7 +57,7 @@ def get_similar_artists(artist_id):
     :param artist_id
     :return: List of similar artists
     """
-    query = "SELECT DISTINCT a1.artist_name "\
+    query = "SELECT DISTINCT a1.artist_id, a1.artist_name "\
             "FROM Artists a1, Tracks t1, Genres g1, "\
             "   (SELECT MAX(c.track_rank) AS max_rating , MIN(c.track_rank) AS min_rating "\
             "   FROM Artists a , Tracks t ,Charts c "\
