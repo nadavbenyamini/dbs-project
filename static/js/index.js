@@ -57,6 +57,7 @@ function updateGenreList(){
         $('#tracks-search-genre').append(`<option value="${g['genre_id']}">${g['genre_full_name']}</option>`);
     }
 }
+
 function getGenres(){
     const xhr = new XMLHttpRequest();
     xhr.addEventListener("load", updateGenreList);
