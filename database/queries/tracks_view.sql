@@ -6,6 +6,7 @@ create view TracksView as
 	    t.genre_id,
 	    al.album_name,
 	    ar.artist_name,
+	    g.genre_parent_id,
 	    g.genre_name,
 	    t.track_release_date,
 	    t.track_lyrics
