@@ -1,6 +1,5 @@
-import traceback
 from database import sql_executor
-from flask import jsonify, abort, Response
+from flask import jsonify, abort
 import decimal
 
 """
