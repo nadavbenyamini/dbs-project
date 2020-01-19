@@ -7,6 +7,123 @@ artist_routes = Blueprint('artist_routes', __name__)
 
 @artist_routes.route('/api/artist/<artist_id>', methods=['GET'])
 def get_artist(artist_id):
+    return [
+  {
+    "artist_country_id": "US",
+    "artist_country_name": "United States",
+    "artist_id": 44890,
+    "artist_name": "Kings of Leon",
+    "artist_rating": 81,
+    "total_tracks_in_charts": 6,
+    "unique_country_charts": 3
+  }
+]
+
+
+@artist_routes.route('/api/artist_tracks/<artist_id>', methods=['GET'])
+def get_tracks_by_artist(artist_id):
+    return [
+  {
+    "album_id": 10872038,
+    "album_name": "Only By the Night",
+    "artist_id": 44890,
+    "artist_name": "Kings of Leon",
+    "genre_id": 20,
+    "genre_name": "Alternative",
+    "genre_parent_id": 34,
+    "track_id": 7562165,
+    "track_name": "Use Somebody",
+    "track_release_date": "Fri, 22 Nov 2019 20:44:10 GMT"
+  },
+  {
+    "album_id": 10872038,
+    "album_name": "Only By the Night",
+    "artist_id": 44890,
+    "artist_name": "Kings of Leon",
+    "genre_id": 20,
+    "genre_name": "Alternative",
+    "genre_parent_id": 34,
+    "track_id": 80160343,
+    "track_name": "Sex on Fire",
+    "track_release_date": "Fri, 22 Nov 2019 20:34:22 GMT"
+  }
+]
+
+
+@artist_routes.route('/api/artist_charts/<artist_id>', methods=['GET'])
+def get_charts_by_artist(artist_id):
+    return [
+  {
+    "album_name": "Only By the Night",
+    "country_id": "DK",
+    "country_name": "Denmark",
+    "track_id": 7562165,
+    "track_name": "Use Somebody",
+    "track_rank": 99
+  },
+  {
+    "album_name": "Only By the Night",
+    "country_id": "PL",
+    "country_name": "Poland",
+    "track_id": 7562165,
+    "track_name": "Use Somebody",
+    "track_rank": 55
+  },
+  {
+    "album_name": "Only By the Night",
+    "country_id": "SE",
+    "country_name": "Sweden",
+    "track_id": 7562165,
+    "track_name": "Use Somebody",
+    "track_rank": 69
+  },
+  {
+    "album_name": "Only By the Night",
+    "country_id": "DK",
+    "country_name": "Denmark",
+    "track_id": 80160343,
+    "track_name": "Sex on Fire",
+    "track_rank": 91
+  },
+  {
+    "album_name": "Only By the Night",
+    "country_id": "PL",
+    "country_name": "Poland",
+    "track_id": 80160343,
+    "track_name": "Sex on Fire",
+    "track_rank": 50
+  },
+  {
+    "album_name": "Only By the Night",
+    "country_id": "SE",
+    "country_name": "Sweden",
+    "track_id": 80160343,
+    "track_name": "Sex on Fire",
+    "track_rank": 75
+  }
+]
+
+
+@artist_routes.route('/api/similar_artists/<artist_id>', methods=['GET'])
+def get_similar_artists(artist_id):
+    return []
+
+
+@artist_routes.route('/api/artists', methods=['GET'])
+def get_all_artists():
+    return get_all_from_table('Artists')
+
+
+'''
+from server.utils import *
+from flask import request
+from flask import Blueprint
+
+artist_routes = Blueprint('artist_routes', __name__)
+
+
+@artist_routes.route('/api/artist/<artist_id>', methods=['GET'])
+def get_artist(artist_id):
     """
     GETTER
     :param artist_id
@@ -81,3 +198,4 @@ def get_similar_artists(artist_id):
 @artist_routes.route('/api/artists', methods=['GET'])
 def get_all_artists():
     return get_all_from_table('Artists')
+'''
