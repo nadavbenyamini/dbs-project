@@ -102,12 +102,12 @@ function get_table_songs(search_text=null, search_by=null, date_from=null, date_
 }
 
 $("#country-form").submit(function(e){
-    console.log("country form click")
-    e.preventDefault()
-    let country_id = $("#inlineFormCustomSelectPref")[0].value
-    console.log(url)
-    location.replace(url)
-})
+    let country_id = $("#inlineFormCustomSelectPref")[0].value;
+    const url = `http://${server}:${port}/country/${country_id}`;
+    const win = window.open(url, '_blank');
+    win.focus();
+});
+
 
 //custom max min header filter
 var minMaxFilterEditor = function(cell, onRendered, success, cancel, editorParams){

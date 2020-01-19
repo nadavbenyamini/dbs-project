@@ -20,8 +20,9 @@
 		<h4>Our Music</h4>
 	</div>
 
+
 	<div class="middle">
-		<br>
+        <h2>Search Country Charts</h2>
 		<form id="country-form">
 			<div class="form-row align-items-center">
 				<div class="col-auto">
@@ -33,14 +34,15 @@
                 <div class="col-auto">
                     <label  class="col-sm-1 col-form-label"></label>
                     <div class="col-auto my-1">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">GO</button>
                     </div>
                 </div>
             </div>
 		</form>
 
 	    <br><br><br>
-
+        <h2>Search Tracks</h2>
+        <br>
         <form id="tracks-form" style="display: inline">
             <label style="margin: 5px">Search by: </label>
             <input id="tracks-search-type" name="tracks-search-type" type="radio" value="track_name" checked="true" style="margin-left: 15px">
@@ -53,10 +55,10 @@
             Track Lyrics
 
             <label style="margin-left: 30px">Genre:</label>
-            <select id="tracks-search-genre">
+            <select id="tracks-search-genre" class="custom-select mr-sm-2" style="display: inline; max-width:350px">
                 <option value="-1">--------------------------- All ---------------------------</option>
             </select>
-            <br/>
+            <br/><br/>
 
             <label style="margin: 5px" id="tracks-search-type-label"></label><input id="tracks-search-box" type="text" placeholder="Search tracks"/>
             <label style="margin: 5px">Release date from: </label><input id="tracks-date-from" type="date"/>
@@ -65,10 +67,8 @@
             <button type="submit" style="float: right" class="btn btn-primary" onclick="reset()">Reset</button>
         </form>
         <br/><br/>
-        <h2 style="display: inline">Tracks</h2>
         <span style="float: right"><span id="tracks-results-count">0</span><span> results</span></span>
-        <div id="songs-table" style="min-height: 300px"></div>
-        <br/><br/>
+        <div id="songs-table" style="min-height: 300px"></div><br/>
 
         <label style="margin: 5px">Page Size: </label>
         <select id="tracks-page-size">
