@@ -1,4 +1,3 @@
-var table_artist;
 var countries;
 
 function getAllCountries(){
@@ -55,8 +54,8 @@ var table_artists = new Tabulator("#artists-table", {
 
 function update_genre_list(){
     const genres = JSON.parse(this.responseText);
-    for (const g in genres) {
-        $('#tracks-search-genre').append(`<option value="${g}">${genres[g]['genre_name']}</option>`);
+    for (const g of genres) {
+        $('#tracks-search-genre').append(`<option value="${g['genre_id']}">${g['genre_full_name']}</option>`);
     }
 }
 function get_genres(){
@@ -65,13 +64,13 @@ function get_genres(){
     xhr.open("GET", `http://${server}:${port_api}/genres`,);
     xhr.send();
 }
-function get_table_songs(search_text=null, search_by=null, date_from=null, date_to=null, genre=null, page_size=null, page_number=null) {
+function get_table_songs(search_text=null, search_by=null, date_from=null, date_to=null, genre_id=null, page_size=null, page_number=null) {
     const params = {};
     if (search_text) params['search_text'] = search_text;
     if (date_from) params['date_from'] = date_from;
     if (date_to) params['date_to'] = date_to;
     if (search_by) params['search_by'] = search_by;
-    if (genre) params['genre'] = genre;
+    if (genre_id) params['genre_id'] = genre_id;
     if (page_size) params['page_size'] = page_size;
     if (page_number) params['page_number'] = page_number;
 
@@ -86,10 +85,10 @@ function get_table_songs(search_text=null, search_by=null, date_from=null, date_
             {title:"Name", field: "track_name"},
             {title:"Artist", field: "artist_name"},
             {title:"Album", field: "album_name"},
-            {title:"Genre", field: "genre_name", width: 150},
+            {title:"Genre", field: "genre_name", width: 200},
             {title:"Release Date", field:"track_release_date", width: 300}
         ],
-        rowClick:function(e, row){
+        rowClick:function(e, row) {
             const url = `http://${server}:${port}/track/${row.getData()['track_id']}`;
             window.location.href = url;
         },

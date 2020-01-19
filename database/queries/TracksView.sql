@@ -1,4 +1,4 @@
-create view TracksView as
+create or replace view TracksView as
  select t.track_id,
 	    t.track_name,
 	    t.album_id,
@@ -7,11 +7,11 @@ create view TracksView as
 	    al.album_name,
 	    ar.artist_name,
 	    g.genre_parent_id,
-	    g.genre_name,
+	    g.genre_full_name as genre_name,
 	    t.track_release_date,
 	    t.track_lyrics
   from Tracks t
-  join Genres g
+  join GenresView g
     on g.genre_id = t.genre_id
   join Artists ar
     on ar.artist_id = t.artist_id
