@@ -24,7 +24,6 @@ var table_artists = new Tabulator("#artists-table", {
     },
 });
 
-
 var table_songs = new Tabulator("#songs-table", {
     height:"311px",
     layout:"fitColumns",

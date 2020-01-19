@@ -25,9 +25,34 @@ var table_songs = new Tabulator("#songs-table", {
             location.replace(url)
         },
 });
+var table_charts = new Tabulator("#artist-chart", {
+    height:"311px",
+    layout:"fitColumns",
+    placeholder:"No Data Set",
+    ajaxResponse:function(url, params, response){
+        return response; //return the tableData property of a response json object
+    },
+        columns:[ //Define Table Columns
+            {title:"album_name", field:"album_name"},
+		    {title:"country_id", field:"country_id"},
+		    {title:"country_name", field:"country_name"},
+            {title:"track_id", field:"track_id", width:150},
+            {title:"track_name", field:"track_name", align:"left"},
+            {title:"track_rank", field:"track_rank"},
+        ],
+        rowClick:function(e, row){
+            url = `http://${server}:${port}/country/${row.getData().country_id}`
+            console.log(url)
+            location.replace(url)
+        },
+});
+
 
 function temp(){
     artist_id = $("#artist_id").last().html();
     console.log(artist_id)
-    table_songs.setData(`http://${server}:${port_api}/artist_tracks/${artist_id}`)
+    table_songs.setData("http://${server}:${port_api}/artist_tracks/${artist_id}")
+    table_charts.setData("http://${server}:${port_api}/artist_charts/${artist_id}")
+
+
 }

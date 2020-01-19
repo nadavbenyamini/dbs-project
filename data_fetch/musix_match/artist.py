@@ -20,7 +20,7 @@ class ArtistPath(MusixFetcher):
         return requests
 
     def response_to_insert_queries(self, request, response):
-        assert 'message' in response and 'body' in response['message'] and 'artist' in response['message']['body']
+        assert 'message' in response and 'body' in response['message'] and 'artiist' in response['message']['body']
         artist = response['message']['body']['artist']
         country_id = artist['artist_country']
         query = "insert ignore into Artists (artist_id, artist_name, artist_country_id, artist_rating)" \
