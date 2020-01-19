@@ -72,7 +72,7 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
     :return: List of tracks that match the above conditions
     """
     query = "select track_id, artist_id, track_name, album_name, artist_name, genre_name," \
-            "       REPLACE(DATE_FORMAT(track_release_date, %s), '\\\\', '') as track_release_date " \
+            "       track_release_date_formatted as track_release_date" \
             "  from TracksView t" \
             " where ({DATE_FILTER})" \
             "   and ({GENRE_FILTER})" \
@@ -80,7 +80,7 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
             " order by artist_name, track_name" \
             " limit {LIMIT};"
 
-    args = ["\\%M \\%d, \\%Y"]
+    args = []
     text_filter = date_filter = genre_filter = "1=1"
 
     if date_from is not None and date_to is not None:
