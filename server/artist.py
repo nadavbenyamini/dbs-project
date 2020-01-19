@@ -1,3 +1,4 @@
+'''
 from server.utils import *
 from flask import request
 from flask import Blueprint
@@ -269,9 +270,9 @@ def get_similar_artists(artist_id):
 @artist_routes.route('/api/artists', methods=['GET'])
 def get_all_artists():
     return get_all_from_table('Artists')
-
-
 '''
+
+
 from server.utils import *
 from flask import request
 from flask import Blueprint
@@ -355,4 +356,3 @@ def get_similar_artists(artist_id):
 @artist_routes.route('/api/artists', methods=['GET'])
 def get_all_artists():
     return get_all_from_table('Artists')
-'''
