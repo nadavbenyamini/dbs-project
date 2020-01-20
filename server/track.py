@@ -23,10 +23,11 @@ def get_similar_tracks(track_id):
     :param track_id
     :return: List of tracks similar to the input track according to genre and chart rankings
     """
-    query = "SELECT DISTINCT t.* "\
-            "FROM TracksView " \
-            "   (SELECT MIN(c.track_rank) AS min_rank," \
-            "           MAX(c.track_rank) AS max_rank " \
+    query = "select track_id, track_name, album_name, genre_name, track_release_date_formatted as track_release_date, "\
+            "       round(track_rating/20) as track_rating" \
+            "  FROM TracksView t, " \
+            "   (SELECT MIN(c.track_rank) AS min_rank, " \
+            "           MAX(c.track_rank) AS max_rank  " \
             "   FROM Charts c " \
             "   WHERE c.track_id = %s " \
             ") AS  min_max_rank " \
@@ -41,8 +42,9 @@ def get_similar_tracks(track_id):
             "     AND min_max_rank.min_rank <= " \
             "       (SELECT AVG(c4.track_rank) " \
             "           FROM Charts c4 " \
-            "           WHERE c4.track_id=t.track_id ); "
+            "           WHERE c4.track_id=t.track_id); "
     args = (track_id, track_id, track_id)
+    print(query)
     return query_to_json(query, args)
 
 

@@ -59,7 +59,7 @@ function temp(){
         url:url2,
         success:function(result){
             arr = [['Genre','Number of songs']]
-            var options = {'title':'Genere distribution in the country', 'width':650, 'height':500};
+            var options = {'title':'genre distribution in the country', 'width':650, 'height':500};
             var chart = new google.visualization.PieChart(document.getElementById('country-chart'));
             result.forEach(element => {
                 arr.push([element.genre_name, element.number_of_songs_in_chart])

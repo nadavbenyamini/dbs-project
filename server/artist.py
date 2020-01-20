@@ -32,7 +32,7 @@ def get_tracks_by_artist(artist_id):
     :param artist_id
     :return: tracks: json of the artist's tracks in each chart including chart appearances
     """
-    query = "select track_id, track_name, album_name, genre_name, track_release_date_formatted as track_release_date, " \
+    query = "select track_id, track_name, album_name, genre_name, track_release_date_formatted as track_release_date, "\
             "       round(track_rating/20) as track_rating" \
             "  from TracksView where artist_id = %s"
     args = (artist_id, )
