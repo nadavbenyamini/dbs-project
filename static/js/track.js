@@ -42,7 +42,8 @@ function getTracksTable() {
 
 //trigger button click
 $("#card_google_link").click(function(){
-	const q = $("#card_track_name").html()+" and "+$("#card_artist").html();
-	console.log(q);
+    const artistName = $("#card_artist").html().split('>')[1].split('<')[0]; // Artist is a link tag now, need to clean it first
+    const trackName = $("#card_track_name").html();
+	const q = `${artistName} - ${trackName}`;
 	window.open('http://google.com/search?q='+q, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
 });
