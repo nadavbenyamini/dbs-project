@@ -42,6 +42,7 @@ function getTracksTable() {
 
 //trigger button click
 $("#card_google_link").click(function(){
-	q = $("#card_track_name").html()+" and "+$("#card_artist").html()
+	const q = $("#card_track_name").html()+" and "+$("#card_artist").html();
+	console.log(q);
 	window.open('http://google.com/search?q='+q, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
 });

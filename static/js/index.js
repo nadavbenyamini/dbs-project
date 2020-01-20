@@ -113,13 +113,13 @@ function getTracks(search_text=null, search_by=null, date_from=null, date_to=nul
     });
 }
 
-$("#country-form").submit(function(e){
+$("#country-form").submit(function(){
     let country_id = $("#country-selector")[0].value;
     const url = `http://${server}:${port}/country/${country_id}`;
     window.open(url, '_blank');
 });
 
-$("#country-selector").change(function(e) {
+$("#country-selector").change(function() {
     toggleCountryButton();
 });
 
