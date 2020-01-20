@@ -49,21 +49,17 @@ def get_similar_tracks(track_id):
 @track_routes.route('/api/search/track', methods=['GET'])
 def search_tracks_route():
     params = request.args
-    by_lyrics = params.get('by_lyrics', False)
-    by_artist = params.get('by_artist', False)
-    assert not by_lyrics or not by_artist  # Can't search by both...
     return search_track(search_by=params.get('search_by', False),
                         search_text=params.get('search_text', None),
                         date_from=params.get('date_from', None),
                         date_to=params.get('date_to', None),
                         genre_id=params.get('genre_id', None),
-                        album=params.get('album', None),
                         page_size=params.get('page_size', 100),
                         page_number=params.get('page_number', 1))
 
 
 def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
-                 genre_id=None, album=None, page_size=100, page_number=1):
+                 genre_id=None, page_size=100, page_number=1):
     """
     :param search_by: Textual search field ('track_name'/'artist_name'/'album_name'/'track_lyrics')
     :param search_text: Text to search songs by
@@ -71,13 +67,12 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
     :param date_to: Optional (YYYY-mm-dd)
     :param genre_id: Optional (exact ID from list, not free text.
                      Searching also parent id so e.g. 'rock' will return 'hard rock' tracks too
-    :param album: Optional
     :param page_size: Number of results to fetch
     :param page_number: Offset
     :return: List of tracks that match the above conditions
     """
     query = "select track_id, artist_id, track_name, album_name, artist_name, genre_name," \
-            "       REPLACE(DATE_FORMAT(track_release_date, %s), '\\\\', '') as track_release_date " \
+            "       track_release_date_formatted as track_release_date" \
             "  from TracksView t" \
             " where ({DATE_FILTER})" \
             "   and ({GENRE_FILTER})" \
@@ -85,7 +80,7 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
             " order by artist_name, track_name" \
             " limit {LIMIT};"
 
-    args = ["\\%M \\%d, \\%Y"]
+    args = []
     text_filter = date_filter = genre_filter = "1=1"
 
     if date_from is not None and date_to is not None:
@@ -106,10 +101,10 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
             args.append(search_text)
         elif search_by == 'artist_name':
             text_filter = "artist_name like %s"
-            args.append(search_text + "%") # '%' only on the right to use index
+            args.append(search_text + "%")  # '%' only on the right to use index
         elif search_by == 'album_name':
             text_filter = "album_name like %s"
-            args.append(search_text + "%") # '%' only on the right to use index
+            args.append(search_text + "%")  # '%' only on the right to use index
         else:
             text_filter = "track_name like %s"
             args.append(search_text + "%")  # '%' only on the right to use index
