@@ -1,8 +1,7 @@
 import pymysql
-from sshtunnel import SSHTunnelForwarder
 import json
 import traceback
-from config import USE_SSH
+from config import *
 
 
 def select(query, args=None):
