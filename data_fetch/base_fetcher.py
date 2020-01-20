@@ -71,7 +71,7 @@ class BaseFetcher:
         for query in self.queries:
             i += 1
             try:
-                response = sql_executor.insert(query, use_ssh=True)
+                response = sql_executor.insert(query)
                 print('Query {} succeeded'.format(i))
                 self.db_responses.append(response)
             except Exception as e:
