@@ -44,14 +44,11 @@ def get_tracks_by_country(country_id):
     :param country_id
     :return: tracks: json of tracks from the country's chart
     """
-    query = "select t.track_id, t.track_name, al.album_name, ar.artist_id, ar.artist_name, g.genre_name, " \
-            "       t.track_release_date, c.*, ch.track_rank " \
+    query = "select t.track_id, t.track_name, t.album_name, t.artist_id, t.artist_name, t.genre_name, " \
+            "       t.track_release_date_formatted as track_release_date, c.*, ch.track_rank " \
             "  from Countries c " \
             "  join Charts ch on c.country_id = ch.country_id " \
-            "  join Tracks t on t.track_id = ch.track_id " \
-            "  join Artists ar on ar.artist_id = t.artist_id "\
-            "  join Albums al on al.album_id = t.album_id "\
-            " LEFT join Genres g on g.genre_id = t.genre_id "\
+            "  join TracksView t on t.track_id = ch.track_id " \
             " where c.country_id = %s "\
             " order by track_rank"
     args = (country_id, )

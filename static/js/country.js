@@ -1,8 +1,10 @@
 google.charts.load('current', {'packages':['corechart']});
 
+const trackUrl = function(cell) { return `../track/${cell['_cell']['value']}`;};
+const artistUrl = function(cell) { return `../artist/${cell['_cell']['value']}`;};
 var table_artists = new Tabulator("#artists-table", {
-    height:"311px",
     layout:"fitColumns",
+    height: "311px",
     placeholder:"No Data Set",
     ajaxResponse:function(url, params, response){
        //url - the URL of the request
@@ -11,22 +13,15 @@ var table_artists = new Tabulator("#artists-table", {
        return response; //return the tableData property of a response json object
     },
     columns:[ //Define Table Columns
-        {title:"Id", field:"artist_id", visible:false},
-        {title:"Name", field:"artist_name"},
+        {title:"Name", field: "artist_id", formatter: "link", formatterParams: {url: trackUrl, target: '_blank', labelField: 'artist_name'}},
         {title:"Number of Song in Chart", field:"number_of_songs_in_chart"},
        
-    ],
-    rowClick:function(e, row){ //trigger an alert message when the row is clicked
-        //alert("Row " + row.getData().artist_id + " Clicked!!!!");
-       url = `http://${server}:${port}/artist/${row.getData().artist_id}`
-       console.log(url)
-       location.replace(url)
-    },
+    ]
 });
 
 var table_songs = new Tabulator("#songs-table", {
-    height:"311px",
     layout:"fitColumns",
+    height: "311px",
     placeholder:"No Data Set",
     ajaxResponse:function(url, params, response){
        //url - the URL of the request
@@ -35,20 +30,13 @@ var table_songs = new Tabulator("#songs-table", {
        return response; //return the tableData property of a response json object
     },
     columns:[ //Define Table Columns
-        {title:"Id", field:"track_id", visible:false},
-        {title:"Track Name", field:"track_name"},
-        {title:"Artist Name", field:"artist_name"},
-        {title:"Genere", field:"genre_name"},
+        {title:"Id", field:"track_id", visible: false},
+        {title:"Track Name", field: "track_id", formatter: "link", formatterParams: {url: trackUrl, target: '_blank', labelField: 'track_name'}},
+        {title:"Artist Name", field: "artist_id", formatter: "link", formatterParams: {url: artistUrl, target: '_blank', labelField: 'artist_name'}},
+        {title:"Genre", field:"genre_name"},
         {title:"Rank", field:"track_rank"},
         {title:"Release Date", field:"track_release_date"},
-       
-    ],
-    rowClick:function(e, row){ //trigger an alert message when the row is clicked
-        //alert("Row " + row.getData().artist_id + " Clicked!!!!");
-        url = `http://${server}:${port}/track/${row.getData().track_id}`
-       console.log(url)
-       location.replace(url)
-    },
+    ]
 });
 
 

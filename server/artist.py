@@ -12,7 +12,8 @@ def get_artist(artist_id):
     :param artist_id
     :return: Everything from Artists table
     """
-    query = "select a.*, c.country_name as artist_country_name, " \
+    query = "select a.artist_id, a.artist_name, a.artist_country_id, ROUND(a.artist_rating/20,0) as artist_rating," \
+            "       c.country_name as artist_country_name, " \
             "       count(ch.country_id) as total_tracks_in_charts," \
             "       count(distinct ch.country_id) as unique_country_charts " \
             " from Artists a " \
@@ -31,7 +32,9 @@ def get_tracks_by_artist(artist_id):
     :param artist_id
     :return: tracks: json of the artist's tracks in each chart including chart appearances
     """
-    query = "select * from TracksView where artist_id = %s"
+    query = "select track_id, track_name, album_name, genre_name, track_release_date_formatted as track_release_date, " \
+            "       round(track_rating/20) as track_rating" \
+            "  from TracksView where artist_id = %s"
     args = (artist_id, )
     return query_to_json(query, args)
 
@@ -46,7 +49,8 @@ def get_charts_by_artist(artist_id):
             " from TracksView t"\
             " left join Charts ch on ch.track_id = t.track_id "\
             " left join Countries c on ch.country_id = c.country_id "\
-            "where artist_id = %s;"
+            "where artist_id = %s " \
+            "order by album_name, track_name, country_name"
     args = (artist_id, )
     return query_to_json(query, args)
 
@@ -57,7 +61,7 @@ def get_similar_artists(artist_id):
     :param artist_id
     :return: List of similar artists
     """
-    query = "SELECT DISTINCT a1.artist_name "\
+    query = "SELECT DISTINCT a1.artist_id, a1.artist_name "\
             "FROM Artists a1, Tracks t1, Genres g1, "\
             "   (SELECT MAX(c.track_rank) AS max_rating , MIN(c.track_rank) AS min_rating "\
             "   FROM Artists a , Tracks t ,Charts c "\
