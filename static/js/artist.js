@@ -25,8 +25,8 @@ function getArtistInfoTable() {
             {title:"Country", field:"artist_country_id", formatter: "link", formatterParams: {url: countryUrl, labelField: 'artist_country_name'}},
             {title:"Id", field:"artist_id", visible:false},
             {title:"Rating", field:"artist_rating", align:"left", formatter: "star", formatterParams: {stars: 5}},
-            {title:"Total tracks in charts", field:"total_tracks_in_charts"},
-            {title:"Total country charts", field:"unique_country_charts", width:300}
+            {title:"#Tracks in Charts", field:"total_tracks_in_charts"},
+            {title:"#Charts with Tracks in", field:"unique_country_charts", width:300}
         ]
     });
 }
