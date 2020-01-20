@@ -1,3 +1,3 @@
-const server = "127.0.0.1";
+const server = "http://delta-tomcat-vm.cs.tau.ac.il";
 const port = "40444";
 const port_api = port+"/api";
