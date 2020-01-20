@@ -4,11 +4,13 @@ create or replace view TracksView as
 	    t.album_id,
 	    t.artist_id,
 	    t.genre_id,
+	    t.track_rating,
 	    al.album_name,
 	    ar.artist_name,
 	    g.genre_parent_id,
 	    g.genre_full_name as genre_name,
 	    t.track_release_date,
+	    DATE_FORMAT(t.track_release_date, '%M %d, %Y') as track_release_date_formatted,
 	    t.track_lyrics
   from Tracks t
   left join GenresView g
