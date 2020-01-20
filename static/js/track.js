@@ -3,7 +3,6 @@ const track_id = $("#track_id").last().html();
 
 function temp() {
     const url = `http://${server}:${port_api}/track/${track_id}`;
-    const artistUrl = function(artist_id) {`http://${server}:${port}/artist/${artist_id}`};
     $.get({
     url:url,
     success:function(result){
