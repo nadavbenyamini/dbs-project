@@ -9,7 +9,7 @@ function launch() {
         const artist_id = result[0]["artist_id"];
         const artist_name = result[0]["artist_name"];
         $("#card_track_name").html(result[0]["track_name"]);
-        $("#card_artist").html(`<a target="_blank" href="http://${server}:${port}/artist/${artist_id}">${artist_name}</a>`);
+        $("#card_artist").html(`<a href="http://${server}:${port}/artist/${artist_id}">${artist_name}</a>`);
         $("#card_genre").html(result[0]["genre_name"]);
         $("#track_date").html(result[0]["track_release_date"]);
         $("#card_lyrics").html(result[0]["track_lyrics"]);
