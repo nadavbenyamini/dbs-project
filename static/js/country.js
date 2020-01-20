@@ -10,7 +10,7 @@ var table_artists = new Tabulator("#artists-table", {
        return response;
     },
     columns:[ //Define Table Columns
-        {title:"Name", field: "artist_id", formatter: "link", formatterParams: {url: artistUrl, target: '_blank', labelField: 'artist_name'}},
+        {title:"Name", field: "artist_id", formatter: "link", formatterParams: {url: artistUrl, labelField: 'artist_name'}},
         {title:"Number of Song in Chart", field:"number_of_songs_in_chart"},
        
     ]
@@ -25,8 +25,8 @@ var table_songs = new Tabulator("#songs-table", {
     },
     columns:[ //Define Table Columns
         {title:"Id", field:"track_id", visible: false},
-        {title:"Track Name", field: "track_id", formatter: "link", formatterParams: {url: trackUrl, target: '_blank', labelField: 'track_name'}},
-        {title:"Artist Name", field: "artist_id", formatter: "link", formatterParams: {url: artistUrl, target: '_blank', labelField: 'artist_name'}},
+        {title:"Track Name", field: "track_id", formatter: "link", formatterParams: {url: trackUrl, labelField: 'track_name'}},
+        {title:"Artist Name", field: "artist_id", formatter: "link", formatterParams: {url: artistUrl, labelField: 'artist_name'}},
         {title:"Genre", field:"genre_name"},
         {title:"Rank", field:"track_rank"},
         {title:"Release Date", field:"track_release_date"},

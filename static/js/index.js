@@ -103,9 +103,9 @@ function getTracks(search_text=null, search_by=null, date_from=null, date_to=nul
         },
         columns: [
             {title:"Name", field: "track_id", formatter: "link",
-                formatterParams: {url: trackUrl, target: '_blank', labelField: 'track_name'}},
+                formatterParams: {url: trackUrl, labelField: 'track_name'}},
             {title:"Artist", field: "artist_id", formatter: "link",
-                formatterParams: {url: artistUrl, target: '_blank', labelField: 'artist_name'}},
+                formatterParams: {url: artistUrl, labelField: 'artist_name'}},
             {title:"Album", field: "album_name"},
             {title:"Genre", field: "genre_name", width: 200},
             {title:"Release Date", field:"track_release_date", width: 300}

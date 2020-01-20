@@ -21,8 +21,8 @@ function getArtistInfoTable() {
             return response; //return the tableData property of a response json object
         },
         columns:[ //Define Table Columns
-            {title:"Name", field:"artist_id", formatter: "link", formatterParams: {url: artistUrl, target: '_blank', labelField: 'artist_name'}},
-            {title:"Country", field:"artist_country_id", formatter: "link", formatterParams: {url: countryUrl, target: '_blank', labelField: 'artist_country_name'}},
+            {title:"Name", field:"artist_id", formatter: "link", formatterParams: {url: artistUrl, labelField: 'artist_name'}},
+            {title:"Country", field:"artist_country_id", formatter: "link", formatterParams: {url: countryUrl, labelField: 'artist_country_name'}},
             {title:"Id", field:"artist_id", visible:false},
             {title:"Rating", field:"artist_rating", align:"left", formatter: "star", formatterParams: {stars: 5}},
             {title:"Total tracks in charts", field:"total_tracks_in_charts"},
@@ -44,7 +44,7 @@ function getTracksTable() {
         },
         columns:[ //Define Table Columns
             {title:"Id", field: "al.artist_id", visible:false},
-            {title:"Name", field: "track_id", formatter: "link", formatterParams: {url: trackUrl, target: '_blank', labelField: 'track_name'}},
+            {title:"Name", field: "track_id", formatter: "link", formatterParams: {url: trackUrl, labelField: 'track_name'}},
             {title:"Id", field: "album_id", visible:false},
             {title:"Album", field: "album_name"},
             {title:"Genre", field: "genre_name"},
@@ -68,8 +68,8 @@ function getChartsTable() {
         },
         columns: [ //Define Table Columns
             {title: "Album Name", field: "album_name"},
-            {title: "Track Name", field: "track_id", formatter: "link", formatterParams: {url: trackUrl, target: '_blank', labelField: 'track_name'}},
-            {title: "Country", field: "country_id", formatter: "link", formatterParams: {url: countryUrl, target: '_blank', labelField: 'country_name'}},
+            {title: "Track Name", field: "track_id", formatter: "link", formatterParams: {url: trackUrl, labelField: 'track_name'}},
+            {title: "Country", field: "country_id", formatter: "link", formatterParams: {url: countryUrl, labelField: 'country_name'}},
             {title: "Track rank", field: "track_rank"},
         ]
     });
@@ -85,7 +85,7 @@ function getSimilarTable() {
             return response; //return the tableData property of a response json object
         },
         columns: [ //Define Table Columns
-            {title: "Artist Name", field: "artist_id", formatter: "link", formatterParams: {url: artistUrl, target: '_blank', labelField: 'artist_name'}},
+            {title: "Artist Name", field: "artist_id", formatter: "link", formatterParams: {url: artistUrl, labelField: 'artist_name'}},
             ]
     });
 }

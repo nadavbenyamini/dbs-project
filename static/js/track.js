@@ -1,7 +1,7 @@
 
 const track_id = $("#track_id").last().html();
 
-function temp() {
+function launch() {
     const url = `http://${server}:${port_api}/track/${track_id}`;
     $.get({
     url:url,
@@ -30,7 +30,7 @@ function getTracksTable() {
         },
         columns:[ //Define Table Columns
             {title:"Id", field: "al.artist_id", visible:false},
-            {title:"Name", field: "track_id", formatter: "link", formatterParams: {url: trackUrl, target: '_blank', labelField: 'track_name'}},
+            {title:"Name", field: "track_id", formatter: "link", formatterParams: {url: trackUrl, labelField: 'track_name'}},
             {title:"Id", field: "album_id", visible:false},
             {title:"Album", field: "album_name"},
             {title:"Genre", field: "genre_name"},
