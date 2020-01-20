@@ -55,30 +55,6 @@ def get_tracks_by_country(country_id):
     return query_to_json(query, args)
 
 
-@country_routes.route('/api/artists/<country_id>', methods=['GET'])
-def get_artists_by_country(country_id):
-    """
-    #TODO - Are we using this?
-    :param country_id
-    :return: artists: json of artists that had tracks in the country's chart
-    """
-    query = "select ar.artist_id, ar.artist_name," \
-            "       c.country_id, c.country_name," \
-            "       avg(ch.track_rank) as avg_track_rank " \
-            "  from Countries c " \
-            "  join Charts ch " \
-            "    on c.country_id = ch.country_id " \
-            "  join Tracks t" \
-            "    on t.track_id = ch.track_id " \
-            "  join Artists ar " \
-            "    on ar.artist_id = t.artist_id " \
-            " where c.country_id = %s" \
-            " group by 1, 2, 3, 4" \
-            " order by avg_track_rank"
-    args = (country_id, )
-    return query_to_json(query, args)
-
-
 @country_routes.route('/api/countries', methods=['GET'])
 def get_all_countries():
     return get_all_from_table('Countries')

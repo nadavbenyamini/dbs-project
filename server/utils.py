@@ -42,21 +42,3 @@ def res_to_json(res, page_size=100000, page_number=1):
 # Fixing decimal issue in jsonify()
 def process_val(val):
     return float(val) if isinstance(val, decimal.Decimal) else val
-
-# TODO: DELETE THIS:
-'''
-class APIException(Exception):
-    """
-    Customer error raising.
-    For example wrong track id should be error 404 not 500
-    """
-    def __init__(self, message, status_code=404):
-        Exception.__init__(self)
-        print('Message: {}\n{}'.format(message, traceback.format_exc()))
-        self.message = message
-        self.status_code = status_code
-
-    def to_json(self):
-        return jsonify({'message': self.message})
-
-'''
