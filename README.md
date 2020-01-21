@@ -16,5 +16,7 @@ Deployment instructions:
 8) virtualenv --prompt=venv --python=python3.6 .env
 9) source .env/bin/activate.csh
 10) python3.6 -m pip install --upgrade requirements.txt
-13) setenv LD_LIBRARY_PATH /usr/local/lib/openssl-1.1.1a/lib
-14) setenv LD_LIBRARY_PATH /usr/local/lib/openssl-1.1.1a/lib:$LD_LIBRARY_PATH
+11) setenv LD_LIBRARY_PATH /usr/local/lib/openssl-1.1.1a/lib
+12) setenv LD_LIBRARY_PATH /usr/local/lib/openssl-1.1.1a/lib:$LD_LIBRARY_PATH
+13) screen
+14) python3.6 app.py
