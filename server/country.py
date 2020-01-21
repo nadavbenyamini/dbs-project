@@ -57,4 +57,4 @@ def get_tracks_by_country(country_id):
 
 @country_routes.route('/api/countries', methods=['GET'])
 def get_all_countries():
-    return get_all_from_table('Countries')
+    return get_all_from_table('Countries', order_by=2)

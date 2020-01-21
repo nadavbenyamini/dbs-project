@@ -5,16 +5,25 @@ import decimal
 """
 General utilities supporting the different backend functions  
 """
+ALL_TABLES = ['Charts', 'Countries', 'Tracks', 'TracksView', 'Genres', 'GenresView', 'Albums', 'Artist']
 
 
-def get_all_from_table(tab_name, limit=10000000000):
+def get_all_from_table(tab_name, limit=10000000000, order_by=1):
     """
-    Warning this function is for internal use only with a hardcoded value in tab_name to avoid SQL Injection
+    Warning - this function formats query directly without using query args so it's exposed to injection
+    Make sure the parameters are validated
     :param tab_name: table in our DB
-    :param limit: #rows
+    :param limit: #rows *NUMBER*
+    :param order_by: order by column *NUMBER*
     :return: simple JSON of select * from tab_name
     """
-    query = "select * from {} limit {}".format(tab_name, limit)
+
+    # Next 3 lines validate the parameters to prevent SQL injection
+    assert tab_name in ALL_TABLES
+    order_by = int(order_by)
+    limit = int(limit)
+
+    query = "select * from {} order by {} limit {}".format(tab_name, order_by, limit)
     db_results = sql_executor.select(query=query)
     return res_to_json(db_results)
 
