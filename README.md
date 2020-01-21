@@ -12,10 +12,10 @@ Deployment instructions:
 4) cd specific/scratch/benyamini1/django/dbs-project
 5) git pull
 6) git checkout master
-7) pkill screen (ignore error messages)
+7) pkill screen
 8) virtualenv --prompt=venv --python=python3.6 .env
 9) source .env/bin/activate.csh
-10) python3.6 -m pip install --upgrade requirements.txt
+10) python3.6 -m pip install -r --upgrade requirements.txt
 11) setenv LD_LIBRARY_PATH /usr/local/lib/openssl-1.1.1a/lib
 12) setenv LD_LIBRARY_PATH /usr/local/lib/openssl-1.1.1a/lib:$LD_LIBRARY_PATH
 13) screen
