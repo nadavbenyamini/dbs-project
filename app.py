@@ -44,4 +44,4 @@ def country(country_id):
 
 
 if __name__ == '__main__':
-    app.run(port=PORT, host=HOST, debug=True)
+    app.run(port=PORT, host=HOST, debug=DEBUG)
