@@ -124,3 +124,12 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
                          TEXT_FILTER=text_filter,
                          LIMIT=limit)
     return query_to_json(query=query, args=tuple(args))
+
+
+@track_routes.routes('/api/genres', methods=['GET'])
+def get_genres():
+    """
+    This query is used to populate the dropdown genre list in the home page
+    :return: Flat list of all genres with parent. e.g. both "Rock" and "Rock/Hard Rock" will be returned
+    """
+    return get_all_from_table('GenresView', order_by=3)
