@@ -48,7 +48,7 @@ function getTracksTable() {
             {title:"Id", field: "album_id", visible:false},
             {title:"Album", field: "album_name"},
             {title:"Genre", field: "genre_name"},
-            {title:"Rating", field: "track_rating", align:"left", formatter: "star", formatterParams: {stars: 5}},
+            {title:"Total Ranking", field: "track_ranking"},
             {title:"Release Date", field: "track_release_date"}
         ]
     });
