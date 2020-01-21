@@ -126,7 +126,7 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
     return query_to_json(query=query, args=tuple(args))
 
 
-@track_routes.routes('/api/genres', methods=['GET'])
+@track_routes.route('/api/genres', methods=['GET'])
 def get_genres():
     """
     This query is used to populate the dropdown genre list in the home page
