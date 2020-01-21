@@ -80,8 +80,3 @@ def get_similar_artists(artist_id):
             "AND t1.track_rating<=min_max_rating.max_rating;"
     args = (artist_id, artist_id)
     return query_to_json(query, args)
-
-
-@artist_routes.route('/api/artists', methods=['GET'])
-def get_all_artists():
-    return get_all_from_table('Artists')
