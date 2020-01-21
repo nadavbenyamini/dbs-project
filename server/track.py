@@ -112,6 +112,7 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
             args.append(search_text + "%")  # '%' only on the right to use index
 
     try:
+        # This int() conversion validates we're not exposed to injection
         page_number = int(page_number)
         page_size = int(page_size)
         limit = '{}, {}'.format(page_size * (page_number - 1), page_size)
