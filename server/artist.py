@@ -31,7 +31,7 @@ def get_top_tracks_by_artist(artist_id):
     :param artist_id
     :return: tracks: Top tracks according to the overall ranking in charts
     """
-    query = " SELECT track_name, album_name, SUM(101-c.track_rank) AS track_ranking, "\
+    query = " SELECT t.track_id, track_name, album_name, SUM(101-c.track_rank) AS track_ranking, "\
             "        track_release_date_formatted as track_release_date, genre_name"\
             "   FROM TracksView t, Charts c "\
             "  WHERE t.track_id = c.track_id AND "\
@@ -48,16 +48,17 @@ def get_top_countries_by_artist(artist_id):
     :param artist_id
     :return: tracks: Top countries by artist
     """
-    query = "select cr.country_name, "\
+    query = "select cr.country_id," \
+            "       cr.country_name, "\
             "       cr.population AS country_population, "\
             "       SUM(101-ch.track_rank) AS total_rank_in_country, "\
             "       COUNT(t.track_id) AS number_of_songs_on_country_chart "\
-            " from TracksView t "\
-            " join Charts ch on ch.track_id = t.track_id "\
-            " join Countries cr on cr.country_id = ch.country_id "\
-            "where artist_id = %s " \
-            "group by 1, 2 " \
-            "order by total_rank_in_country desc;"
+            "  from TracksView t "\
+            "  join Charts ch on ch.track_id = t.track_id "\
+            "  join Countries cr on cr.country_id = ch.country_id "\
+            " where artist_id = %s " \
+            " group by 1, 2, 3 " \
+            " order by total_rank_in_country desc;"
     args = (artist_id, )
     return query_to_json(query, args)
 
