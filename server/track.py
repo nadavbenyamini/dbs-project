@@ -130,6 +130,7 @@ def search_track(search_by=None, search_text=None, date_from=None, date_to=None,
 def get_genres():
     """
     This query is used to populate the dropdown genre list in the home page
+    Not really related to track_routes but no point of adding another routing entity just for this function
     :return: Flat list of all genres with parent. e.g. both "Rock" and "Rock/Hard Rock" will be returned
     """
     return get_all_from_table('GenresView', order_by=3)
