@@ -20,7 +20,7 @@ def get_artist(artist_id):
             " left join Charts ch on ch.track_id = t.track_id " \
             " left join Countries c on c.country_id = a.artist_country_id " \
             "where a.artist_id = %s " \
-            "group by a.artist_id, a.artist_name, a.artist_country_id, a.artist_rating, c.country_name"
+            "group by a.artist_id, a.artist_name, a.artist_country_id, a.artist_rating, c.country_name;"
     args = (artist_id, )
     return query_to_json(query, args)
 
@@ -37,23 +37,27 @@ def get_top_tracks_by_artist(artist_id):
             "  WHERE t.track_id = c.track_id AND "\
             "		 t.artist_id = %s "\
             "  GROUP BY t.track_id "\
-            "  ORDER BY track_ranking DESC "
+            "  ORDER BY track_ranking DESC;"
     args = (artist_id, )
     return query_to_json(query, args)
 
 
 @artist_routes.route('/api/artist_charts/<artist_id>', methods=['GET'])
-def get_charts_by_artist(artist_id):
+def get_top_countries_by_artist(artist_id):
     """
     :param artist_id
-    :return: tracks: json of the artist's tracks in each chart including chart appearances
+    :return: tracks: Top countries by artist
     """
-    query = "select t.track_id, t.album_name, t.track_name, c.country_id, c.country_name, ch.track_rank "\
-            " from TracksView t"\
-            " left join Charts ch on ch.track_id = t.track_id "\
-            " left join Countries c on ch.country_id = c.country_id "\
+    query = "select cr.country_name, "\
+            "       cr.population AS country_population, "\
+            "       SUM(101-ch.track_rank) AS total_rank_in_country, "\
+            "       COUNT(t.track_id) AS number_of_songs_on_country_chart "\
+            " from TracksView t "\
+            " join Charts ch on ch.track_id = t.track_id "\
+            " join Countries cr on cr.country_id = ch.country_id "\
             "where artist_id = %s " \
-            "order by album_name, track_name, country_name"
+            "group by 1, 2 " \
+            "order by total_rank_in_country desc;"
     args = (artist_id, )
     return query_to_json(query, args)
 

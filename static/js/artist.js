@@ -48,7 +48,7 @@ function getTracksTable() {
             {title:"Id", field: "album_id", visible:false},
             {title:"Album", field: "album_name"},
             {title:"Genre", field: "genre_name"},
-            {title:"Total Ranking", field: "track_ranking"},
+            {title:"Total Ranking", field: "track_ranking", formatter: "money", formatterParams: {precision: 0}},
             {title:"Release Date", field: "track_release_date"}
         ]
     });
@@ -56,7 +56,6 @@ function getTracksTable() {
 
 function getChartsTable() {
     const artist_id = $("#artist_id").last().html();
-    const trackUrl = function(cell) { return `../track/${cell['_cell']['value']}`;};
     const countryUrl = function(cell) { return `../country/${cell['_cell']['value']}`;};
     return new Tabulator("#artist-chart", {
         layout:"fitColumns",
@@ -67,10 +66,10 @@ function getChartsTable() {
             return response; //return the tableData property of a response json object
         },
         columns: [ //Define Table Columns
-            {title: "Album Name", field: "album_name"},
-            {title: "Track Name", field: "track_id", formatter: "link", formatterParams: {url: trackUrl, labelField: 'track_name'}},
             {title: "Country", field: "country_id", formatter: "link", formatterParams: {url: countryUrl, labelField: 'country_name'}},
-            {title: "Track rank", field: "track_rank"},
+            {title: "Population", field: "country_population", formatter: "money", formatterParams: {precision: 0}},
+            {title: "Total Rank in Country's Chart", field: "total_rank_in_country", formatter: "money", formatterParams: {precision: 0}},
+            {title: "#Tracks in Country's Chart", field: "number_of_songs_on_country_chart", formatter: "money", formatterParams: {precision: 0}}
         ]
     });
 }
