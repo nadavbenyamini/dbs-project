@@ -2,13 +2,16 @@
 
 # top countries for artist
 
-SELECT cr.country_name , SUM(101-c.track_rank) AS total_rank_in_country , COUNT(t.track_id) AS  number_of_songs_on_country_chart ,cr.population AS country_population
-	FROM  Tracks t , Charts c , Countries cr
-	WHERE cr.country_id = c.country_id AND
-			c.track_id = t.track_id AND
-			t.artist_id = "artist id"
-	GROUP BY cr.country_id
-	ORDER BY total_rank_in_country DESC ;
+SELECT cr.country_name ,
+       SUM(101-c.track_rank) AS total_rank_in_country ,
+       COUNT(t.track_id) AS  number_of_songs_on_country_chart,
+       cr.population AS country_population
+  FROM Tracks t , Charts c , Countries cr
+ WHERE cr.country_id = c.country_id AND
+			 c.track_id = t.track_id AND
+			 t.artist_id = "artist id"
+ GROUP BY cr.country_id
+ ORDER BY total_rank_in_country DESC ;
 
 
 

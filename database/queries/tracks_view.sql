@@ -1,3 +1,4 @@
+-- Simplifying the process of pulling and formatting all relevant details of a track
 create or replace view TracksView as
  select t.track_id,
 	    t.track_name,
